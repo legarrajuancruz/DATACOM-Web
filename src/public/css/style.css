@@ -69,3 +69,13 @@ span {
   display: flex;
   flex-direction: row;
 }
+
+.character-image {
+  position: absolute;
+  top: 50%; /* Centra verticalmente la imagen */
+  right: 25%; /* Distancia desde el borde derecho */
+  transform: translateY(-50%);
+  width: 250px; /* Ancho de la imagen */
+  height: auto; /* Esto asegura que la imagen se ajuste automáticamente */
+  z-index: 999; /* Asegura que la imagen esté encima de otros elementos */
+}
