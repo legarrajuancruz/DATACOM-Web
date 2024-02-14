@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="font-src 'self' http://localhost:8080;"
-    />
-
+    <title>SUPERMARKET</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -15,73 +11,96 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-
-    <title>SUPERMARKET</title>
+    <style>
+      body { background: rgb(9,133,136); background: linear-gradient(90deg,
+      rgba(9,133,136,1) 0%, rgba(10,217,197,1) 54%, rgba(70,242,202,1) 100%); }
+    </style>
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <a href="/" title="Logo Marketplace"><img
-              src="https://res.cloudinary.com/dl5zwia3m/image/upload/v1693524814/supermarket_cfo7on.png"
-              alt="Logo de la marca"
-              class="navbarLogo d-inline-block align-text-top"
-              width="300"
-            /></a>
-        </div>
-        <div class="col d-flex align-items-center justify-content-end">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
+    <!-- Encabezado -->
+    <header class="container-fluid bg-white text-dark py-3">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <a href="/" title="Logo Marketplace"><img
+                src="/img/TopLogo.png"
+                alt="Logo de la marca"
+                class="navbarLogo d-inline-block align-text-top"
+                width="200"
+              /></a>
+          </div>
+          <div class="col-md-6 text-end">
+            <nav class="nav">
               <a
-                class="nav-link active text-dark"
-                aria-current="page"
+                class="nav-link text-dark"
                 href="/users/login"
+                style="font-size: 20px; border-right: 1px solid #323232;"
               >Login</a>
-            </li>
-            <li class="nav-item">
               <a
-                class="nav-link active text-dark"
-                aria-current="page"
+                class="nav-link text-dark"
                 href="/products"
+                style="font-size: 20px; border-right: 1px solid #323232;"
               >Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/realtimeproducts">Real Times
-                Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/carts">Carrito</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/chat">Chat</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="/cerrar">User</a>
-            </li>
-          </ul>
+              <a
+                class="nav-link text-dark"
+                href="/realtimeproducts"
+                style="font-size: 20px; border-right: 1px solid #323232;"
+              >Real Time Products</a>
+              <a
+                class="nav-link text-dark"
+                href="/carts"
+                style="font-size: 20px; border-right: 1px solid #323232;"
+              >Carrito</a>
+              <a
+                class="nav-link text-dark"
+                href="/chat"
+                style="font-size: 20px; border-right: 1px solid #323232;"
+              >Chat</a>
+              <a
+                class="nav-link text-dark"
+                href="/cerrar"
+                style="font-size: 20px;"
+              >User</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cuerpo principal -->
+    <div class="container my-5">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="display-4">DATACOM</h1>
+          <h2 class="display-6">La mejor opción para tus compras</h2>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-center">
+          <p>DATACOM Desarrollado por <b>CREATIVE lega</b></p>
         </div>
       </div>
     </div>
 
-    <div class="container my-5">
-      <div class="row">
-        <div class="col text-center">
-          <h1 class="display-6">SUPERMARKET</h1>
-          <h2 class="display-8">SEGUIMOS SIENDO LA MEJOR OPCION</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-center">
-          <p>SUPERMARKET Desarrollado por <b>Coderhouse</b></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-5">
+    <!-- Contenido dinámico -->
+    <div class="container">
       {{{body}}}
     </div>
 
+    <!-- Pie de página -->
+    <footer class="container-fluid bg-dark text-light py-3 mt-5 fixed-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <p>&copy; 2024 DATACOM. Todos los derechos reservados.</p>
+            <p>Desarrollado por Juan Cruz Legarra</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
