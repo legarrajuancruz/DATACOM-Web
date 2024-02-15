@@ -106,4 +106,13 @@ router.get(
   }
 );
 
+//HOME
+router.get("/presupuestador", async (request, response) => {
+  try {
+    res.render("presupuestador");
+  } catch (error) {
+    response.status(500).send({ error: error.message });
+  }
+});
+
 export default router;

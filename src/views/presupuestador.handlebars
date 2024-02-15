@@ -1,0 +1,38 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presupuestador</title>
+    <style>
+      /* Estilos CSS aquí */
+    </style>
+  </head>
+  <body>
+    <h1>Presupuestador</h1>
+
+    <form id="presupuestoForm">
+      <label for="gastos">Gastos mensuales:</label>
+      <input type="number" id="gastos" name="gastos" min="0" value="0" />
+      <br />
+      <label for="ingresos">Ingresos mensuales:</label>
+      <input type="number" id="ingresos" name="ingresos" min="0" value="0" />
+      <br />
+      <button type="button" onclick="calcularPresupuesto()">Calcular</button>
+    </form>
+
+    <div id="resultadoPresupuesto"></div>
+
+    <script>
+      function calcularPresupuesto() { const gastos =
+      parseFloat(document.getElementById('gastos').value); const ingresos =
+      parseFloat(document.getElementById('ingresos').value); const diferencia =
+      ingresos - gastos; let mensaje = ''; if (diferencia > 0) { mensaje =
+      `Tienes un excedente mensual de ${diferencia} unidades monetarias.`; }
+      else if (diferencia < 0) { mensaje = `Estás gastando más de lo que ganas.
+      Tu déficit mensual es de ${Math.abs(diferencia)} unidades monetarias.`; }
+      else { mensaje = 'Tus ingresos y gastos son iguales. No tienes excedente
+      ni déficit.'; } document.getElementById('resultadoPresupuesto').innerText
+      = mensaje; }
+    </script>
+  </body>
+</html>
