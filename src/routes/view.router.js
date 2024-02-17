@@ -107,7 +107,7 @@ router.get(
 );
 
 //HOME
-router.get("/presupuestador", async (request, response) => {
+router.get("/presupuesto", async (req, res) => {
   try {
     res.render("presupuestador");
   } catch (error) {

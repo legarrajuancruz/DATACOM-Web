@@ -1,38 +1,200 @@
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presupuestador</title>
-    <style>
-      /* Estilos CSS aquí */
-    </style>
-  </head>
-  <body>
-    <h1>Presupuestador</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planilla de Componentes</title>
+  <style>
+    /* Estilos CSS aquí */
+  </style>
+</head>
+<body>
+  <table id="componentes-table">
+    <tr>
+      <th
+        style="padding: 10px; font-size: 10px"
+        class="text-center bg-secondary text-light border align-middle"
+      >ARTICULO</th>
+      <th
+        style="padding: 10px; font-size: 10px; width: 40px;"
+        class="text-center bg-secondary text-light border align-middle"
+      >CAN</th>
+      <th
+        style="padding: 10px; width: 300px; font-size: 10px"
+        class="text-center bg-secondary text-light border align-middle"
+      >DESCRPCION ARTICULO</th>
+      <th
+        style="padding: 10px; font-size: 10px; width: 40px"
+        class="text-center bg-secondary text-light border align-middle"
+      >GARANTIA</th>
+      <th
+        style="padding: 10px; font-size: 10px;"
+        class="text-center bg-secondary text-light border align-middle"
+      >CONTADO</th>
+      <th
+        style="padding: 10px; font-size: 10px"
+        class="text-center bg-secondary text-light border align-middle"
+      >PRECIO LISTA</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">PROCESADOR</td>
+        <td><input
+            class="text-center w-100"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia1"
+            placeholder="Garantía"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+      </tr>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">PLACA MADRE</td>
+        <td><input
+            class="text-center w-100"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia1"
+            placeholder="Garantía"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+      </tr>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">MEMORIA RAM</td>
+        <td><input
+            class="text-center w-100"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia1"
+            placeholder="Garantía"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+      </tr>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">DISCO RIGIDO</td>
+        <td><input
+            class="text-center"
+            style="width: 40px;"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia1"
+            placeholder="Garantía"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+      </tr>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">GABINETE</td>
+        <td><input
+            class="text-center"
+            style="width: 40px;"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia1"
+            placeholder="Garantía"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input
+            type="text"
+            id="garantia6"
+            type="text"
+            id="precio1"
+            placeholder="Precio"
+          /></td>
+      </tr>
+      <tr>
+        <td style="background:rgba(166, 166, 166, 0.721)">MONITOR</td>
+        <td><input
+            class="text-center"
+            style="width: 40px;"
+            type="number"
+            id="cantidad1"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="descripcion1"
+            placeholder="Descripción"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia6"
+            placeholder="Garantia"
+          /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+      </tr>
 
-    <form id="presupuestoForm">
-      <label for="gastos">Gastos mensuales:</label>
-      <input type="number" id="gastos" name="gastos" min="0" value="0" />
-      <br />
-      <label for="ingresos">Ingresos mensuales:</label>
-      <input type="number" id="ingresos" name="ingresos" min="0" value="0" />
-      <br />
-      <button type="button" onclick="calcularPresupuesto()">Calcular</button>
-    </form>
+    </tbody>
+  </table>
 
-    <div id="resultadoPresupuesto"></div>
+  <button id="agregar-componente">Crear Presupuesto</button>
 
-    <script>
-      function calcularPresupuesto() { const gastos =
-      parseFloat(document.getElementById('gastos').value); const ingresos =
-      parseFloat(document.getElementById('ingresos').value); const diferencia =
-      ingresos - gastos; let mensaje = ''; if (diferencia > 0) { mensaje =
-      `Tienes un excedente mensual de ${diferencia} unidades monetarias.`; }
-      else if (diferencia < 0) { mensaje = `Estás gastando más de lo que ganas.
-      Tu déficit mensual es de ${Math.abs(diferencia)} unidades monetarias.`; }
-      else { mensaje = 'Tus ingresos y gastos son iguales. No tienes excedente
-      ni déficit.'; } document.getElementById('resultadoPresupuesto').innerText
-      = mensaje; }
-    </script>
-  </body>
-</html>
+  <div id="excel-sheet"></div>
+
+  <script src="script.js"></script>
+</body>
