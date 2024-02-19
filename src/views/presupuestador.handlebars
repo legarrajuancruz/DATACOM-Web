@@ -7,7 +7,52 @@
   </style>
 </head>
 <body>
+
   <table id="componentes-table">
+    <tr style="height: 20px">
+      <td
+        colspan="2"
+        class="text-center bg-secondary text-light border align-middle"
+      >NOMBRE</td>
+      <td class="text-center text-light border align-middle"><input
+          class="text-center w-100"
+          type="text"
+        /></td>
+      <td></td>
+      <td
+        colspan="2"
+        class="text-center bg-secondary text-light border align-middle"
+      >NUMERO DE ORDEN</td>
+    </tr>
+
+    <tr style="height: 20px">
+      <td
+        colspan="2"
+        class="text-center bg-secondary text-light border align-middle"
+      >CONTACTO</td>
+      <td class="text-center text-light border align-middle"><input
+          class="text-center w-100"
+          type="text"
+        /></td>
+      <td></td>
+      <td
+        colspan="2"
+        class="text-center bg-secondary text-light border align-middle"
+      ><input type="text" /></td>
+    </tr>
+
+    <tr style="height: 20px">
+      <td
+        colspan="2"
+        class="text-center bg-secondary text-light border align-middle"
+      >TELEFONO</td>
+      <td class="text-center text-light border align-middle"><input
+          class="text-center w-100"
+          type="text"
+        /></td>
+      <td></td>
+    </tr>
+
     <tr>
       <th
         style="padding: 10px; font-size: 10px"
@@ -18,158 +63,222 @@
         class="text-center bg-secondary text-light border align-middle"
       >CAN</th>
       <th
-        style="padding: 10px; width: 300px; font-size: 10px"
+        style="padding: 10px; width: 400px; font-size: 10px"
         class="text-center bg-secondary text-light border align-middle"
       >DESCRPCION ARTICULO</th>
       <th
-        style="padding: 10px; font-size: 10px; width: 40px"
+        style="padding: 10px; font-size: 10px; width: 90px"
         class="text-center bg-secondary text-light border align-middle"
       >GARANTIA</th>
       <th
-        style="padding: 10px; font-size: 10px;"
+        style="padding: 10px; font-size: 10px; width: 90px"
         class="text-center bg-secondary text-light border align-middle"
       >CONTADO</th>
       <th
-        style="padding: 10px; font-size: 10px"
+        style="padding: 10px; font-size: 10px; width: 90px"
         class="text-center bg-secondary text-light border align-middle"
       >PRECIO LISTA</th>
     </tr>
     <tbody>
       <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">PROCESADOR</td>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >PROCESADOR</td>
         <td><input
             class="text-center w-100"
             type="number"
-            id="cantidad1"
+            id="procesadorCantidad"
             min="1"
             value="1"
           /></td>
         <td><input
             class="w-100"
             type="text"
-            id="descripcion1"
-            placeholder="Descripción"
+            id="procesadorDescripcion"
+            placeholder="Ingrese descripción articulo"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia1"
+            id="procesadorGarantia"
             placeholder="Garantía"
           /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="procesadorContado"
+            placeholder="Precio"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="procesadorPlista"
+            placeholder="Precio lista"
+          /></td>
       </tr>
       <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">PLACA MADRE</td>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >PLACA MADRE</td>
         <td><input
             class="text-center w-100"
             type="number"
-            id="cantidad1"
+            id="placamadreCantidad"
             min="1"
             value="1"
           /></td>
         <td><input
             class="w-100"
             type="text"
-            id="descripcion1"
-            placeholder="Descripción"
+            id="placamadreDescripcion"
+            placeholder="Ingrese descripción articulo"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia1"
+            id="placamadreGarantia"
             placeholder="Garantía"
           /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="placamadreContado"
+            placeholder="Precio"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="placamadrePlista"
+            placeholder="Precio lista"
+          /></td>
       </tr>
       <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">MEMORIA RAM</td>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >MEMORIA RAM</td>
         <td><input
             class="text-center w-100"
             type="number"
-            id="cantidad1"
+            id="memoriaCantidad"
             min="1"
             value="1"
           /></td>
         <td><input
             class="w-100"
             type="text"
-            id="descripcion1"
-            placeholder="Descripción"
+            id="memoriaDescripcion"
+            placeholder="Ingrese descripción articulo"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia1"
+            id="memoriaGarantia"
             placeholder="Garantía"
-          /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-      </tr>
-      <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">DISCO RIGIDO</td>
-        <td><input
-            class="text-center"
-            style="width: 40px;"
-            type="number"
-            id="cantidad1"
-            min="1"
-            value="1"
-          /></td>
-        <td><input
-            class="w-100"
-            type="text"
-            id="descripcion1"
-            placeholder="Descripción"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia1"
-            placeholder="Garantía"
-          /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-      </tr>
-      <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">GABINETE</td>
-        <td><input
-            class="text-center"
-            style="width: 40px;"
-            type="number"
-            id="cantidad1"
-            min="1"
-            value="1"
-          /></td>
-        <td><input
-            class="w-100"
-            type="text"
-            id="descripcion1"
-            placeholder="Descripción"
+            id="memoriaContado"
+            placeholder="Precio"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia1"
-            placeholder="Garantía"
-          /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input
-            type="text"
-            id="garantia6"
-            type="text"
-            id="precio1"
+            id="memoriaPlista"
             placeholder="Precio"
           /></td>
       </tr>
       <tr>
-        <td style="background:rgba(166, 166, 166, 0.721)">MONITOR</td>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >DISCO RIGIDO</td>
         <td><input
             class="text-center"
             style="width: 40px;"
             type="number"
-            id="cantidad1"
+            id="discoCantidad"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="discoDescripcion"
+            placeholder="Ingrese descripción articulo"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="discoGarantia"
+            placeholder="Garantía"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="discoContado"
+            placeholder="Precio"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="DiscoPlista"
+            placeholder="Precio"
+          /></td>
+      </tr>
+      <tr>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >GABINETE</td>
+        <td><input
+            class="text-center"
+            style="width: 40px;"
+            type="number"
+            id="gabineteCantidad"
+            min="1"
+            value="1"
+          /></td>
+        <td><input
+            class="w-100"
+            type="text"
+            id="gabineteDescripcion"
+            placeholder="Ingrese descripción articulo"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="gabineteGarantia"
+            placeholder="Garantía"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="gabineteContado"
+            placeholder="Precio"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="garantia6"
+            type="text"
+            id="gabinetePlista"
+            placeholder="Precio"
+          /></td>
+      </tr>
+      <tr>
+        <td
+          style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+          class="text-center"
+        >MONITOR</td>
+        <td><input
+            class="text-center"
+            style="width: 40px;"
+            type="number"
+            id="monitorCantidad"
             min="1"
             value="1"
           /></td>
@@ -177,16 +286,41 @@
             class="w-100"
             type="text"
             id="descripcion1"
-            placeholder="Descripción"
+            placeholder="Ingrese descripción articulo"
           /></td>
         <td><input
             class="text-center w-100"
             type="text"
-            id="garantia6"
+            id="monitorGarantia"
             placeholder="Garantia"
           /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
-        <td><input type="text" id="precio1" placeholder="Precio" /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="monitorContado"
+            placeholder="Precio"
+          /></td>
+        <td><input
+            class="text-center w-100"
+            type="text"
+            id="monitorPlista"
+            placeholder="Precio"
+          /></td>
+      </tr>
+      <tr>
+        <td colspan="6" style="height: 15px;"></td>
+      </tr>
+      <tr style="height: 35px">
+        <td
+          colspan="4"
+          class="text-center bg-secondary text-light border align-middle"
+        >TOTAL</td>
+        <td
+          class="text-center bg-secondary text-light border align-middle"
+        ></td>
+        <td
+          class="text-center bg-secondary text-light border align-middle"
+        ></td>
       </tr>
 
     </tbody>
