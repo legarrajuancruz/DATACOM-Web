@@ -1,84 +1,9 @@
-<div style="display:flex; flex-direction:column justify-content:center">
-  <div><img src="/img/LOGO.jpg" alt="" style="height: 139px;" /></div>
-
-  <div id="componentes-div" class="container">
-    <div class="row justify-content-center">
-      <div
-        class="col-12 text-center bg-dark text-light border align-middle"
-        style="font-size: 18px;"
-      >
-        INFORMACIÓN CLIENTE
-      </div>
-    </div>
-
-    <div class="row py-2">
-      <div
-        class="col-6 text-center bg-secondary text-light border align-middle"
-        style="font-size: 14px;"
-      >
-        NOMBRE
-      </div>
-      <div class="col-6 bg-light border align-middle">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Ingrese su nombre"
-        />
-      </div>
-    </div>
-
-    <div class="row py-2">
-      <div
-        class="col-6 text-center bg-secondary text-light border align-middle"
-        style="font-size: 14px;"
-      >
-        CONTACTO
-      </div>
-      <div class="col-6 bg-light border align-middle">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Ingrese su contacto"
-        />
-      </div>
-    </div>
-
-    <div class="row py-2">
-      <div
-        class="col-6 text-center bg-secondary text-light border align-middle"
-        style="font-size: 14px;"
-      >
-        TELEFONO
-      </div>
-      <div class="col-6 bg-light border align-middle">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Ingrese su teléfono"
-        />
-      </div>
-    </div>
-
-    <div class="row py-2">
-      <div
-        class="col-6 text-center bg-secondary text-light border align-middle"
-        style="font-size: 14px;"
-      >
-        NUMERO DE ORDEN
-      </div>
-      <div class="col-6 bg-light border align-middle">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Ingrese el número de orden"
-        />
-      </div>
-    </div>
-  </div>
+<div style="display:flex; flex-direction:row">
+  <div><img src="/img/LOGO.jpg" alt="" style="height: 150px;" /></div>
   <div>
     <table id="componentes-table">
       <tr>
-        <tr>
+        <tr style="height: 30px;">
           <td
             colspan="2"
             class="text-center bg-dark text-light border align-middle"
@@ -89,7 +14,7 @@
           <td
             colspan="2"
             class="text-center bg-secondary text-light border align-middle"
-            style="font-size: 12px;"
+            style="font-size: 12px"
           >NUMERO DE ORDEN</td>
         </tr>
       </tr>
@@ -107,8 +32,13 @@
         <td></td>
         <td
           colspan="2"
-          class="text-center bg-secondary text-light border align-middle"
-        ><input type="text" /></td>
+          class="text-center bg-light text-light border align-middle"
+        >
+          <input
+            class="w-100 text-center bg-light border align-middle"
+            type="text"
+          />
+        </td>
       </tr>
 
       <tr style="height: 20px">
@@ -141,7 +71,6 @@
           class="text-center bg-secondary text-light border align-middle"
           style="font-size: 12px;"
         >FECHA</td>
-
       </tr>
 
       <tr style="height: 20px">
@@ -150,6 +79,53 @@
           style="font-size: 12px; background-color:rgb(137, 181, 192);"
           class="text-center text-dark align-middle border"
         >DATACOM SERVICIOS INFORMATICOS</td>
+        <td></td>
+        <td
+          colspan="2"
+          class="text-center bg-light text-light border align-middle"
+        >
+          <input
+            class="w-100 text-center bg-light border align-middle"
+            type="text"
+          />
+        </td>
+
+        <tr>
+          <td colspan="6" style="height: 15px;"></td>
+        </tr>
+      </tr>
+
+      <tr style="height: 20px">
+        <td style="background-color: white"><img
+            src="/img/bancosantander.png"
+            alt=""
+            style="width: 100px; height: auto; border:2px solid white; "
+          /></td>
+        <td
+          colspan="2"
+          style="font-size: 10px; background-color:white;"
+          class="text-center text-dark align-middle border"
+        >CUENTA BANCO GALICIA - LEGARRA JUAN CRUZ</td>
+        <td></td>
+        <td
+          colspan="2"
+          class="text-center bg-dark text-light border align-middle"
+          style="font-size: 12px;"
+        >DOLAR DISTRIBUIDOR
+        </td>
+      </tr>
+
+      <tr style="height: 20px">
+        <td style="background-color: white "><img
+            src="/img/mercadopago.png"
+            alt=""
+            style="width: 100px; height: auto; border:3px solid white"
+          /></td>
+        <td
+          colspan="2"
+          style="font-size: 10px; background-color:white  ;"
+          class="text-center text-dark align-middle border"
+        >CUENTA CORRIENTES EN PESOS 0006037-2 105-0 CBU 00701057-20000006037200</td>
         <td></td>
         <td
           colspan="2"
@@ -192,6 +168,7 @@
           class="text-center bg-secondary text-light border align-middle"
         >PRECIO LISTA</th>
       </tr>
+
       <tbody>
         <tr>
           <td
@@ -209,25 +186,21 @@
               class="w-100"
               type="text"
               id="procesadorDescripcion"
-              placeholder="Ingrese descripción articulo"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="procesadorGarantia"
-              placeholder="Garantía"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="procesadorContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="procesadorPlista"
-              placeholder="Precio lista"
             /></td>
         </tr>
         <tr>
@@ -246,25 +219,21 @@
               class="w-100"
               type="text"
               id="placamadreDescripcion"
-              placeholder="Ingrese descripción articulo"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="placamadreGarantia"
-              placeholder="Garantía"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="placamadreContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="placamadrePlista"
-              placeholder="Precio lista"
             /></td>
         </tr>
         <tr>
@@ -279,29 +248,21 @@
               min="1"
               value="1"
             /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="memoriaDescripcion"
-              placeholder="Ingrese descripción articulo"
-            /></td>
+          <td><input class="w-100" type="text" id="memoriaDescripcion" /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="memoriaGarantia"
-              placeholder="Garantía"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="memoriaContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="memoriaPlista"
-              placeholder="Precio"
             /></td>
         </tr>
         <tr>
@@ -317,29 +278,21 @@
               min="1"
               value="1"
             /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="discoDescripcion"
-              placeholder="Ingrese descripción articulo"
-            /></td>
+          <td><input class="w-100" type="text" id="discoDescripcion" /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="discoGarantia"
-              placeholder="Garantía"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="discoContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="DiscoPlista"
-              placeholder="Precio"
             /></td>
         </tr>
         <tr>
@@ -355,23 +308,16 @@
               min="1"
               value="1"
             /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="gabineteDescripcion"
-              placeholder="Ingrese descripción articulo"
-            /></td>
+          <td><input class="w-100" type="text" id="gabineteDescripcion" /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="gabineteGarantia"
-              placeholder="Garantía"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="gabineteContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
@@ -379,7 +325,6 @@
               id="garantia6"
               type="text"
               id="gabinetePlista"
-              placeholder="Precio"
             /></td>
         </tr>
         <tr>
@@ -395,29 +340,21 @@
               min="1"
               value="1"
             /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="descripcion1"
-              placeholder="Ingrese descripción articulo"
-            /></td>
+          <td><input class="w-100" type="text" id="descripcion1" /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="monitorGarantia"
-              placeholder="Garantia"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="monitorContado"
-              placeholder="Precio"
             /></td>
           <td><input
               class="text-center w-100"
               type="text"
               id="monitorPlista"
-              placeholder="Precio"
             /></td>
         </tr>
         <tr>
@@ -441,6 +378,5 @@
     <br />
     <button id="agregar-componente">Crear Presupuesto</button>
   </div>
-
   <script src="script.js"></script>
 </div>
