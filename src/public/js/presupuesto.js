@@ -60,3 +60,32 @@ document
       tbody.removeChild(lastRow);
     }
   });
+
+// Agregar evento de entrada a todos los campos de texto de la columna "Contado"
+let contadoInputs = document.querySelectorAll(
+  "#componentes-table tbody tr td:nth-child(5) input"
+);
+contadoInputs.forEach(function (input) {
+  input.addEventListener("input", calcularTotalContado);
+});
+
+//SUMA CONTADO
+function calcularTotalContado() {
+  let totalContado = 0;
+  // Obtener todas las filas de la tabla
+  let rows = document.querySelectorAll("#componentes-table tbody tr");
+  rows.forEach(function (row) {
+    // Obtener el valor del input en la columna "Contado" de la fila actual
+    let contadoInput = row.querySelector("td:nth-child(5) input");
+    if (contadoInput) {
+      // Convertir el valor a número y sumarlo al total
+      totalContado += parseFloat(contadoInput.value) || 0;
+    }
+  });
+
+  // Mostrar el total en el casillero deseado
+  let totalContadoCell = document.getElementById("totalContado");
+  if (totalContadoCell) {
+    totalContadoCell.textContent = totalContado.toFixed(2); // Redondear a 2 decimales
+  }
+}
