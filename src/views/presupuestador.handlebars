@@ -214,10 +214,9 @@
           >PROCESADOR</td>
           <td><input
               class="text-center w-100"
-              type="number"
-              id="procesadorCantidad"
-              min="1"
-              value="1"
+              type="text"
+              id="memoriaCantidad"
+              value=""
             /></td>
           <td><input
               class="w-100"
@@ -247,10 +246,9 @@
           >PLACA MADRE</td>
           <td><input
               class="text-center w-100"
-              type="number"
-              id="placamadreCantidad"
-              min="1"
-              value="1"
+              type="text"
+              id="memoriaCantidad"
+              value=""
             /></td>
           <td><input
               class="w-100"
@@ -280,10 +278,9 @@
           >MEMORIA RAM</td>
           <td><input
               class="text-center w-100"
-              type="number"
+              type="text"
               id="memoriaCantidad"
-              min="1"
-              value="1"
+              value=""
             /></td>
           <td><input class="w-100" type="text" id="memoriaDescripcion" /></td>
           <td><input
@@ -308,12 +305,10 @@
             class="text-center"
           >DISCO RIGIDO</td>
           <td><input
-              class="text-center"
-              style="width: 40px;"
-              type="number"
-              id="discoCantidad"
-              min="1"
-              value="1"
+              class="text-center w-100"
+              type="text"
+              id="memoriaCantidad"
+              value=""
             /></td>
           <td><input class="w-100" type="text" id="discoDescripcion" /></td>
           <td><input
@@ -338,12 +333,10 @@
             class="text-center"
           >GABINETE</td>
           <td><input
-              class="text-center"
-              style="width: 40px;"
-              type="number"
-              id="gabineteCantidad"
-              min="1"
-              value="1"
+              class="text-center w-100"
+              type="text"
+              id="memoriaCantidad"
+              value=""
             /></td>
           <td><input class="w-100" type="text" id="gabineteDescripcion" /></td>
           <td><input
@@ -370,12 +363,10 @@
             class="text-center"
           >MONITOR</td>
           <td><input
-              class="text-center"
-              style="width: 40px;"
-              type="number"
-              id="monitorCantidad"
-              min="1"
-              value="1"
+              class="text-center w-100"
+              type="text"
+              id="memoriaCantidad"
+              value=""
             /></td>
           <td><input class="w-100" type="text" id="descripcion1" /></td>
           <td><input
@@ -398,16 +389,18 @@
 
       <tfoot>
         <tr>
-          <td>
-
-          </td>
-          <td>
-            <button id="agregar-columna">+</button>
-          </td>
-          <td>
-            <button id="quitar-columna">-</button>
+          <td class="pt-2">
+            <button
+              class="btn btn-primary btn-sm mr-2"
+              id="agregar-columna"
+            >+</button>
+            <button
+              class="btn btn-primary btn-sm"
+              id="quitar-columna"
+            >-</button>
           </td>
         </tr>
+
         <tr>
           <td colspan="6" style="height: 15px;"></td>
         </tr>

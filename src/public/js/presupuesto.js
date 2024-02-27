@@ -29,6 +29,10 @@ document
       // Crear el input
       let newInput = document.createElement("input");
       newInput.setAttribute("class", "text-center w-100");
+      if (i == 1) {
+        newInput.setAttribute("class", " w-100");
+        newCell.appendChild(newInput);
+      }
 
       // Agregar el input al td
       newCell.appendChild(newInput);
