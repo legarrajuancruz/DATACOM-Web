@@ -33,16 +33,21 @@ async function agregarNuevaFila() {
       newRow.appendChild(firstCell);
 
       // Crear los cinco td restantes con sus respectivos input
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         // Crear el td
         let newCell = document.createElement("td");
 
         // Crear el input
         let newInput = document.createElement("input");
         newInput.setAttribute("class", "text-center w-100");
-        if (i == 1) {
-          newInput.setAttribute("class", " w-100");
+
+        if (i == 4) {
+          let newInput = document.createElement("td");
+          newInput.setAttribute("class", "w-100");
+          console.log(newInput);
         }
+
+        let lastTd = document.createElement("td");
 
         // Agregar el input al td
         newCell.appendChild(newInput);
