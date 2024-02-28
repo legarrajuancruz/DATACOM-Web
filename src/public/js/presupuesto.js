@@ -40,14 +40,29 @@ async function agregarNuevaFila() {
         // Crear el input
         let newInput = document.createElement("input");
         newInput.setAttribute("class", "text-center w-100");
-
-        if (i == 4) {
-          let newInput = document.createElement("td");
-          newInput.setAttribute("class", "w-100");
-          console.log(newInput);
+        if (i == 1) {
+          newInput.setAttribute("class", " w-100");
         }
-
-        let lastTd = document.createElement("td");
+        if (i == 0) {
+          newCell.appendChild(newInput);
+        }
+        if (i == 1) {
+          newInput.setAttribute("class", "w-100");
+          newCell.appendChild(newInput);
+        }
+        if (i < 4) {
+          newCell.appendChild(newInput);
+        }
+        if (i == 4) {
+          newCell.setAttribute(
+            "style",
+            "font-size: 14px; background-color:white;"
+          );
+          newCell.setAttribute(
+            "class",
+            "text-center text-dark align-middle border"
+          );
+        }
 
         // Agregar el input al td
         newCell.appendChild(newInput);
