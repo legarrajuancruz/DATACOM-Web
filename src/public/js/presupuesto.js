@@ -110,7 +110,9 @@ function eliminarUltimaFila() {
   });
 }
 
-// Agregar evento de clic para agregar una nueva fila
+/*************************\
+|    CLICK NUEVA FILA     |
+\*************************/
 document
   .getElementById("agregar-columna")
   .addEventListener("click", async function () {
@@ -121,7 +123,9 @@ document
     }
   });
 
-// Agregar evento de clic para eliminar la última fila
+/***************************\
+|    CLICK ELIMINAR FILA    |
+\***************************/
 document
   .getElementById("quitar-columna")
   .addEventListener("click", async function () {
@@ -131,8 +135,6 @@ document
       console.error("Error al eliminar última fila:", error);
     }
   });
-
-// Llamar a la función para agregar el evento de entrada inicialmente
 agregarEventoInput();
 
 /*****************\
@@ -172,3 +174,46 @@ let anio = fechaActual.getFullYear();
 
 let fechaFormateada = `${dia}/${mes}/${anio}`;
 fechaTd.textContent = fechaFormateada;
+
+/*****************\
+|  PRECIO LISTA   |
+\*****************/
+// Función para calcular y mostrar los precios de lista en toda la columna "Precio de Lista"
+function calcularPreciosLista() {
+  // Obtener todas las filas de la tabla
+  let rows = document.querySelectorAll("#componentes-table tbody tr");
+
+  // Iterar sobre las filas
+  rows.forEach(function (row) {
+    // Obtener el precio contado de la fila actual
+    let contadoInput = row.querySelector("td:nth-child(5) input");
+    if (contadoInput) {
+      // Obtener el valor del precio contado
+      let contadoValue = parseFloat(contadoInput.value) || 0;
+
+      // Calcular el precio de lista multiplicando por 1.40
+      let precioLista = contadoValue * 1.4;
+
+      // Obtener el elemento td correspondiente al precio de lista en la misma fila
+      let precioListaCell = row.querySelector("td:nth-child(6)");
+      if (precioListaCell) {
+        // Actualizar el contenido del elemento td de precio de lista con el nuevo valor
+        precioListaCell.textContent = precioLista.toFixed(2);
+      }
+    }
+  });
+}
+
+// Función para agregar evento de entrada a los campos de texto de la columna "Contado"
+function agregarEventoContado() {
+  let contadoInputs = document.querySelectorAll(
+    "#componentes-table tbody tr td:nth-child(5) input"
+  );
+  contadoInputs.forEach(function (input) {
+    input.addEventListener("input", function () {
+      // Llamar a la función para calcular y mostrar los precios de lista
+      calcularPreciosLista();
+    });
+  });
+}
+agregarEventoContado();
