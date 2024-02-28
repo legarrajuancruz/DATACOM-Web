@@ -33,7 +33,7 @@ async function agregarNuevaFila() {
       newRow.appendChild(firstCell);
 
       // Crear los cinco td restantes con sus respectivos input
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 4; i++) {
         // Crear el td
         let newCell = document.createElement("td");
 
@@ -64,7 +64,10 @@ async function agregarNuevaFila() {
   });
 }
 
-// Función para eliminar una fila
+/************************\
+|      ELIMINAR FILA     |
+\************************/
+
 function eliminarUltimaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -115,6 +118,9 @@ document
 // Llamar a la función para agregar el evento de entrada inicialmente
 agregarEventoInput();
 
+/*****************\
+|       SUMA      |
+\*****************/
 // Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
@@ -140,7 +146,6 @@ function calcularTotalContado() {
 /*****************\
 |      FECHA      |
 \*****************/
-
 let fechaTd = document.getElementById("fecha");
 let fechaActual = new Date();
 
