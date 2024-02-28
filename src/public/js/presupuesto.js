@@ -64,9 +64,6 @@ async function agregarNuevaFila() {
           );
         }
 
-        // Agregar el input al td
-        newCell.appendChild(newInput);
-
         // Agregar el td a la fila
         newRow.appendChild(newCell);
       }
