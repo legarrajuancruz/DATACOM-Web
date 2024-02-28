@@ -1,77 +1,124 @@
-document
-  .getElementById("agregar-columna")
-  .addEventListener("click", function () {
-    // Obtener el cuerpo de la tabla
-    let tbody = document
-      .getElementById("componentes-table")
-      .getElementsByTagName("tbody")[0];
+// Agregar evento de entrada a todos los campos de texto de la columna "Contado"
+function agregarEventoInput() {
+  let contadoInputs = document.querySelectorAll(
+    "#componentes-table tbody tr td:nth-child(5) input"
+  );
+  contadoInputs.forEach(function (input) {
+    input.addEventListener("input", calcularTotalContado);
+  });
+}
 
-    // Crear un nuevo tr (fila)
-    let newRow = document.createElement("tr");
+// Función para agregar una nueva fila
+async function agregarNuevaFila() {
+  return new Promise((resolve, reject) => {
+    try {
+      // Obtener el cuerpo de la tabla
+      let tbody = document
+        .getElementById("componentes-table")
+        .getElementsByTagName("tbody")[0];
 
-    // Crear el primer td con el estilo y texto específicos
-    let firstCell = document.createElement("td");
-    firstCell.setAttribute(
-      "style",
-      "background: rgba(166, 166, 166, 0.721); font-size: 12px"
-    );
-    firstCell.setAttribute("class", "text-center");
-    firstCell.textContent = "ACCESORIOS";
+      // Crear un nuevo tr (fila)
+      let newRow = document.createElement("tr");
 
-    // Agregar el primer td a la fila
-    newRow.appendChild(firstCell);
+      // Crear el primer td con el estilo y texto específicos
+      let firstCell = document.createElement("td");
+      firstCell.setAttribute(
+        "style",
+        "background: rgba(166, 166, 166, 0.721); font-size: 12px"
+      );
+      firstCell.setAttribute("class", "text-center");
+      firstCell.textContent = "ACCESORIOS";
 
-    // Crear los cinco td restantes con sus respectivos input
-    for (let i = 0; i < 5; i++) {
-      // Crear el td
-      let newCell = document.createElement("td");
+      // Agregar el primer td a la fila
+      newRow.appendChild(firstCell);
 
-      // Crear el input
-      let newInput = document.createElement("input");
-      newInput.setAttribute("class", "text-center w-100");
-      if (i == 1) {
-        newInput.setAttribute("class", " w-100");
+      // Crear los cinco td restantes con sus respectivos input
+      for (let i = 0; i < 5; i++) {
+        // Crear el td
+        let newCell = document.createElement("td");
+
+        // Crear el input
+        let newInput = document.createElement("input");
+        newInput.setAttribute("class", "text-center w-100");
+        if (i == 1) {
+          newInput.setAttribute("class", " w-100");
+        }
+
+        // Agregar el input al td
         newCell.appendChild(newInput);
+
+        // Agregar el td a la fila
+        newRow.appendChild(newCell);
       }
 
-      // Agregar el input al td
-      newCell.appendChild(newInput);
+      // Agregar la fila al final del cuerpo de la tabla
+      tbody.appendChild(newRow);
 
-      // Agregar el td a la fila
-      newRow.appendChild(newCell);
+      // Agregar evento de entrada a los nuevos campos de texto de la columna "Contado"
+      agregarEventoInput();
+
+      resolve();
+    } catch (error) {
+      reject(error);
     }
+  });
+}
 
-    // Agregar la fila al final del cuerpo de la tabla
-    tbody.appendChild(newRow);
+// Función para eliminar una fila
+function eliminarUltimaFila() {
+  return new Promise((resolve, reject) => {
+    try {
+      // Obtener el cuerpo de la tabla
+      let tbody = document.querySelector("#componentes-table tbody");
+
+      // Obtener la última fila
+      let lastRow = tbody.lastChild;
+
+      // Verificar si la última fila existe y si el siguiente elemento no es un td
+      if (lastRow && lastRow.firstChild.textContent === "ACCESORIOS") {
+        // Eliminar la última fila
+        tbody.removeChild(lastRow);
+      }
+
+      // Recalcular la suma de la columna "Contado"
+      calcularTotalContado();
+
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+// Agregar evento de clic para agregar una nueva fila
+document
+  .getElementById("agregar-columna")
+  .addEventListener("click", async function () {
+    try {
+      await agregarNuevaFila();
+    } catch (error) {
+      console.error("Error al agregar nueva fila:", error);
+    }
   });
 
+// Agregar evento de clic para eliminar la última fila
 document
   .getElementById("quitar-columna")
-  .addEventListener("click", function () {
-    // Obtener el cuerpo de la tabla
-    let tbody = document.querySelector("#componentes-table tbody");
-
-    // Obtener la última fila
-    let lastRow = tbody.lastChild;
-
-    // Verificar si la última fila existe y si el siguiente elemento no es un td
-    if (lastRow && lastRow.firstChild.textContent === "ACCESORIOS") {
-      // Eliminar la última fila
-      tbody.removeChild(lastRow);
+  .addEventListener("click", async function () {
+    try {
+      await eliminarUltimaFila();
+    } catch (error) {
+      console.error("Error al eliminar última fila:", error);
     }
   });
 
-// Agregar evento de entrada a todos los campos de texto de la columna "Contado"
-let contadoInputs = document.querySelectorAll(
-  "#componentes-table tbody tr td:nth-child(5) input"
-);
-contadoInputs.forEach(function (input) {
-  input.addEventListener("input", calcularTotalContado);
-});
+// Llamar a la función para agregar el evento de entrada inicialmente
+agregarEventoInput();
 
-//SUMA CONTADO
+// Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
+
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
   rows.forEach(function (row) {
@@ -86,6 +133,20 @@ function calcularTotalContado() {
   // Mostrar el total en el casillero deseado
   let totalContadoCell = document.getElementById("totalContado");
   if (totalContadoCell) {
-    totalContadoCell.textContent = totalContado.toFixed(2); // Redondear a 2 decimales
+    totalContadoCell.textContent = totalContado.toFixed(1); // Redondear a 2 decimales
   }
 }
+
+/*****************\
+|      FECHA      |
+\*****************/
+
+let fechaTd = document.getElementById("fecha");
+let fechaActual = new Date();
+
+let dia = fechaActual.getDate().toString().padStart(2, "0");
+let mes = (fechaActual.getMonth() + 1).toString().padStart(2, "0");
+let anio = fechaActual.getFullYear();
+
+let fechaFormateada = `${dia}/${mes}/${anio}`;
+fechaTd.textContent = fechaFormateada;
