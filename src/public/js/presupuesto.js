@@ -1,10 +1,13 @@
-// Agregar evento de entrada a todos los campos de texto de la columna "Contado"
+// Función para agregar evento de entrada a los campos de texto de la columna "Contado"
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
     "#componentes-table tbody tr td:nth-child(5) input"
   );
   contadoInputs.forEach(function (input) {
-    input.addEventListener("input", calcularTotalContado);
+    input.addEventListener("input", function () {
+      // Llamar a la función para calcular y mostrar los precios de lista
+      calcularPreciosLista();
+    });
   });
 }
 
@@ -74,6 +77,9 @@ async function agregarNuevaFila() {
       // Agregar evento de entrada a los nuevos campos de texto de la columna "Contado"
       agregarEventoInput();
 
+      // Calcular los precios de lista para la nueva fila
+      calcularPreciosLista();
+
       resolve();
     } catch (error) {
       reject(error);
@@ -136,7 +142,6 @@ document
     }
   });
 agregarEventoInput();
-
 /*****************\
 |       SUMA      |
 \*****************/
@@ -161,6 +166,55 @@ function calcularTotalContado() {
     totalContadoCell.textContent = totalContado.toFixed(1); // Redondear a 2 decimales
   }
 }
+
+// Función para agregar evento de entrada a los campos de texto de la columna "Contado"
+function agregarEventoInput() {
+  let contadoInputs = document.querySelectorAll(
+    "#componentes-table tbody tr td:nth-child(5) input"
+  );
+  contadoInputs.forEach(function (input) {
+    input.addEventListener("input", function () {
+      // Llamar a la función para calcular el total de la columna "Contado"
+      calcularTotalContado();
+    });
+  });
+}
+
+/*****************************\
+|       SUMA PRECIO LISTA      |
+\*****************************/
+
+// Función para calcular el total de la columna "Precio de Lista"
+function calcularTotalPlista() {
+  let totalPlista = 0;
+
+  // Obtener todas las filas de la tabla
+  let rows = document.querySelectorAll("#componentes-table tbody tr");
+  rows.forEach(function (row) {
+    // Obtener el valor del precio de lista en la columna correspondiente de la fila actual
+    let precioListaCell = row.querySelector("td:nth-child(6)");
+    if (precioListaCell) {
+      // Convertir el valor a número y sumarlo al total
+      totalPlista += parseFloat(precioListaCell.textContent) || 0;
+    }
+  });
+
+  // Mostrar el total en el casillero deseado
+  let totalPlistaCell = document.getElementById("totalPlista");
+  if (totalPlistaCell) {
+    totalPlistaCell.textContent = totalPlista.toFixed(1); // Redondear a 2 decimales
+  }
+}
+
+// Observar cambios en el DOM para calcular automáticamente el total de la columna "Precio de Lista"
+const observer = new MutationObserver(function () {
+  calcularTotalPlista();
+});
+
+// Configurar el observador para que observe cambios en el contenido de la tabla
+const config = { childList: true, subtree: true };
+observer.observe(document.getElementById("componentes-table"), config);
+/////////////////////////
 
 /*****************\
 |      FECHA      |
@@ -198,7 +252,7 @@ function calcularPreciosLista() {
       let precioListaCell = row.querySelector("td:nth-child(6)");
       if (precioListaCell) {
         // Actualizar el contenido del elemento td de precio de lista con el nuevo valor
-        precioListaCell.textContent = precioLista.toFixed(2);
+        precioListaCell.textContent = precioLista.toFixed(1);
       }
     }
   });
@@ -216,4 +270,5 @@ function agregarEventoContado() {
     });
   });
 }
+
 agregarEventoContado();
