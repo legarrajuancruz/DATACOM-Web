@@ -11,7 +11,6 @@ function agregarEventoInput() {
   });
 }
 
-// Función para agregar una nueva fila
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -75,7 +74,7 @@ async function agregarNuevaFila() {
       tbody.appendChild(newRow);
 
       // Agregar evento de entrada a los nuevos campos de texto de la columna "Contado"
-      agregarEventoInput();
+      agregarEventoContado();
 
       // Calcular los precios de lista para la nueva fila
       calcularPreciosLista();
