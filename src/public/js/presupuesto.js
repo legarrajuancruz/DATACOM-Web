@@ -11,6 +11,10 @@ function agregarEventoInput() {
   });
 }
 
+/************************\
+|      AGREGAR FILA      |
+\************************/
+
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -73,11 +77,20 @@ async function agregarNuevaFila() {
       // Agregar la fila al final del cuerpo de la tabla
       tbody.appendChild(newRow);
 
-      // Agregar evento de entrada a los nuevos campos de texto de la columna "Contado"
-      agregarEventoContado();
+      // Llamar a la función para agregar eventos a los campos de texto de la columna "Contado"
+      agregarEventoInput();
 
-      // Calcular los precios de lista para la nueva fila
-      calcularPreciosLista();
+      // Agregar evento de entrada a los nuevos campos de texto de la columna "Contado" en la fila recién agregada
+      let newInputs = newRow.querySelectorAll("td:nth-child(5) input");
+      newInputs.forEach((input) => {
+        input.addEventListener("input", function () {
+          // Llamar a la función para calcular y mostrar los precios de lista
+          calcularPreciosLista();
+        });
+      });
+
+      // Recalcular la suma de la columna "Contado"
+      calcularTotalContado();
 
       resolve();
     } catch (error) {
@@ -85,7 +98,6 @@ async function agregarNuevaFila() {
     }
   });
 }
-
 /************************\
 |      ELIMINAR FILA     |
 \************************/
@@ -228,9 +240,9 @@ let anio = fechaActual.getFullYear();
 let fechaFormateada = `${dia}/${mes}/${anio}`;
 fechaTd.textContent = fechaFormateada;
 
-/*****************\
-|  PRECIO LISTA   |
-\*****************/
+/************************\
+|   TOTAL PRECIO LISTA   |
+\***********************/
 // Función para calcular y mostrar los precios de lista en toda la columna "Precio de Lista"
 function calcularPreciosLista() {
   // Obtener todas las filas de la tabla
