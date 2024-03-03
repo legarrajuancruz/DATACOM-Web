@@ -1,14 +1,19 @@
-// Función para agregar evento de entrada a los campos de texto de la columna "Contado"
-function agregarEventoInput() {
-  let contadoInputs = document.querySelectorAll(
-    "#componentes-table tbody tr td:nth-child(5) input"
-  );
-  contadoInputs.forEach(function (input) {
-    input.addEventListener("input", function () {
-      // Llamar a la función para calcular y mostrar los precios de lista
-      calcularPreciosLista();
-    });
+/*************************\
+|      FORMATO MONEDA     |
+\*************************/
+function formatCurrency(input) {
+  // Eliminar caracteres no numéricos y el símbolo de moneda
+  let cleanedInput = input.replace(/[^0-9,]/g, "");
+
+  // Dar formato al valor como moneda en Argentina
+  let formatter = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 0, // Puedes ajustar este valor según tus necesidades
   });
+
+  // Devolver el valor formateado
+  return formatter.format(Number(cleanedInput));
 }
 
 /************************\
@@ -66,16 +71,16 @@ async function agregarNuevaFila() {
 
           // Crear las opciones para el select
           for (let index = 1; index <= 3; index++) {
-            let option = document.createElement("option");
-            option.setAttribute("value", index);
+            let optionCell = document.createElement("option");
+            optionCell.setAttribute("value", index);
             if (index <= 1) {
-              option.setAttribute("selected", "selected");
-              option.textContent = index + " Año";
-              newSelect.appendChild(option);
+              optionCell.setAttribute("selected", "selected");
+              optionCell.textContent = index + " Año";
+              newSelect.appendChild(optionCell);
             }
             if (index > 1) {
-              option.textContent = index + " Años";
-              newSelect.appendChild(option);
+              optionCell.textContent = index + " Años";
+              newSelect.appendChild(optionCell);
             }
           }
 
@@ -309,5 +314,31 @@ function agregarEventoContado() {
     });
   });
 }
+
+/*******************\
+|   DOLAR OFICIAL   |
+\*******************/
+
+fetch("https://dolarapi.com/v1/dolares/oficial")
+  .then((response) => response.json())
+  .then((data) => {
+    // Obtener el valor del dólar oficial
+    const valorDolarOficial = data.venta;
+
+    // Formatear el valor a moneda argentina
+    const valorFormateado = parseFloat(valorDolarOficial).toLocaleString(
+      "es-AR",
+      {
+        style: "currency",
+        currency: "ARS",
+      }
+    );
+
+    // Asignar el valor formateado al elemento HTML
+    document.getElementById("dolarOficial").innerText = valorFormateado;
+  })
+  .catch((error) => {
+    console.error("Error al obtener el valor del dólar oficial:", error);
+  });
 
 agregarEventoContado();
