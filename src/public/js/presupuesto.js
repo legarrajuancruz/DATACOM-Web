@@ -56,7 +56,33 @@ async function agregarNuevaFila() {
           newInput.setAttribute("class", "w-100");
           newCell.appendChild(newInput);
         }
-        if (i < 4) {
+
+        if (i == 2) {
+          let newSelect = document.createElement("select");
+          newSelect.setAttribute("name", "Garantia");
+          newSelect.setAttribute("style", "font-size: 16px;");
+          newSelect.setAttribute("class", "text-center w-100");
+          newSelect.setAttribute("id", "procesadorGarantia");
+
+          // Crear las opciones para el select
+          for (let index = 1; index <= 3; index++) {
+            let option = document.createElement("option");
+            option.setAttribute("value", index);
+            if (index <= 1) {
+              option.setAttribute("selected", "selected");
+              option.textContent = index + " Año";
+              newSelect.appendChild(option);
+            }
+            if (index > 1) {
+              option.textContent = index + " Años";
+              newSelect.appendChild(option);
+            }
+          }
+
+          // Agregar el select al nuevo td
+          newCell.appendChild(newSelect);
+        }
+        if (i == 3) {
           newCell.appendChild(newInput);
         }
         if (i == 4) {
@@ -165,6 +191,7 @@ function calcularTotalContado() {
   rows.forEach(function (row) {
     // Obtener el valor del input en la columna "Contado" de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
+
     if (contadoInput) {
       // Convertir el valor a número y sumarlo al total
       totalContado += parseFloat(contadoInput.value) || 0;
@@ -252,9 +279,10 @@ function calcularPreciosLista() {
   rows.forEach(function (row) {
     // Obtener el precio contado de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
+
     if (contadoInput) {
       // Obtener el valor del precio contado
-      let contadoValue = parseFloat(contadoInput.value) || 0;
+      let contadoValue = parseFloat(contadoInput.value) || "";
 
       // Calcular el precio de lista multiplicando por 1.40
       let precioLista = contadoValue * 1.4;
