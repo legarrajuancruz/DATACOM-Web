@@ -322,10 +322,9 @@ function agregarEventoContado() {
 fetch("https://dolarapi.com/v1/dolares/oficial")
   .then((response) => response.json())
   .then((data) => {
-    // Obtener el valor del dólar oficial
+    console.log(data);
     const valorDolarOficial = data.venta;
 
-    // Formatear el valor a moneda argentina
     const valorFormateado = parseFloat(valorDolarOficial).toLocaleString(
       "es-AR",
       {
@@ -333,12 +332,62 @@ fetch("https://dolarapi.com/v1/dolares/oficial")
         currency: "ARS",
       }
     );
-
-    // Asignar el valor formateado al elemento HTML
     document.getElementById("dolarOficial").innerText = valorFormateado;
   })
   .catch((error) => {
     console.error("Error al obtener el valor del dólar oficial:", error);
   });
+
+/*****************\
+|   DOLAR BLUE   |
+\****************/
+async function obtenerDolarBlue() {
+  try {
+    const response = await fetch("https://dolarapi.com/v1/dolares/blue");
+    const data = await response.json();
+    console.log(data);
+    const valorDolarBlue = data.venta;
+    return valorDolarBlue;
+  } catch (error) {
+    console.error("Error al obtener el valor del dólar blue:", error);
+    return null;
+  }
+}
+
+function calcularPrecioDolarBillete(totalContado, valorDolarBlue) {
+  let precioDolarBillete = totalContado / valorDolarBlue;
+  document.getElementById("totalDolarBillete").innerText =
+    precioDolarBillete.toFixed(1);
+
+  const valorFormateado = parseFloat(precioDolarBillete).toLocaleString(
+    "es-AR",
+    {
+      style: "currency",
+      currency: "ARS",
+    }
+  );
+  document.getElementById("totalDolarBillete").innerText = valorFormateado;
+}
+
+/****************\
+|   EVENTOS      |
+\****************/
+function agregarEventoInput() {
+  let contadoInputs = document.querySelectorAll(
+    "#componentes-table tbody tr td:nth-child(5) input"
+  );
+
+  contadoInputs.forEach(function (input) {
+    input.addEventListener("input", function () {
+      calcularTotalContado();
+      obtenerDolarBlue().then((valorDolarBlue) => {
+        let totalContado = parseFloat(
+          document.getElementById("totalContado").textContent
+        );
+        calcularPrecioDolarBillete(totalContado, valorDolarBlue);
+      });
+    });
+  });
+}
 
 agregarEventoContado();
