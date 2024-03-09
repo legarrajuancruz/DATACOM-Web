@@ -1,21 +1,3 @@
-/*************************\
-|      FORMATO MONEDA     |
-\*************************/
-function formatCurrency(input) {
-  // Eliminar caracteres no numéricos y el símbolo de moneda
-  let cleanedInput = input.replace(/[^0-9,]/g, "");
-
-  // Dar formato al valor como moneda en Argentina
-  let formatter = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-    minimumFractionDigits: 0, // Puedes ajustar este valor según tus necesidades
-  });
-
-  // Devolver el valor formateado
-  return formatter.format(Number(cleanedInput));
-}
-
 /************************\
 |      AGREGAR FILA      |
 \************************/
@@ -55,6 +37,7 @@ async function agregarNuevaFila() {
           newInput.setAttribute("class", " w-100");
         }
         if (i == 0) {
+          newInput.setAttribute("value", "1");
           newCell.appendChild(newInput);
         }
         if (i == 1) {
@@ -184,6 +167,7 @@ document
     }
   });
 agregarEventoInput();
+
 /*****************\
 |       SUMA      |
 \*****************/
@@ -194,19 +178,23 @@ function calcularTotalContado() {
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
   rows.forEach(function (row) {
-    // Obtener el valor del input en la columna "Contado" de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
+
+    const valorFormateado = parseFloat(contadoInput).toLocaleString("es-AR", {
+      style: "currency",
+      currency: "ARS",
+    });
 
     if (contadoInput) {
       // Convertir el valor a número y sumarlo al total
-      totalContado += parseFloat(contadoInput.value) || 0;
+      totalContado += Number(contadoInput.value) || 0;
     }
   });
 
   // Mostrar el total en el casillero deseado
   let totalContadoCell = document.getElementById("totalContado");
   if (totalContadoCell) {
-    totalContadoCell.textContent = totalContado.toFixed(1); // Redondear a 2 decimales
+    totalContadoCell.textContent = totalContado.toFixed(1);
   }
 }
 
@@ -288,6 +276,14 @@ function calcularPreciosLista() {
     if (contadoInput) {
       // Obtener el valor del precio contado
       let contadoValue = parseFloat(contadoInput.value) || "";
+
+      const valorFormateado = parseFloat(contadoInput.valu).toLocaleString(
+        "es-AR",
+        {
+          style: "currency",
+          currency: "ARS",
+        }
+      );
 
       // Calcular el precio de lista multiplicando por 1.40
       let precioLista = contadoValue * 1.4;
