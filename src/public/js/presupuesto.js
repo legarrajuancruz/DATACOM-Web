@@ -404,23 +404,37 @@ async function obtenerDolarBlue() {
 
 async function calcularPrecioDolarBillete() {
   try {
+    // Obtener el total en pesos argentinos
     let totalContado = document.getElementById("totalContado").textContent;
+    let unformattedTotal = unformatCurrency(totalContado);
 
-    let unformated = unformatCurrency(totalContado);
+    // Obtener el valor del dólar blue
     const valorDolarBlue = await obtenerDolarBlue();
-    let precioDolarBillete = unformated / valorDolarBlue;
 
-    // Formatear el precio en dólares billete y mostrarlo en el elemento HTML
-    let valorFormateado = formatCurrency(precioDolarBillete.toFixed(1));
-    document.getElementById("totalDolarBillete").innerText = valorFormateado;
+    // Verificar si se obtuvo un valor válido para el dólar blue
+    if (
+      valorDolarBlue !== null &&
+      valorDolarBlue !== undefined &&
+      valorDolarBlue !== 0
+    ) {
+      // Calcular el precio en dólares billete
+      let precioDolarBillete = unformattedTotal / valorDolarBlue;
+
+      // Formatear el precio en dólares billete y mostrarlo en el elemento HTML
+      let formattedPrice = formatCurrency(precioDolarBillete.toFixed(1));
+      document.getElementById("totalDolarBillete").innerText = formattedPrice;
+    } else {
+      // Si no se pudo obtener el valor del dólar blue o es cero, mostrar un mensaje de error
+      console.error("No se pudo obtener el valor válido del dólar blue.");
+    }
   } catch (error) {
     console.error("Error al calcular el precio en dólares billete:", error);
   }
 }
 
 /****************\
-    |   EVENTOS      |
-    \****************/
+|   EVENTOS      |
+\****************/
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
     "#componentes-table tbody tr td:nth-child(5) input"
@@ -428,14 +442,11 @@ function agregarEventoInput() {
 
   contadoInputs.forEach(function (input) {
     input.addEventListener("input", function () {
-      // Formatear el valor mientras el usuario lo ingresa
       input.value = formatCurrency(unformatCurrency(input.value));
-      // Llamar a la función para calcular el total de la columna "Contado"
       calcularTotalContado();
-      // Llamar a la función para calcular y mostrar los precios de lista
       calcularPreciosLista();
+      calcularPrecioDolarBillete();
     });
-    // Formatear el valor inicial
     input.value = formatCurrency(unformatCurrency(input.value));
   });
 }
