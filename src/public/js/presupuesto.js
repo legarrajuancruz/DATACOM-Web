@@ -276,10 +276,6 @@ function calcularTotalPlista() {
   }
 }
 
-// Llamar a las funciones para calcular los totales al cargar la página
-calcularTotalContado();
-calcularTotalPlista();
-
 // Evento de entrada en los campos de texto de la columna "Contado"
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
@@ -337,17 +333,20 @@ function calcularPreciosLista() {
       // Obtener el valor del precio contado
       let contadoValue = parseFloat(unformatCurrency(contadoInput.value)) || 0;
 
-      // Calcular el precio de lista multiplicando por 1.40
+      // Calcular el precio de lista multiplicando por 1.4
       let precioLista = contadoValue * 1.4;
 
       // Obtener el elemento td correspondiente al precio de lista en la misma fila
       let precioListaCell = row.querySelector("td:nth-child(6)");
       if (precioListaCell) {
         // Actualizar el contenido del elemento td de precio de lista con el nuevo valor
-        precioListaCell.textContent = formatCurrency(precioLista.toFixed(1));
+        precioListaCell.textContent = formatCurrency(precioLista.toFixed(0)); // Ajuste: Redondear sin decimales
       }
     }
   });
+
+  // Después de recalcular los precios de lista, también recalculamos el total de precios de lista
+  calcularTotalPlista();
 }
 
 // Función para agregar evento de entrada a los campos de texto de la columna "Contado"
