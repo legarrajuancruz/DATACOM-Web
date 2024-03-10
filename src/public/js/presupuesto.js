@@ -212,6 +212,7 @@ agregarEventoInput();
 document.getElementById("totalContado").textContent = formatCurrency(0);
 
 // Función para calcular el total de la columna "Contado"
+// Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
 
@@ -224,7 +225,7 @@ function calcularTotalContado() {
 
     if (contadoInput) {
       // Convertir el valor a número y sumarlo al total
-      totalContado += parseFloat(contadoInput.value) || 0;
+      totalContado += parseFloat(unformatCurrency(contadoInput.value)) || 0;
     }
   });
 
@@ -251,27 +252,50 @@ function agregarEventoInput() {
 /*****************************\
 |       SUMA PRECIO LISTA      |
 \*****************************/
-
-// Función para calcular el total de la columna "Precio de Lista"
 function calcularTotalPlista() {
   let totalPlista = 0;
 
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
+
   rows.forEach(function (row) {
     // Obtener el valor del precio de lista en la columna correspondiente de la fila actual
     let precioListaCell = row.querySelector("td:nth-child(6)");
+
     if (precioListaCell) {
       // Convertir el valor a número y sumarlo al total
-      totalPlista += parseFloat(precioListaCell.textContent) || 0;
+      totalPlista +=
+        parseFloat(unformatCurrency(precioListaCell.textContent)) || 0;
     }
   });
 
   // Mostrar el total en el casillero deseado
   let totalPlistaCell = document.getElementById("totalPlista");
   if (totalPlistaCell) {
-    totalPlistaCell.textContent = formatCurrency(totalPlista.toFixed(1));
+    totalPlistaCell.textContent = formatCurrency(totalPlista.toFixed(0));
   }
+}
+
+// Llamar a las funciones para calcular los totales al cargar la página
+calcularTotalContado();
+calcularTotalPlista();
+
+// Evento de entrada en los campos de texto de la columna "Contado"
+function agregarEventoInput() {
+  let contadoInputs = document.querySelectorAll(
+    "#componentes-table tbody tr td:nth-child(5) input"
+  );
+
+  contadoInputs.forEach(function (input) {
+    input.addEventListener("input", function () {
+      // Formatear el valor mientras el usuario lo ingresa
+      input.value = formatCurrency(unformatCurrency(input.value));
+      // Llamar a la función para calcular el total de la columna "Contado"
+      calcularTotalContado();
+    });
+    // Formatear el valor inicial
+    input.value = formatCurrency(unformatCurrency(input.value));
+  });
 }
 
 // Observar cambios en el DOM para calcular automáticamente el total de la columna "Precio de Lista"
@@ -282,11 +306,10 @@ const observer = new MutationObserver(function () {
 // Configurar el observador para que observe cambios en el contenido de la tabla
 const config = { childList: true, subtree: true };
 observer.observe(document.getElementById("componentes-table"), config);
-/////////////////////////
 
 /*****************\
-    |      FECHA      |
-    \*****************/
+|      FECHA      |
+\*****************/
 let fechaTd = document.getElementById("fecha");
 let fechaActual = new Date();
 
@@ -312,7 +335,7 @@ function calcularPreciosLista() {
 
     if (contadoInput) {
       // Obtener el valor del precio contado
-      let contadoValue = parseFloat(contadoInput.value) || "";
+      let contadoValue = parseFloat(unformatCurrency(contadoInput.value)) || 0;
 
       // Calcular el precio de lista multiplicando por 1.40
       let precioLista = contadoValue * 1.4;
@@ -321,7 +344,7 @@ function calcularPreciosLista() {
       let precioListaCell = row.querySelector("td:nth-child(6)");
       if (precioListaCell) {
         // Actualizar el contenido del elemento td de precio de lista con el nuevo valor
-        precioListaCell.textContent = precioLista.toFixed(1);
+        precioListaCell.textContent = formatCurrency(precioLista.toFixed(1));
       }
     }
   });
@@ -406,15 +429,15 @@ function agregarEventoInput() {
 
   contadoInputs.forEach(function (input) {
     input.addEventListener("input", function () {
+      // Formatear el valor mientras el usuario lo ingresa
+      input.value = formatCurrency(unformatCurrency(input.value));
+      // Llamar a la función para calcular el total de la columna "Contado"
       calcularTotalContado();
-      obtenerDolarBlue().then((valorDolarBlue) => {
-        let totalContado = parseFloat(
-          document.getElementById("totalContado").textContent
-        );
-        calcularPrecioDolarBillete(totalContado, valorDolarBlue);
-      });
+      // Llamar a la función para calcular y mostrar los precios de lista
+      calcularPreciosLista();
     });
+    // Formatear el valor inicial
+    input.value = formatCurrency(unformatCurrency(input.value));
   });
 }
-
 agregarEventoContado();
