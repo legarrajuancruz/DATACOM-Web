@@ -1,6 +1,24 @@
+/*************************\
+|      FORMATO MONEDA     |
+\*************************/
+function formatCurrency(input) {
+  // Eliminar caracteres no numéricos y el símbolo de moneda
+  let cleanedInput = input.replace(/[^0-9,]/g, "");
+
+  // Dar formato al valor como moneda en Argentina
+  let formatter = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 0, // Puedes ajustar este valor según tus necesidades
+  });
+
+  // Devolver el valor formateado
+  return formatter.format(Number(cleanedInput));
+}
+
 /************************\
-|      AGREGAR FILA      |
-\************************/
+  |      AGREGAR FILA      |
+  \************************/
 
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
@@ -33,15 +51,14 @@ async function agregarNuevaFila() {
         // Crear el input
         let newInput = document.createElement("input");
         newInput.setAttribute("class", "text-center w-100");
-        if (i == 1) {
-          newInput.setAttribute("class", " w-100");
-        }
+
         if (i == 0) {
           newInput.setAttribute("value", "1");
           newCell.appendChild(newInput);
         }
         if (i == 1) {
           newInput.setAttribute("class", "w-100");
+
           newCell.appendChild(newInput);
         }
 
@@ -113,8 +130,8 @@ async function agregarNuevaFila() {
   });
 }
 /************************\
-|      ELIMINAR FILA     |
-\************************/
+  |      ELIMINAR FILA     |
+  \************************/
 
 function eliminarUltimaFila() {
   return new Promise((resolve, reject) => {
@@ -142,8 +159,8 @@ function eliminarUltimaFila() {
 }
 
 /*************************\
-|    CLICK NUEVA FILA     |
-\*************************/
+  |    CLICK NUEVA FILA     |
+  \*************************/
 document
   .getElementById("agregar-columna")
   .addEventListener("click", async function () {
@@ -155,8 +172,8 @@ document
   });
 
 /***************************\
-|    CLICK ELIMINAR FILA    |
-\***************************/
+  |    CLICK ELIMINAR FILA    |
+  \***************************/
 document
   .getElementById("quitar-columna")
   .addEventListener("click", async function () {
@@ -167,10 +184,9 @@ document
     }
   });
 agregarEventoInput();
-
 /*****************\
-|       SUMA      |
-\*****************/
+  |       SUMA      |
+  \*****************/
 // Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
@@ -178,16 +194,12 @@ function calcularTotalContado() {
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
   rows.forEach(function (row) {
+    // Obtener el valor del input en la columna "Contado" de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
-
-    const valorFormateado = parseFloat(contadoInput).toLocaleString("es-AR", {
-      style: "currency",
-      currency: "ARS",
-    });
 
     if (contadoInput) {
       // Convertir el valor a número y sumarlo al total
-      totalContado += Number(contadoInput.value) || 0;
+      totalContado += parseFloat(contadoInput.value) || 0;
     }
   });
 
@@ -212,8 +224,8 @@ function agregarEventoInput() {
 }
 
 /*****************************\
-|       SUMA PRECIO LISTA      |
-\*****************************/
+  |       SUMA PRECIO LISTA      |
+  \*****************************/
 
 // Función para calcular el total de la columna "Precio de Lista"
 function calcularTotalPlista() {
@@ -248,8 +260,8 @@ observer.observe(document.getElementById("componentes-table"), config);
 /////////////////////////
 
 /*****************\
-|      FECHA      |
-\*****************/
+  |      FECHA      |
+  \*****************/
 let fechaTd = document.getElementById("fecha");
 let fechaActual = new Date();
 
@@ -261,8 +273,8 @@ let fechaFormateada = `${dia}/${mes}/${anio}`;
 fechaTd.textContent = fechaFormateada;
 
 /************************\
-|   TOTAL PRECIO LISTA   |
-\***********************/
+  |   TOTAL PRECIO LISTA   |
+  \***********************/
 // Función para calcular y mostrar los precios de lista en toda la columna "Precio de Lista"
 function calcularPreciosLista() {
   // Obtener todas las filas de la tabla
@@ -276,14 +288,6 @@ function calcularPreciosLista() {
     if (contadoInput) {
       // Obtener el valor del precio contado
       let contadoValue = parseFloat(contadoInput.value) || "";
-
-      const valorFormateado = parseFloat(contadoInput.valu).toLocaleString(
-        "es-AR",
-        {
-          style: "currency",
-          currency: "ARS",
-        }
-      );
 
       // Calcular el precio de lista multiplicando por 1.40
       let precioLista = contadoValue * 1.4;
@@ -312,8 +316,8 @@ function agregarEventoContado() {
 }
 
 /*******************\
-|   DOLAR OFICIAL   |
-\*******************/
+  |   DOLAR OFICIAL   |
+  \*******************/
 
 fetch("https://dolarapi.com/v1/dolares/oficial")
   .then((response) => response.json())
@@ -335,8 +339,8 @@ fetch("https://dolarapi.com/v1/dolares/oficial")
   });
 
 /*****************\
-|   DOLAR BLUE   |
-\****************/
+  |   DOLAR BLUE   |
+  \****************/
 async function obtenerDolarBlue() {
   try {
     const response = await fetch("https://dolarapi.com/v1/dolares/blue");
@@ -366,8 +370,8 @@ function calcularPrecioDolarBillete(totalContado, valorDolarBlue) {
 }
 
 /****************\
-|   EVENTOS      |
-\****************/
+  |   EVENTOS      |
+  \****************/
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
     "#componentes-table tbody tr td:nth-child(5) input"
