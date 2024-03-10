@@ -2,23 +2,45 @@
 |      FORMATO MONEDA     |
 \*************************/
 function formatCurrency(input) {
-  // Eliminar caracteres no numéricos y el símbolo de moneda
-  let cleanedInput = input.replace(/[^0-9,]/g, "");
+  // Convertir input a cadena de texto si no lo es
+  input = String(input);
+
+  // Eliminar caracteres no numéricos
+  let cleanedInput = input.replace(/\D/g, "");
 
   // Dar formato al valor como moneda en Argentina
   let formatter = new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
-    minimumFractionDigits: 0, // Puedes ajustar este valor según tus necesidades
+    minimumFractionDigits: 0,
   });
 
-  // Devolver el valor formateado
-  return formatter.format(Number(cleanedInput));
+  // Obtener el número limpio
+  let number = Number(cleanedInput);
+
+  // Devolver el valor formateado con separador de miles
+  return formatter.format(number);
 }
 
+/*************************\
+  |      QUITAR FORMATO MONEDA     |
+  \*************************/
+function unformatCurrency(input) {
+  // Convertir input a cadena de texto si no lo es
+  input = String(input);
+
+  // Eliminar caracteres no numéricos y el símbolo de moneda
+  let cleanedInput = input.replace(/[^0-9,]/g, "");
+
+  // Convertir el valor a número
+  let number = parseFloat(cleanedInput.replace(/,/g, "."));
+
+  // Devolver el valor numérico sin formato
+  return number;
+}
 /************************\
-  |      AGREGAR FILA      |
-  \************************/
+|      AGREGAR FILA      |
+\************************/
 
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
@@ -130,8 +152,8 @@ async function agregarNuevaFila() {
   });
 }
 /************************\
-  |      ELIMINAR FILA     |
-  \************************/
+|      ELIMINAR FILA     |
+\************************/
 
 function eliminarUltimaFila() {
   return new Promise((resolve, reject) => {
@@ -159,8 +181,8 @@ function eliminarUltimaFila() {
 }
 
 /*************************\
-  |    CLICK NUEVA FILA     |
-  \*************************/
+|    CLICK NUEVA FILA     |
+\*************************/
 document
   .getElementById("agregar-columna")
   .addEventListener("click", async function () {
@@ -172,8 +194,8 @@ document
   });
 
 /***************************\
-  |    CLICK ELIMINAR FILA    |
-  \***************************/
+|    CLICK ELIMINAR FILA    |
+\***************************/
 document
   .getElementById("quitar-columna")
   .addEventListener("click", async function () {
@@ -184,9 +206,13 @@ document
     }
   });
 agregarEventoInput();
+
 /*****************\
-  |       SUMA      |
-  \*****************/
+|       SUMA      |
+\*****************/
+
+document.getElementById("totalContado").textContent = formatCurrency(0);
+
 // Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
@@ -206,7 +232,7 @@ function calcularTotalContado() {
   // Mostrar el total en el casillero deseado
   let totalContadoCell = document.getElementById("totalContado");
   if (totalContadoCell) {
-    totalContadoCell.textContent = totalContado.toFixed(1);
+    totalContadoCell.textContent = formatCurrency(totalContado.toFixed(1));
   }
 }
 
@@ -224,8 +250,8 @@ function agregarEventoInput() {
 }
 
 /*****************************\
-  |       SUMA PRECIO LISTA      |
-  \*****************************/
+|       SUMA PRECIO LISTA      |
+\*****************************/
 
 // Función para calcular el total de la columna "Precio de Lista"
 function calcularTotalPlista() {
@@ -245,7 +271,7 @@ function calcularTotalPlista() {
   // Mostrar el total en el casillero deseado
   let totalPlistaCell = document.getElementById("totalPlista");
   if (totalPlistaCell) {
-    totalPlistaCell.textContent = totalPlista.toFixed(1); // Redondear a 2 decimales
+    totalPlistaCell.textContent = formatCurrency(totalPlista.toFixed(1));
   }
 }
 
@@ -260,8 +286,8 @@ observer.observe(document.getElementById("componentes-table"), config);
 /////////////////////////
 
 /*****************\
-  |      FECHA      |
-  \*****************/
+    |      FECHA      |
+    \*****************/
 let fechaTd = document.getElementById("fecha");
 let fechaActual = new Date();
 
@@ -273,8 +299,8 @@ let fechaFormateada = `${dia}/${mes}/${anio}`;
 fechaTd.textContent = fechaFormateada;
 
 /************************\
-  |   TOTAL PRECIO LISTA   |
-  \***********************/
+|   TOTAL PRECIO LISTA   |
+\***********************/
 // Función para calcular y mostrar los precios de lista en toda la columna "Precio de Lista"
 function calcularPreciosLista() {
   // Obtener todas las filas de la tabla
@@ -316,13 +342,12 @@ function agregarEventoContado() {
 }
 
 /*******************\
-  |   DOLAR OFICIAL   |
-  \*******************/
+|   DOLAR OFICIAL   |
+\*******************/
 
 fetch("https://dolarapi.com/v1/dolares/oficial")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     const valorDolarOficial = data.venta;
 
     const valorFormateado = parseFloat(valorDolarOficial).toLocaleString(
@@ -339,13 +364,15 @@ fetch("https://dolarapi.com/v1/dolares/oficial")
   });
 
 /*****************\
-  |   DOLAR BLUE   |
-  \****************/
+|   DOLAR BLUE   |
+\****************/
+
+document.getElementById("totalDolarBillete").textContent = formatCurrency(0);
+
 async function obtenerDolarBlue() {
   try {
     const response = await fetch("https://dolarapi.com/v1/dolares/blue");
     const data = await response.json();
-    console.log(data);
     const valorDolarBlue = data.venta;
     return valorDolarBlue;
   } catch (error) {
@@ -354,24 +381,25 @@ async function obtenerDolarBlue() {
   }
 }
 
-function calcularPrecioDolarBillete(totalContado, valorDolarBlue) {
-  let precioDolarBillete = totalContado / valorDolarBlue;
-  document.getElementById("totalDolarBillete").innerText =
-    precioDolarBillete.toFixed(1);
+async function calcularPrecioDolarBillete() {
+  try {
+    let totalContado = document.getElementById("totalContado").textContent;
 
-  const valorFormateado = parseFloat(precioDolarBillete).toLocaleString(
-    "es-AR",
-    {
-      style: "currency",
-      currency: "ARS",
-    }
-  );
-  document.getElementById("totalDolarBillete").innerText = valorFormateado;
+    let unformated = unformatCurrency(totalContado);
+    const valorDolarBlue = await obtenerDolarBlue();
+    let precioDolarBillete = unformated / valorDolarBlue;
+
+    // Formatear el precio en dólares billete y mostrarlo en el elemento HTML
+    let valorFormateado = formatCurrency(precioDolarBillete.toFixed(1));
+    document.getElementById("totalDolarBillete").innerText = valorFormateado;
+  } catch (error) {
+    console.error("Error al calcular el precio en dólares billete:", error);
+  }
 }
 
 /****************\
-  |   EVENTOS      |
-  \****************/
+    |   EVENTOS      |
+    \****************/
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
     "#componentes-table tbody tr td:nth-child(5) input"
