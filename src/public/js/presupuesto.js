@@ -22,9 +22,9 @@ function formatCurrency(input) {
   return formatter.format(number);
 }
 
-/*************************\
-  |      QUITAR FORMATO MONEDA     |
-  \*************************/
+/********************************\
+|      QUITAR FORMATO MONEDA     |
+\********************************/
 function unformatCurrency(input) {
   // Convertir input a cadena de texto si no lo es
   input = String(input);
@@ -38,10 +38,10 @@ function unformatCurrency(input) {
   // Devolver el valor numérico sin formato
   return number;
 }
+
 /************************\
 |      AGREGAR FILA      |
 \************************/
-
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -137,7 +137,6 @@ async function agregarNuevaFila() {
       let newInputs = newRow.querySelectorAll("td:nth-child(5) input");
       newInputs.forEach((input) => {
         input.addEventListener("input", function () {
-          // Llamar a la función para calcular y mostrar los precios de lista
           calcularPreciosLista();
         });
       });
@@ -151,10 +150,10 @@ async function agregarNuevaFila() {
     }
   });
 }
+
 /************************\
 |      ELIMINAR FILA     |
 \************************/
-
 function eliminarUltimaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -210,7 +209,6 @@ agregarEventoInput();
 /*****************\
 |       SUMA      |
 \*****************/
-
 document.getElementById("totalContado").textContent = formatCurrency(0);
 
 // Función para calcular el total de la columna "Contado"
@@ -219,6 +217,7 @@ function calcularTotalContado() {
 
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
+
   rows.forEach(function (row) {
     // Obtener el valor del input en la columna "Contado" de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
@@ -232,7 +231,7 @@ function calcularTotalContado() {
   // Mostrar el total en el casillero deseado
   let totalContadoCell = document.getElementById("totalContado");
   if (totalContadoCell) {
-    totalContadoCell.textContent = formatCurrency(totalContado.toFixed(1));
+    totalContadoCell.textContent = formatCurrency(totalContado.toFixed(0));
   }
 }
 
