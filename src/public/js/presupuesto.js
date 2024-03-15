@@ -191,9 +191,6 @@ document
   .getElementById("agregar-columna")
   .addEventListener("click", async function () {
     try {
-      if (document.getElementById("accesorios9Plista")) {
-        return;
-      }
       await agregarNuevaFila();
     } catch (error) {
       console.error("Error al agregar nueva fila:", error);
@@ -487,27 +484,11 @@ const guardardatos = async () => {
     { monitor: monitor },
   ];
 
-  for (let i = 7; i < 10; i++) {
-    if (
-      document.getElementById(`accesorios${i}Contado`) ==
-      document.getElementById("accesorios7Contado")
-    ) {
-      accesorios1 = document.getElementById(`accesorios${i}Contado`).value;
-      componentes.push({ accesorios1: accesorios1 });
-    }
-    if (
-      document.getElementById(`accesorios${i}Contado`) ==
-      document.getElementById("accesorios8Contado")
-    ) {
-      accesorios2 = document.getElementById(`accesorios${i}Contado`).value;
-      componentes.push({ accesorios2: accesorios2 });
-    }
-    if (
-      document.getElementById(`accesorios${i}Contado`) ==
-      document.getElementById("accesorios9Contado")
-    ) {
-      accesorios3 = document.getElementById(`accesorios${i}Contado`).value;
-      componentes.push({ accesorios3: accesorios3 });
+  for (let i = 7; i < 20; i++) {
+    let accesorioContado = document.getElementById(`accesorios${i}Contado`);
+    if (accesorioContado) {
+      let accesorioValor = accesorioContado.value;
+      componentes.push({ [`accesorios${i}`]: accesorioValor });
     }
   }
 
