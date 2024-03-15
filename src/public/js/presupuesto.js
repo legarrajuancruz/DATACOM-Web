@@ -240,7 +240,9 @@ function calcularTotalContado() {
     totalContadoCell.textContent = formatCurrency(totalContado.toFixed(0));
   }
 }
-
+/*****************************\
+|     SUMA PRECIO CONTADO     |
+\*****************************/
 // Función para agregar evento de entrada a los campos de texto de la columna "Contado"
 function agregarEventoInput() {
   let contadoInputs = document.querySelectorAll(
@@ -465,15 +467,22 @@ agregarEventoContado();
 |    GUARDAR DATOS    |
 \*********************/
 const guardardatos = async () => {
-  let procesador = document.getElementById("procesadorContado").value;
-  let motherboard = document.getElementById("placamadreContado").value;
-  let memoria = document.getElementById("memoriaContado").value;
-  let disco = document.getElementById("discoContado").value;
-  let gabinete = document.getElementById("gabineteContado").value;
-  let monitor = document.getElementById("monitorContado").value;
-  let accesorios1 = "";
-  let accesorios2 = "";
-  let accesorios3 = "";
+  let procesador = unformatCurrency(
+    document.getElementById("procesadorContado").value
+  );
+  let motherboard = unformatCurrency(
+    document.getElementById("placamadreContado").value
+  );
+  let memoria = unformatCurrency(
+    document.getElementById("memoriaContado").value
+  );
+  let disco = unformatCurrency(document.getElementById("discoContado").value);
+  let gabinete = unformatCurrency(
+    document.getElementById("gabineteContado").value
+  );
+  let monitor = unformatCurrency(
+    document.getElementById("monitorContado").value
+  );
 
   let componentes = [
     { procesador: procesador },
@@ -487,7 +496,7 @@ const guardardatos = async () => {
   for (let i = 7; i < 20; i++) {
     let accesorioContado = document.getElementById(`accesorios${i}Contado`);
     if (accesorioContado) {
-      let accesorioValor = accesorioContado.value;
+      let accesorioValor = unformatCurrency(accesorioContado.value);
       componentes.push({ [`accesorios${i}`]: accesorioValor });
     }
   }
