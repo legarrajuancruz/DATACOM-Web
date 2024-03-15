@@ -1,4 +1,8 @@
-import { productService, userService } from "../services/factory.js";
+import {
+  productService,
+  userService,
+  presupuestoService,
+} from "../services/factory.js";
 import { generateProducts } from "../utils.js";
 import mongoose from "mongoose";
 import EErrors from "../services/errors/errors-enum.js";
@@ -93,7 +97,7 @@ const getPresupuestoById = async (req, res) => {
       });
     }
 
-    let producto = await productService.getProductbyId({ _id });
+    let producto = await PresupuestoService.getProductbyId({ _id });
 
     res.status(202).send({
       result: "Producto obtenido con exito",
@@ -201,7 +205,7 @@ const modPresupuesto = async (req, res) => {
 export default {
   addPresupuesto,
   getPresupuesto,
-  getPresupuesto,
+  getPresupuestoById,
   deletePresupuesto,
   modPresupuesto,
 };

@@ -44,6 +44,6 @@ presupuestosSchema.pre("findOne", function () {
 presupuestosSchema.plugin(mongoosePaginate);
 
 export const PresupuestosModel = mongoose.model(
-  presupuestoCollection,
-  presupuestoSchema
+  presupuestosCollection,
+  presupuestosSchema
 );

@@ -4,6 +4,7 @@ import singleton from "../config/singleton.js";
 let productService;
 let cartService;
 let userService;
+let presupuestoService;
 
 async function initMongoDB() {
   try {
@@ -30,6 +31,13 @@ async function initMongoDB() {
     );
     userService = new userMONGO();
     console.log("Servicio de persistencia de usuarios en MongoDB");
+
+    ////////////////////
+    const { default: presupuestoMONGO } = await import(
+      "./dao/mongoManager/presupuestoManagerMongo.js"
+    );
+    presupuestoService = new presupuestoMONGO();
+    console.log("Servicio de persistencia de presupuestos en MongoDB");
   } catch (error) {
     console.error("Error al iniciar mongoDB", error);
     process.exit(1);
@@ -63,4 +71,4 @@ switch (config.persistence) {
     process.exit(1);
 }
 
-export { productService, cartService, userService };
+export { productService, cartService, userService, presupuestoService };
