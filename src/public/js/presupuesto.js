@@ -110,9 +110,14 @@ async function agregarNuevaFila() {
           newCell.appendChild(newSelect);
         }
         if (i == 3) {
+          let contadoId =
+            "accesorios" + (tbody.children.length + 1) + "Contado";
+          newInput.setAttribute("id", contadoId); // Establecer el ID al input
           newCell.appendChild(newInput);
         }
         if (i == 4) {
+          let listaId = "accesorios" + (tbody.children.length + 1) + "Plista";
+          newCell.setAttribute("id", listaId);
           newCell.setAttribute(
             "style",
             "font-size: 14px; background-color:white;"
@@ -186,6 +191,9 @@ document
   .getElementById("agregar-columna")
   .addEventListener("click", async function () {
     try {
+      if (document.getElementById("accesorios9Plista")) {
+        return;
+      }
       await agregarNuevaFila();
     } catch (error) {
       console.error("Error al agregar nueva fila:", error);
@@ -354,11 +362,15 @@ function agregarEventoContado() {
   let contadoInputs = document.querySelectorAll(
     "#componentes-table tbody tr td:nth-child(5) input"
   );
+
   contadoInputs.forEach(function (input) {
     input.addEventListener("input", function () {
-      // Llamar a la función para calcular y mostrar los precios de lista
+      input.value = formatCurrency(unformatCurrency(input.value));
+      calcularTotalContado();
       calcularPreciosLista();
+      calcularPrecioDolarBillete();
     });
+    input.value = formatCurrency(unformatCurrency(input.value));
   });
 }
 
@@ -451,3 +463,55 @@ function agregarEventoInput() {
   });
 }
 agregarEventoContado();
+
+/*********************\
+|    GUARDAR DATOS    |
+\*********************/
+const guardardatos = async () => {
+  let procesador = document.getElementById("procesadorContado").value;
+  let motherboard = document.getElementById("placamadreContado").value;
+  let memoria = document.getElementById("memoriaContado").value;
+  let disco = document.getElementById("discoContado").value;
+  let gabinete = document.getElementById("gabineteContado").value;
+  let monitor = document.getElementById("monitorContado").value;
+  let accesorios1 = "";
+  let accesorios2 = "";
+  let accesorios3 = "";
+
+  let componentes = [
+    { procesador: procesador },
+    { motherboard: motherboard },
+    { memoria: memoria },
+    { disco: disco },
+    { gabinete: gabinete },
+    { monitor: monitor },
+  ];
+
+  for (let i = 7; i < 10; i++) {
+    if (
+      document.getElementById(`accesorios${i}Contado`) ==
+      document.getElementById("accesorios7Contado")
+    ) {
+      accesorios1 = document.getElementById(`accesorios${i}Contado`).value;
+      componentes.push({ accesorios1: accesorios1 });
+    }
+    if (
+      document.getElementById(`accesorios${i}Contado`) ==
+      document.getElementById("accesorios8Contado")
+    ) {
+      accesorios2 = document.getElementById(`accesorios${i}Contado`).value;
+      componentes.push({ accesorios2: accesorios2 });
+    }
+    if (
+      document.getElementById(`accesorios${i}Contado`) ==
+      document.getElementById("accesorios9Contado")
+    ) {
+      accesorios3 = document.getElementById(`accesorios${i}Contado`).value;
+      componentes.push({ accesorios3: accesorios3 });
+    }
+  }
+
+  console.log(componentes);
+};
+
+document.getElementById("crearPresupuesto").onclick = guardardatos;

@@ -1,8 +1,7 @@
 <div
-  style="display:flex; flex-direction:row display: flex;
+  style="display:flex; flex-direction:row;
   justify-content: center;
-  align-items: center "
-  class="align-middle"
+  align-items: center"
 >
   <div>
     <table id="componentes-table">
@@ -28,7 +27,7 @@
           </td>
           <td
             colspan="5"
-            class="text-center text-light align-middle w-100"
+            class="text-center text-light align-middle"
             style="font-size: 10px;"
           ><img src="/img/banner2.png" alt="" style="height: 100px;" /></td>
         </tr>
@@ -250,7 +249,7 @@
           <td><input
               class="text-center w-100"
               type="text"
-              id="memoriaCantidad"
+              id="placamadreCantidad"
               value="1"
             /></td>
           <td><input
@@ -461,7 +460,7 @@
           <td colspan="6" style="height: 35px;"></td>
         </tr>
 
-        <tr style="height: 40px">
+        <tr style="height: 30px">
           <td colspan="3"><img
               src="/img/mediospagofinal.png"
               alt=""
@@ -472,7 +471,7 @@
             colspan="2"
             class="text-center bg-success text-light border align-middle"
             style="font-size: 12px;"
-          >PRECIO DOLAR BILLETE
+          >DOLAR BILLETE
           </td>
 
           <td
@@ -480,6 +479,28 @@
             style="font-size: 16px; background-color:white;"
             class="text-center text-dark align-middle border"
             id="totalDolarBillete"
+          ></td>
+        </tr>
+
+        <tr>
+          <td colspan="6" style="height: 1px;"></td>
+        </tr>
+
+        <tr style="height: 30px">
+          <td colspan="3"></td>
+
+          <td
+            colspan="2"
+            class="text-center text-dark border align-middle"
+            style="font-size: 12px; background-color:rgb(216, 216, 216)"
+          >SEÑA DEL EQUIPO
+          </td>
+
+          <td
+            colspan="1"
+            style="font-size: 16px; background-color:white;"
+            class="text-center text-dark align-middle border"
+            id="totalAdelanto"
           ></td>
         </tr>
 
@@ -567,7 +588,7 @@
       </tfoot>
     </table>
     <br />
-    <button id="agregar-componente">Crear Presupuesto</button>
+    <button id="crearPresupuesto">Crear Presupuesto</button>
   </div>
   <script src="/js/presupuesto.js"></script>
 </div>
