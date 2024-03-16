@@ -2,7 +2,7 @@ import { PresupuestosModel } from "../models/presupuestos.model.js";
 
 export default class PresupuestoService {
   constructor() {
-    console.log("Products with Database persistence in mongodb");
+    console.log("Presupuestos with Database persistence in mongodb");
   }
 
   /*==============================
@@ -40,14 +40,14 @@ export default class PresupuestoService {
     let status = presupuesto ? "success" : "error";
 
     let prevLink = presupuesto.hasPrevPage
-      ? "http://localhost:8080/products?limit=" +
+      ? "http://localhost:8080/presupuesto?limit=" +
         limit +
         "&page=" +
         presupuesto.prevPage
       : null;
 
     let nextLink = presupuesto.hasNextPage
-      ? "http://localhost:8080/products?limit=" +
+      ? "http://localhost:8080/presupuesto?limit=" +
         limit +
         "&page=" +
         presupuesto.nextPage

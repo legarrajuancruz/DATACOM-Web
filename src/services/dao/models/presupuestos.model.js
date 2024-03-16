@@ -3,11 +3,11 @@ import mongoosePaginate from "mongoose-paginate-v2";
 
 const presupuestosCollection = "presupuestos";
 const presupuestosSchema = new mongoose.Schema({
-  title: {
+  orden: {
     type: String,
     required: true,
   },
-  description: {
+  fecha: {
     type: String,
     required: true,
   },
@@ -15,15 +15,15 @@ const presupuestosSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  stock: {
+  oficial: {
     type: Number,
     required: true,
   },
-  category: {
+  blue: {
     type: String,
     required: true,
   },
-  img: {
+  nombre: {
     type: String,
     // required: true,
   },
@@ -31,6 +31,30 @@ const presupuestosSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
     default: "admin",
+  },
+  procesador: {
+    type: Number,
+    required: true,
+  },
+  placamadre: {
+    type: Number,
+    required: true,
+  },
+  memoria: {
+    type: Number,
+    required: true,
+  },
+  disco: {
+    type: Number,
+    required: true,
+  },
+  gabinete: {
+    type: Number,
+    required: true,
+  },
+  monitor: {
+    type: Number,
+    required: true,
   },
 });
 
