@@ -5,26 +5,26 @@ import { uploader } from "../utils.js";
 const presupuestosRouter = Router();
 
 //LEER
-presupuestosRouter.get("/", PresupuestosController.getProduct);
+presupuestosRouter.get("/", PresupuestosController.getPresupuesto);
 
 //LEER ID
-presupuestosRouter.get("/:id", PresupuestosController.getProductById);
+presupuestosRouter.get("/:id", PresupuestosController.getPresupuestoById);
 
 //CREAR
 presupuestosRouter.post(
   "/",
   uploader.single("img"),
-  PresupuestosController.addProduct
+  PresupuestosController.addPresupuesto
 );
 
 //ELIMINAR
-presupuestosRouter.delete("/:id", PresupuestosController.deleteProduct);
+presupuestosRouter.delete("/:id", PresupuestosController.deletePresupuesto);
 
 //MODIFICAR
 presupuestosRouter.put(
   "/:id",
   uploader.single("img"),
-  PresupuestosController.modProduct
+  PresupuestosController.modPresupuesto
 );
 
 export default PresupuestosController;

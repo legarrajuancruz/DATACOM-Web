@@ -19,9 +19,9 @@ const addPresupuesto = async (req, res) => {
     console.log(req.file);
 
     const producto = {
-      title: req.body.title,
-      description: req.body.description,
-      price: Number(req.body.price),
+      orden: Number(req.body.orden),
+      fecha: req.body.fecha,
+      dolar: Number(req.body.dolar),
       stock: Number(req.body.stock),
       category: req.body.category,
       img: `/products/${req.file.filename}`,
@@ -37,7 +37,7 @@ const addPresupuesto = async (req, res) => {
     ) {
       CustomError.createError({
         name: "Product creation error",
-        cause: generateProductsErrorInfo(producto),
+        cause: generatePresupuestosErrorInfo(producto),
         message: "Error creando el producto",
         code: EErrors.INVALID_TYPES_ERROR,
       });
@@ -48,7 +48,7 @@ const addPresupuesto = async (req, res) => {
       });
     }
 
-    let proudctoCreado = await productService.crearProducto(producto);
+    let proudctoCreado = await presupuestoService.crearPresupuesto(producto);
     console.log("Nuevo Producto Creado");
     console.log(proudctoCreado);
 
@@ -68,7 +68,7 @@ const addPresupuesto = async (req, res) => {
 //LEER
 const getPresupuesto = async (req, res) => {
   try {
-    let products = await productService.leerProductos(req.query);
+    let products = await presupuestoService.leerProductos(req.query);
 
     res.status(200).send({
       result: "Productos obtenidos con exito",

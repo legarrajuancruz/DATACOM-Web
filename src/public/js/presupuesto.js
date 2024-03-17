@@ -491,13 +491,14 @@ const guardardatos = async () => {
     { disco: disco },
     { gabinete: gabinete },
     { monitor: monitor },
+    { accesorios: [] },
   ];
 
   for (let i = 7; i < 20; i++) {
     let accesorioContado = document.getElementById(`accesorios${i}Contado`);
     if (accesorioContado) {
       let accesorioValor = unformatCurrency(accesorioContado.value);
-      componentes.push({ [`accesorios${i}`]: accesorioValor });
+      componentes[6].accesorios.push({ [`accesorios${i}`]: accesorioValor });
     }
   }
 

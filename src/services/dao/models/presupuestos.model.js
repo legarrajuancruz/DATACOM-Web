@@ -11,21 +11,17 @@ const presupuestosSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price: {
-    type: Number,
-    required: true,
-  },
   oficial: {
     type: Number,
     required: true,
   },
   blue: {
-    type: String,
+    type: Number,
     required: true,
   },
   nombre: {
     type: String,
-    // required: true,
+    required: true,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -33,36 +29,30 @@ const presupuestosSchema = new mongoose.Schema({
     default: "admin",
   },
   procesador: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   placamadre: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   memoria: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   disco: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   gabinete: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   monitor: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
-});
-
-presupuestosSchema.pre("findOne", function () {
-  this.populate({
-    path: "owner",
-    select: "_id role",
-  });
+  accesorios: {},
 });
 
 presupuestosSchema.plugin(mongoosePaginate);
