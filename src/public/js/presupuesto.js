@@ -467,6 +467,15 @@ agregarEventoContado();
 |    GUARDAR DATOS    |
 \*********************/
 const guardardatos = async () => {
+  let oficial = unformatCurrency(
+    document.getElementById("dolarOficial").textContent
+  );
+  let orden = unformatCurrency(
+    document.getElementById("numeroDeOrden").textContent
+  );
+  let fecha = document.getElementById("fecha").textContent;
+  let nombre = document.getElementById("nombre").value;
+
   let procesador = unformatCurrency(
     document.getElementById("procesadorContado").value
   );
@@ -485,6 +494,10 @@ const guardardatos = async () => {
   );
 
   let componentes = [
+    { orden: orden },
+    { oficial: oficial },
+    { nombre: nombre },
+    { fecha: fecha },
     { procesador: procesador },
     { motherboard: motherboard },
     { memoria: memoria },
@@ -498,7 +511,7 @@ const guardardatos = async () => {
     let accesorioContado = document.getElementById(`accesorios${i}Contado`);
     if (accesorioContado) {
       let accesorioValor = unformatCurrency(accesorioContado.value);
-      componentes[6].accesorios.push({ [`accesorios${i}`]: accesorioValor });
+      componentes[10].accesorios.push({ [`accesorios${i}`]: accesorioValor });
     }
   }
 
