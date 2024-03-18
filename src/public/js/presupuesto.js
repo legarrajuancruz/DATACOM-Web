@@ -42,6 +42,7 @@ function unformatCurrency(input) {
 /************************\
 |      AGREGAR FILA      |
 \************************/
+let contadorFila = 0;
 async function agregarNuevaFila() {
   return new Promise((resolve, reject) => {
     try {
@@ -49,6 +50,7 @@ async function agregarNuevaFila() {
       let tbody = document
         .getElementById("componentes-table")
         .getElementsByTagName("tbody")[0];
+      console.log(tbody);
 
       // Crear un nuevo tr (fila)
       let newRow = document.createElement("tr");
@@ -76,20 +78,30 @@ async function agregarNuevaFila() {
 
         if (i == 0) {
           newInput.setAttribute("value", "1");
+          let cantidadId =
+            "accesorios" + (tbody.children.length + 1) + "Cantidad";
+          newInput.setAttribute("id", cantidadId);
+
           newCell.appendChild(newInput);
         }
         if (i == 1) {
+          let descripionId =
+            "accesorios" + (tbody.children.length + 1) + "Descripcion";
+          newInput.setAttribute("id", descripionId);
           newInput.setAttribute("class", "w-100");
 
           newCell.appendChild(newInput);
         }
 
         if (i == 2) {
+          let garantiaId =
+            "accesorios" + (tbody.children.length + 1) + "Garantia";
+
           let newSelect = document.createElement("select");
+          newSelect.setAttribute("id", garantiaId);
           newSelect.setAttribute("name", "Garantia");
           newSelect.setAttribute("style", "font-size: 16px;");
           newSelect.setAttribute("class", "text-center w-100");
-          newSelect.setAttribute("id", "procesadorGarantia");
 
           // Crear las opciones para el select
           for (let index = 1; index <= 3; index++) {
@@ -148,7 +160,8 @@ async function agregarNuevaFila() {
 
       // Recalcular la suma de la columna "Contado"
       calcularTotalContado();
-
+      contadorFila++;
+      console.log(contadorFila);
       resolve();
     } catch (error) {
       reject(error);
@@ -216,25 +229,17 @@ agregarEventoInput();
 \*****************/
 document.getElementById("totalContado").textContent = formatCurrency(0);
 
-// Función para calcular el total de la columna "Contado"
-// Función para calcular el total de la columna "Contado"
 function calcularTotalContado() {
   let totalContado = 0;
-
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
 
   rows.forEach(function (row) {
-    // Obtener el valor del input en la columna "Contado" de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
-
     if (contadoInput) {
-      // Convertir el valor a número y sumarlo al total
       totalContado += parseFloat(unformatCurrency(contadoInput.value)) || 0;
     }
   });
-
-  // Mostrar el total en el casillero deseado
   let totalContadoCell = document.getElementById("totalContado");
   if (totalContadoCell) {
     totalContadoCell.textContent = formatCurrency(totalContado.toFixed(0));
@@ -266,17 +271,12 @@ function calcularTotalPlista() {
   let rows = document.querySelectorAll("#componentes-table tbody tr");
 
   rows.forEach(function (row) {
-    // Obtener el valor del precio de lista en la columna correspondiente de la fila actual
     let precioListaCell = row.querySelector("td:nth-child(6)");
-
     if (precioListaCell) {
-      // Convertir el valor a número y sumarlo al total
       totalPlista +=
         parseFloat(unformatCurrency(precioListaCell.textContent)) || 0;
     }
   });
-
-  // Mostrar el total en el casillero deseado
   let totalPlistaCell = document.getElementById("totalPlista");
   if (totalPlistaCell) {
     totalPlistaCell.textContent = formatCurrency(totalPlista.toFixed(0));
@@ -476,24 +476,87 @@ const guardardatos = async () => {
   let fecha = document.getElementById("fecha").textContent;
   let nombre = document.getElementById("nombre").value;
 
-  let procesador = unformatCurrency(
-    document.getElementById("procesadorContado").value
-  );
-  let motherboard = unformatCurrency(
-    document.getElementById("placamadreContado").value
-  );
-  let memoria = unformatCurrency(
-    document.getElementById("memoriaContado").value
-  );
-  let disco = unformatCurrency(document.getElementById("discoContado").value);
-  let gabinete = unformatCurrency(
-    document.getElementById("gabineteContado").value
-  );
-  let monitor = unformatCurrency(
-    document.getElementById("monitorContado").value
-  );
+  let procesador = [
+    {
+      cantiad: document.getElementById("procesadorCantidad").value,
+      descripion: document.getElementById("procesadorDescripcion").value,
+      garantia: document.getElementById("procesadorGarantia").value,
+      contado: unformatCurrency(
+        document.getElementById("procesadorContado").value
+      ),
+      plista: unformatCurrency(
+        document.getElementById("procesadorPlista").textContent
+      ),
+    },
+  ];
+  let motherboard = [
+    {
+      cantiad: document.getElementById("placamadreCantidad").value,
+      descripion: document.getElementById("placamadreDescripcion").value,
+      garantia: document.getElementById("placamadreGarantia").value,
+      contado: unformatCurrency(
+        document.getElementById("placamadreContado").value
+      ),
+      plista: unformatCurrency(
+        document.getElementById("placamadrePlista").textContent
+      ),
+    },
+  ];
 
-  let componentes = [
+  let memoria = [
+    {
+      cantiad: document.getElementById("memoriaCantidad").value,
+      descripion: document.getElementById("memoriaDescripcion").value,
+      garantia: document.getElementById("memoriaGarantia").value,
+      contado: unformatCurrency(
+        document.getElementById("memoriaContado").value
+      ),
+      plista: unformatCurrency(
+        document.getElementById("memoriaPlista").textContent
+      ),
+    },
+  ];
+  let disco = [
+    {
+      cantiad: document.getElementById("discoCantidad").value,
+      descripion: document.getElementById("discoDescripcion").value,
+      garantia: document.getElementById("discoGarantia").value,
+      contado: unformatCurrency(document.getElementById("discoContado").value),
+      plista: unformatCurrency(
+        document.getElementById("discoPlista").textContent
+      ),
+    },
+  ];
+  let gabinete = [
+    {
+      cantiad: document.getElementById("gabineteCantidad").value,
+      descripion: document.getElementById("gabineteDescripcion").value,
+      garantia: document.getElementById("gabineteGarantia").value,
+      contado: unformatCurrency(
+        document.getElementById("gabineteContado").value
+      ),
+      plista: unformatCurrency(
+        document.getElementById("gabinetePlista").textContent
+      ),
+    },
+  ];
+  let monitor = [
+    {
+      cantiad: document.getElementById("monitorCantidad").value,
+      descripion: document.getElementById("monitorDescripcion").value,
+      garantia: document.getElementById("monitorGarantia").value,
+      contado: unformatCurrency(
+        document.getElementById("monitorContado").value
+      ),
+      plista: unformatCurrency(
+        document.getElementById("monitorPlista").textContent
+      ),
+    },
+  ];
+
+  let productos = [];
+
+  let presupuesto = [
     { orden: orden },
     { oficial: oficial },
     { nombre: nombre },
@@ -508,14 +571,25 @@ const guardardatos = async () => {
   ];
 
   for (let i = 7; i < 20; i++) {
-    let accesorioContado = document.getElementById(`accesorios${i}Contado`);
+    let accesorioCantidad = document.getElementById(
+      `accesorios${i}Cantidad`
+    ).value;
+    let accesorioContado = document.getElementById(
+      `accesorios${i}Contado`
+    ).value;
+
     if (accesorioContado) {
-      let accesorioValor = unformatCurrency(accesorioContado.value);
-      componentes[10].accesorios.push({ [`accesorios${i}`]: accesorioValor });
+      presupuesto[10].accesorios.push({
+        [`accesorios${i}`]: accesorioCantidad,
+      });
+      presupuesto[10].accesorios.push({
+        [`accesorios${i}`]: accesorioDescripcion,
+      });
+      presupuesto[10].accesorios.push({ [`accesorios${i}`]: accesorioContado });
     }
   }
 
-  console.log(componentes);
+  console.log(presupuesto);
 };
 
 document.getElementById("crearPresupuesto").onclick = guardardatos;
