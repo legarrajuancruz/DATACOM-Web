@@ -78,9 +78,6 @@ async function agregarNuevaFila() {
 
         if (i == 0) {
           newInput.setAttribute("value", "1");
-          let cantidadId =
-            "accesorios" + (tbody.children.length + 1) + "Cantidad";
-          newInput.setAttribute("id", cantidadId);
 
           newCell.appendChild(newInput);
         }
@@ -571,21 +568,10 @@ const guardardatos = async () => {
   ];
 
   for (let i = 7; i < 20; i++) {
-    let accesorioCantidad = document.getElementById(
-      `accesorios${i}Cantidad`
-    ).value;
-    let accesorioContado = document.getElementById(
-      `accesorios${i}Contado`
-    ).value;
-
+    let accesorioContado = document.getElementById(`accesorios${i}Contado`);
     if (accesorioContado) {
-      presupuesto[10].accesorios.push({
-        [`accesorios${i}`]: accesorioCantidad,
-      });
-      presupuesto[10].accesorios.push({
-        [`accesorios${i}`]: accesorioDescripcion,
-      });
-      presupuesto[10].accesorios.push({ [`accesorios${i}`]: accesorioContado });
+      let accesorioValor = unformatCurrency(accesorioContado.value);
+      presupuesto[10].accesorios.push({ [`accesorios${i}`]: accesorioValor });
     }
   }
 
