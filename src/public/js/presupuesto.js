@@ -570,8 +570,17 @@ const guardardatos = async () => {
   for (let i = 7; i < 20; i++) {
     let accesorioContado = document.getElementById(`accesorios${i}Contado`);
     if (accesorioContado) {
-      let accesorioValor = unformatCurrency(accesorioContado.value);
-      presupuesto[10].accesorios.push({ [`accesorios${i}`]: accesorioValor });
+      let contado = unformatCurrency(accesorioContado.value);
+
+      presupuesto[10].accesorios.push({
+        [`accesorios${i}Contado`]: {
+          cantidad: "",
+          descripcion: "",
+          garantia: "",
+          contado: contado,
+          plista: "",
+        },
+      });
     }
   }
 
