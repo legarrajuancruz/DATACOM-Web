@@ -50,7 +50,6 @@ async function agregarNuevaFila() {
       let tbody = document
         .getElementById("componentes-table")
         .getElementsByTagName("tbody")[0];
-      console.log(tbody);
 
       // Crear un nuevo tr (fila)
       let newRow = document.createElement("tr");
@@ -77,8 +76,10 @@ async function agregarNuevaFila() {
         newInput.setAttribute("class", "text-center w-100");
 
         if (i == 0) {
+          let cantidadId =
+            "accesorios" + (tbody.children.length + 1) + "Cantidad";
+          newInput.setAttribute("id", cantidadId);
           newInput.setAttribute("value", "1");
-
           newCell.appendChild(newInput);
         }
         if (i == 1) {
@@ -115,13 +116,12 @@ async function agregarNuevaFila() {
             }
           }
 
-          // Agregar el select al nuevo td
           newCell.appendChild(newSelect);
         }
         if (i == 3) {
           let contadoId =
             "accesorios" + (tbody.children.length + 1) + "Contado";
-          newInput.setAttribute("id", contadoId); // Establecer el ID al input
+          newInput.setAttribute("id", contadoId);
           newCell.appendChild(newInput);
         }
         if (i == 4) {
@@ -136,8 +136,6 @@ async function agregarNuevaFila() {
             "text-center text-dark align-middle border"
           );
         }
-
-        // Agregar el td a la fila
         newRow.appendChild(newCell);
       }
 
@@ -158,7 +156,6 @@ async function agregarNuevaFila() {
       // Recalcular la suma de la columna "Contado"
       calcularTotalContado();
       contadorFila++;
-      console.log(contadorFila);
       resolve();
     } catch (error) {
       reject(error);
@@ -568,17 +565,28 @@ const guardardatos = async () => {
   ];
 
   for (let i = 7; i < 20; i++) {
+    let accesoriosCabtidad = document.getElementById(`accesorios${i}Cantidad`);
+    let accesoriosDescripcion = document.getElementById(
+      `accesorios${i}Descripcion`
+    );
     let accesorioContado = document.getElementById(`accesorios${i}Contado`);
+    let accesorioPlista = document.getElementById(`accesorios${i}Plista`);
+    let accesorioGarantia = document.getElementById(`accesorios${i}Garantia`);
+
     if (accesorioContado) {
+      let cantidad = accesoriosCabtidad.value;
+      let descripcion = accesoriosDescripcion.value;
       let contado = unformatCurrency(accesorioContado.value);
+      let lista = unformatCurrency(accesorioPlista.textContent);
+      let garantia = accesorioGarantia.value;
 
       presupuesto[10].accesorios.push({
-        [`accesorios${i}Contado`]: {
-          cantidad: "",
-          descripcion: "",
-          garantia: "",
+        [`accesorios${i}`]: {
+          cantidad: cantidad,
+          descripcion: descripcion,
+          garantia: garantia,
           contado: contado,
-          plista: "",
+          plista: lista,
         },
       });
     }
