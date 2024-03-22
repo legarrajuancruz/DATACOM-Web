@@ -135,6 +135,7 @@ async function agregarNuevaFila() {
             "class",
             "text-center text-dark align-middle border"
           );
+          newCell.textContent = "$ 0";
         }
         newRow.appendChild(newCell);
       }
@@ -230,6 +231,7 @@ function calcularTotalContado() {
 
   rows.forEach(function (row) {
     let contadoInput = row.querySelector("td:nth-child(5) input");
+
     if (contadoInput) {
       totalContado += parseFloat(unformatCurrency(contadoInput.value)) || 0;
     }
@@ -262,9 +264,9 @@ function calcularTotalPlista() {
   let totalPlista = 0;
 
   // Obtener todas las filas de la tabla
-  let rows = document.querySelectorAll("#componentes-table tbody tr");
+  let fila = document.querySelectorAll("#componentes-table tbody tr");
 
-  rows.forEach(function (row) {
+  fila.forEach(function (row) {
     let precioListaCell = row.querySelector("td:nth-child(6)");
     if (precioListaCell) {
       totalPlista +=
@@ -409,31 +411,52 @@ async function obtenerDolarBlue() {
 
 async function calcularPrecioDolarBillete() {
   try {
-    // Obtener el total en pesos argentinos
     let totalContado = document.getElementById("totalContado").textContent;
     let unformattedTotal = unformatCurrency(totalContado);
 
-    // Obtener el valor del dólar blue
     const valorDolarBlue = await obtenerDolarBlue();
 
-    // Verificar si se obtuvo un valor válido para el dólar blue
     if (
       valorDolarBlue !== null &&
       valorDolarBlue !== undefined &&
       valorDolarBlue !== 0
     ) {
-      // Calcular el precio en dólares billete
       let precioDolarBillete = unformattedTotal / valorDolarBlue;
 
-      // Formatear el precio en dólares billete y mostrarlo en el elemento HTML
-      let formattedPrice = formatCurrency(precioDolarBillete.toFixed(1));
+      let formattedPrice = formatCurrency(precioDolarBillete.toFixed(0));
       document.getElementById("totalDolarBillete").innerText = formattedPrice;
     } else {
-      // Si no se pudo obtener el valor del dólar blue o es cero, mostrar un mensaje de error
       console.error("No se pudo obtener el valor válido del dólar blue.");
     }
   } catch (error) {
     console.error("Error al calcular el precio en dólares billete:", error);
+  }
+}
+
+/*****************\
+|    TOAL SEÑA    |
+\*****************/
+async function calcularTotalAdelanto() {
+  try {
+    let totalContado = document.getElementById("totalContado").textContent;
+    let unformattedTotal = unformatCurrency(totalContado);
+    console.log(unformattedTotal);
+
+    if (
+      totalContado !== null &&
+      totalContado !== undefined &&
+      totalContado !== 0
+    ) {
+      let precioAdelanto = Number(unformattedTotal) * 0.4;
+      console.log(unformattedTotal, precioAdelanto);
+
+      let totalAdelanto = formatCurrency(precioAdelanto.toFixed(0));
+      document.getElementById("totalAdelanto").innerText = totalAdelanto;
+    } else {
+      console.error("No se pudo obtener el valor válido de adelanto.");
+    }
+  } catch (error) {
+    console.error("Error al calcular el precio del adelanto:", error);
   }
 }
 
@@ -451,6 +474,7 @@ function agregarEventoInput() {
       calcularTotalContado();
       calcularPreciosLista();
       calcularPrecioDolarBillete();
+      calcularTotalAdelanto();
     });
     input.value = formatCurrency(unformatCurrency(input.value));
   });
