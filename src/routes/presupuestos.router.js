@@ -27,4 +27,4 @@ presupuestosRouter.put(
   PresupuestosController.modPresupuesto
 );
 
-export default PresupuestosController;
+export default presupuestosRouter;
