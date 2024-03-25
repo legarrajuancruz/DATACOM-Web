@@ -15,46 +15,50 @@ import {
 //CREAR
 const addPresupuesto = async (req, res) => {
   try {
-    console.log("ENVIO ARCHIVO");
-    console.log(req.file);
+    let data = req.body;
+    console.log("RECIBO EN CONTROLADOR ");
+    console.log(data);
 
-    const producto = {
-      orden: Number(req.body.orden),
+    const presupuesto = {
+      orden: data.orden,
       fecha: req.body.fecha,
-      dolar: Number(req.body.dolar),
-      stock: Number(req.body.stock),
-      category: req.body.category,
-      img: `/products/${req.file.filename}`,
-      owner: req.body.owner,
+      nombre: req.body.nombre,
+      oficial: req.body.oficial,
+      blue: req.body.blue,
+      procesador: req.body.procesador,
+      motherboard: req.body.motherbaord,
+      memoria: req.body.memoria,
+      disco: req.body.disco,
+      gabinete: req.body.gabinete,
+      monitor: req.body.monitor,
+      accesorios: req.body.accesorios,
     };
-    console.log("VER PRODUCTO ENVIADO");
-    console.log(producto);
+    console.log("VER PRESUPUESTO ENVIADO");
+    console.log(presupuesto);
 
-    if (
-      !producto.title ||
-      typeof producto.price !== "number" ||
-      !producto.stock
-    ) {
+    if (!presupuesto.nombre || typeof presupuesto.orden !== "number") {
       CustomError.createError({
         name: "Product creation error",
-        cause: generatePresupuestosErrorInfo(producto),
+        cause: generatePresupuestosErrorInfo(presupuesto),
         message: "Error creando el producto",
         code: EErrors.INVALID_TYPES_ERROR,
       });
       res.status(400).send({
         error: "Incompleto",
-        result: "Producto no pudo ser creado",
-        producto: producto,
+        result: "Presupuesto no pudo ser creado",
+        producto: presupuesto,
       });
     }
 
-    let proudctoCreado = await presupuestoService.crearPresupuesto(producto);
-    console.log("Nuevo Producto Creado");
-    console.log(proudctoCreado);
+    let presupuestoCreado = await presupuestoService.crearPresupuesto(
+      presupuesto
+    );
+    console.log("Nuevo Presupuesto Creado");
+    console.log(presupuestoCreado);
 
     res.status(201).send({
-      result: "Producto creado con exito",
-      producto: proudctoCreado,
+      result: "Presupuesto creado con exito",
+      producto: presupuestoCreado,
     });
   } catch (error) {
     console.error(error);

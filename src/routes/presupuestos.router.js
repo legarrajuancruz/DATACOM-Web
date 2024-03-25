@@ -11,11 +11,7 @@ presupuestosRouter.get("/", PresupuestosController.getPresupuesto);
 presupuestosRouter.get("/:id", PresupuestosController.getPresupuestoById);
 
 //CREAR
-presupuestosRouter.post(
-  "/",
-  uploader.single("img"),
-  PresupuestosController.addPresupuesto
-);
+presupuestosRouter.post("/", PresupuestosController.addPresupuesto);
 
 //ELIMINAR
 presupuestosRouter.delete("/:id", PresupuestosController.deletePresupuesto);

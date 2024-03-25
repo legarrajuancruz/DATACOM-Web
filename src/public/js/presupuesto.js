@@ -434,7 +434,7 @@ async function calcularPrecioDolarBillete() {
 }
 
 /*****************\
-|    TOAL SEÑA    |
+|    TOTAL SEÑA    |
 \*****************/
 async function calcularTotalAdelanto() {
   try {
@@ -488,6 +488,7 @@ const guardardatos = async () => {
   let oficial = unformatCurrency(
     document.getElementById("dolarOficial").textContent
   );
+
   let orden = unformatCurrency(
     document.getElementById("numeroDeOrden").textContent
   );
@@ -496,7 +497,7 @@ const guardardatos = async () => {
 
   let procesador = [
     {
-      cantiad: document.getElementById("procesadorCantidad").value,
+      cantidad: document.getElementById("procesadorCantidad").value,
       descripion: document.getElementById("procesadorDescripcion").value,
       garantia: document.getElementById("procesadorGarantia").value,
       contado: unformatCurrency(
@@ -509,7 +510,7 @@ const guardardatos = async () => {
   ];
   let motherboard = [
     {
-      cantiad: document.getElementById("placamadreCantidad").value,
+      cantidad: document.getElementById("placamadreCantidad").value,
       descripion: document.getElementById("placamadreDescripcion").value,
       garantia: document.getElementById("placamadreGarantia").value,
       contado: unformatCurrency(
@@ -523,7 +524,7 @@ const guardardatos = async () => {
 
   let memoria = [
     {
-      cantiad: document.getElementById("memoriaCantidad").value,
+      cantidad: document.getElementById("memoriaCantidad").value,
       descripion: document.getElementById("memoriaDescripcion").value,
       garantia: document.getElementById("memoriaGarantia").value,
       contado: unformatCurrency(
@@ -536,7 +537,7 @@ const guardardatos = async () => {
   ];
   let disco = [
     {
-      cantiad: document.getElementById("discoCantidad").value,
+      cantidad: document.getElementById("discoCantidad").value,
       descripion: document.getElementById("discoDescripcion").value,
       garantia: document.getElementById("discoGarantia").value,
       contado: unformatCurrency(document.getElementById("discoContado").value),
@@ -547,7 +548,7 @@ const guardardatos = async () => {
   ];
   let gabinete = [
     {
-      cantiad: document.getElementById("gabineteCantidad").value,
+      cantidad: document.getElementById("gabineteCantidad").value,
       descripion: document.getElementById("gabineteDescripcion").value,
       garantia: document.getElementById("gabineteGarantia").value,
       contado: unformatCurrency(
@@ -560,7 +561,7 @@ const guardardatos = async () => {
   ];
   let monitor = [
     {
-      cantiad: document.getElementById("monitorCantidad").value,
+      cantidad: document.getElementById("monitorCantidad").value,
       descripion: document.getElementById("monitorDescripcion").value,
       garantia: document.getElementById("monitorGarantia").value,
       contado: unformatCurrency(
@@ -572,13 +573,12 @@ const guardardatos = async () => {
     },
   ];
 
-  let productos = [];
-
   let presupuesto = [
     { orden: orden },
-    { oficial: oficial },
-    { nombre: nombre },
     { fecha: fecha },
+    { nombre: nombre },
+    { oficial: oficial },
+    // { blue: blue },
     { procesador: procesador },
     { motherboard: motherboard },
     { memoria: memoria },
@@ -615,8 +615,28 @@ const guardardatos = async () => {
       });
     }
   }
-
   console.log(presupuesto);
+
+  fetch(`/api/presupuestos/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(presupuesto),
+  })
+    .then((response) => {
+      if (!res.status === 201) {
+        throw new Error(`Error de red: ${response.statusText}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Presupuesto enviado con exito", data);
+      alert("Presupuesto agregado a la base de datos");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };
 
 document.getElementById("crearPresupuesto").onclick = guardardatos;
