@@ -573,7 +573,7 @@ const guardardatos = async () => {
     monitor: monitor,
   };
 
-  for (let i = 7; i < 20; i++) {
+  for (let i = 7; i < 14; i++) {
     let accesoriosCantidad = document.getElementById(`accesorios${i}Cantidad`);
     let accesoriosDescripcion = document.getElementById(
       `accesorios${i}Descripcion`

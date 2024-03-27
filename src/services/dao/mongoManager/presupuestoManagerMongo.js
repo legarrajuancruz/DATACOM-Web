@@ -10,6 +10,9 @@ export default class PresupuestoService {
   ==============================*/
   createPresupuesto = async (productoNuevo) => {
     let presupuesto = await PresupuestosModel.create(productoNuevo);
+
+    console.log("PRESUPUESTO ORDEN");
+    console.log(productoNuevo.orden);
     return presupuesto;
   };
 

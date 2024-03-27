@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
 const presupuestosCollection = "presupuestos";
-
 const ComponenteSchema = new mongoose.Schema({
   cantidad: { type: String, default: "1" },
   descripcion: { type: String, default: "" },
@@ -10,6 +9,17 @@ const ComponenteSchema = new mongoose.Schema({
   contado: { type: Number, default: 0 },
   plista: { type: Number, default: 0 },
 });
+
+const accesoriosSchema = {
+  type: [ComponenteSchema],
+  default: [],
+};
+
+const accesoriosDynamicSchema = {};
+
+for (let i = 7; i <= 13; i++) {
+  accesoriosDynamicSchema[`accesorios${i}`] = accesoriosSchema;
+}
 
 const presupuestosSchema = new mongoose.Schema({
   orden: {
@@ -38,7 +48,7 @@ const presupuestosSchema = new mongoose.Schema({
   disco: ComponenteSchema,
   gabinete: ComponenteSchema,
   monitor: ComponenteSchema,
-  accesorios: [ComponenteSchema],
+  accesorios: accesoriosDynamicSchema,
 });
 
 presupuestosSchema.plugin(mongoosePaginate);
