@@ -2,13 +2,22 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
 const presupuestosCollection = "presupuestos";
+
+const ComponenteSchema = new mongoose.Schema({
+  cantidad: { type: String, default: "1" },
+  descripcion: { type: String, default: "" },
+  garantia: { type: String, default: "1" },
+  contado: { type: Number, default: 0 },
+  plista: { type: Number, default: 0 },
+});
+
 const presupuestosSchema = new mongoose.Schema({
   orden: {
     type: Number,
     required: true,
   },
   fecha: {
-    type: Date,
+    type: String,
     required: true,
   },
   nombre: {
@@ -21,36 +30,15 @@ const presupuestosSchema = new mongoose.Schema({
   },
   blue: {
     type: Number,
-    required: true,
+    required: false,
   },
-  procesador: {
-    type: String,
-    required: true,
-  },
-  motherboard: {
-    type: String,
-    required: true,
-  },
-  memoria: {
-    type: String,
-    required: true,
-  },
-  disco: {
-    type: String,
-    required: true,
-  },
-  gabinete: {
-    type: String,
-    required: true,
-  },
-  monitor: {
-    type: String,
-    required: true,
-  },
-  accesorios: {
-    type: [String],
-    default: [],
-  },
+  procesador: ComponenteSchema,
+  motherboard: ComponenteSchema,
+  memoria: ComponenteSchema,
+  disco: ComponenteSchema,
+  gabinete: ComponenteSchema,
+  monitor: ComponenteSchema,
+  accesorios: [ComponenteSchema],
 });
 
 presupuestosSchema.plugin(mongoosePaginate);

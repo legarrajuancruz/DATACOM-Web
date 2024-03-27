@@ -15,42 +15,25 @@ import {
 //CREAR
 const addPresupuesto = async (req, res) => {
   try {
-    let data = req.body;
+    let presupuesto = req.body;
     console.log("RECIBO EN CONTROLADOR ");
-    console.log(data);
-
-    const presupuesto = {
-      orden: data.orden,
-      fecha: req.body.fecha,
-      nombre: req.body.nombre,
-      oficial: req.body.oficial,
-      blue: req.body.blue,
-      procesador: req.body.procesador,
-      motherboard: req.body.motherbaord,
-      memoria: req.body.memoria,
-      disco: req.body.disco,
-      gabinete: req.body.gabinete,
-      monitor: req.body.monitor,
-      accesorios: req.body.accesorios,
-    };
-    console.log("VER PRESUPUESTO ENVIADO");
     console.log(presupuesto);
 
-    if (!presupuesto.nombre || typeof presupuesto.orden !== "number") {
-      CustomError.createError({
-        name: "Product creation error",
-        cause: generatePresupuestosErrorInfo(presupuesto),
-        message: "Error creando el producto",
-        code: EErrors.INVALID_TYPES_ERROR,
-      });
-      res.status(400).send({
-        error: "Incompleto",
-        result: "Presupuesto no pudo ser creado",
-        producto: presupuesto,
-      });
-    }
+    // if (!presupuesto.nombre || typeof presupuesto.orden !== "number") {
+    //   CustomError.createError({
+    //     name: "Product creation error",
+    //     cause: generatePresupuestosErrorInfo(presupuesto),
+    //     message: "Error creando el producto",
+    //     code: EErrors.INVALID_TYPES_ERROR,
+    //   });
+    //   res.status(400).send({
+    //     error: "Incompleto",
+    //     result: "Presupuesto no pudo ser creado",
+    //     producto: presupuesto,
+    //   });
+    // }
 
-    let presupuestoCreado = await presupuestoService.crearPresupuesto(
+    let presupuestoCreado = await presupuestoService.createPresupuesto(
       presupuesto
     );
     console.log("Nuevo Presupuesto Creado");

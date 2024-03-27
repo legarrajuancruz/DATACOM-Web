@@ -488,6 +488,7 @@ const guardardatos = async () => {
   let oficial = unformatCurrency(
     document.getElementById("dolarOficial").textContent
   );
+  let blue = unformatCurrency(obtenerDolarBlue());
 
   let orden = unformatCurrency(
     document.getElementById("numeroDeOrden").textContent
@@ -495,101 +496,85 @@ const guardardatos = async () => {
   let fecha = document.getElementById("fecha").textContent;
   let nombre = document.getElementById("nombre").value;
 
-  let procesador = [
-    {
-      cantidad: document.getElementById("procesadorCantidad").value,
-      descripion: document.getElementById("procesadorDescripcion").value,
-      garantia: document.getElementById("procesadorGarantia").value,
-      contado: unformatCurrency(
-        document.getElementById("procesadorContado").value
-      ),
-      plista: unformatCurrency(
-        document.getElementById("procesadorPlista").textContent
-      ),
-    },
-  ];
-  let motherboard = [
-    {
-      cantidad: document.getElementById("placamadreCantidad").value,
-      descripion: document.getElementById("placamadreDescripcion").value,
-      garantia: document.getElementById("placamadreGarantia").value,
-      contado: unformatCurrency(
-        document.getElementById("placamadreContado").value
-      ),
-      plista: unformatCurrency(
-        document.getElementById("placamadrePlista").textContent
-      ),
-    },
-  ];
+  let procesador = {
+    cantidad: document.getElementById("procesadorCantidad").value,
+    descripion: document.getElementById("procesadorDescripcion").value,
+    garantia: document.getElementById("procesadorGarantia").value,
+    contado: unformatCurrency(
+      document.getElementById("procesadorContado").value
+    ),
+    plista: unformatCurrency(
+      document.getElementById("procesadorPlista").textContent
+    ),
+  };
 
-  let memoria = [
-    {
-      cantidad: document.getElementById("memoriaCantidad").value,
-      descripion: document.getElementById("memoriaDescripcion").value,
-      garantia: document.getElementById("memoriaGarantia").value,
-      contado: unformatCurrency(
-        document.getElementById("memoriaContado").value
-      ),
-      plista: unformatCurrency(
-        document.getElementById("memoriaPlista").textContent
-      ),
-    },
-  ];
-  let disco = [
-    {
-      cantidad: document.getElementById("discoCantidad").value,
-      descripion: document.getElementById("discoDescripcion").value,
-      garantia: document.getElementById("discoGarantia").value,
-      contado: unformatCurrency(document.getElementById("discoContado").value),
-      plista: unformatCurrency(
-        document.getElementById("discoPlista").textContent
-      ),
-    },
-  ];
-  let gabinete = [
-    {
-      cantidad: document.getElementById("gabineteCantidad").value,
-      descripion: document.getElementById("gabineteDescripcion").value,
-      garantia: document.getElementById("gabineteGarantia").value,
-      contado: unformatCurrency(
-        document.getElementById("gabineteContado").value
-      ),
-      plista: unformatCurrency(
-        document.getElementById("gabinetePlista").textContent
-      ),
-    },
-  ];
-  let monitor = [
-    {
-      cantidad: document.getElementById("monitorCantidad").value,
-      descripion: document.getElementById("monitorDescripcion").value,
-      garantia: document.getElementById("monitorGarantia").value,
-      contado: unformatCurrency(
-        document.getElementById("monitorContado").value
-      ),
-      plista: unformatCurrency(
-        document.getElementById("monitorPlista").textContent
-      ),
-    },
-  ];
+  let motherboard = {
+    cantidad: document.getElementById("placamadreCantidad").value,
+    descripion: document.getElementById("placamadreDescripcion").value,
+    garantia: document.getElementById("placamadreGarantia").value,
+    contado: unformatCurrency(
+      document.getElementById("placamadreContado").value
+    ),
+    plista: unformatCurrency(
+      document.getElementById("placamadrePlista").textContent
+    ),
+  };
 
-  let presupuesto = [
-    { orden: orden },
-    { fecha: fecha },
-    { nombre: nombre },
-    { oficial: oficial },
-    // { blue: blue },
-    { procesador: procesador },
-    { motherboard: motherboard },
-    { memoria: memoria },
-    { disco: disco },
-    { gabinete: gabinete },
-    { monitor: monitor },
-    { accesorios: [] },
-  ];
+  let memoria = {
+    cantidad: document.getElementById("memoriaCantidad").value,
+    descripion: document.getElementById("memoriaDescripcion").value,
+    garantia: document.getElementById("memoriaGarantia").value,
+    contado: unformatCurrency(document.getElementById("memoriaContado").value),
+    plista: unformatCurrency(
+      document.getElementById("memoriaPlista").textContent
+    ),
+  };
+
+  let disco = {
+    cantidad: document.getElementById("discoCantidad").value,
+    descripion: document.getElementById("discoDescripcion").value,
+    garantia: document.getElementById("discoGarantia").value,
+    contado: unformatCurrency(document.getElementById("discoContado").value),
+    plista: unformatCurrency(
+      document.getElementById("discoPlista").textContent
+    ),
+  };
+
+  let gabinete = {
+    cantidad: document.getElementById("gabineteCantidad").value,
+    descripion: document.getElementById("gabineteDescripcion").value,
+    garantia: document.getElementById("gabineteGarantia").value,
+    contado: unformatCurrency(document.getElementById("gabineteContado").value),
+    plista: unformatCurrency(
+      document.getElementById("gabinetePlista").textContent
+    ),
+  };
+
+  let monitor = {
+    cantidad: document.getElementById("monitorCantidad").value,
+    descripion: document.getElementById("monitorDescripcion").value,
+    garantia: document.getElementById("monitorGarantia").value,
+    contado: unformatCurrency(document.getElementById("monitorContado").value),
+    plista: unformatCurrency(
+      document.getElementById("monitorPlista").textContent
+    ),
+  };
+
+  let presupuesto = {
+    orden: orden,
+    fecha: fecha,
+    nombre: nombre,
+    oficial: oficial,
+    procesador: procesador,
+    motherboard: motherboard,
+    memoria: memoria,
+    disco: disco,
+    gabinete: gabinete,
+    monitor: monitor,
+  };
 
   for (let i = 7; i < 20; i++) {
-    let accesoriosCabtidad = document.getElementById(`accesorios${i}Cantidad`);
+    let accesoriosCantidad = document.getElementById(`accesorios${i}Cantidad`);
     let accesoriosDescripcion = document.getElementById(
       `accesorios${i}Descripcion`
     );
@@ -598,21 +583,20 @@ const guardardatos = async () => {
     let accesorioGarantia = document.getElementById(`accesorios${i}Garantia`);
 
     if (accesorioContado) {
-      let cantidad = accesoriosCabtidad.value;
+      let cantidad = accesoriosCantidad.value;
       let descripcion = accesoriosDescripcion.value;
       let contado = unformatCurrency(accesorioContado.value);
       let lista = unformatCurrency(accesorioPlista.textContent);
       let garantia = accesorioGarantia.value;
 
-      presupuesto[10].accesorios.push({
-        [`accesorios${i}`]: {
-          cantidad: cantidad,
-          descripcion: descripcion,
-          garantia: garantia,
-          contado: contado,
-          plista: lista,
-        },
-      });
+      // Agregar el accesorio actual al presupuesto
+      presupuesto[`accesorios${i}`] = {
+        cantidad: cantidad,
+        descripcion: descripcion,
+        garantia: garantia,
+        contado: contado,
+        plista: lista,
+      };
     }
   }
   console.log(presupuesto);
