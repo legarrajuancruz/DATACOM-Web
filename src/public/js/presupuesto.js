@@ -498,7 +498,7 @@ const guardardatos = async () => {
 
   let procesador = {
     cantidad: document.getElementById("procesadorCantidad").value,
-    descripion: document.getElementById("procesadorDescripcion").value,
+    descripcion: document.getElementById("procesadorDescripcion").value,
     garantia: document.getElementById("procesadorGarantia").value,
     contado: unformatCurrency(
       document.getElementById("procesadorContado").value
@@ -510,7 +510,7 @@ const guardardatos = async () => {
 
   let motherboard = {
     cantidad: document.getElementById("placamadreCantidad").value,
-    descripion: document.getElementById("placamadreDescripcion").value,
+    descripcion: document.getElementById("placamadreDescripcion").value,
     garantia: document.getElementById("placamadreGarantia").value,
     contado: unformatCurrency(
       document.getElementById("placamadreContado").value
@@ -522,7 +522,7 @@ const guardardatos = async () => {
 
   let memoria = {
     cantidad: document.getElementById("memoriaCantidad").value,
-    descripion: document.getElementById("memoriaDescripcion").value,
+    descripcion: document.getElementById("memoriaDescripcion").value,
     garantia: document.getElementById("memoriaGarantia").value,
     contado: unformatCurrency(document.getElementById("memoriaContado").value),
     plista: unformatCurrency(
@@ -532,7 +532,7 @@ const guardardatos = async () => {
 
   let disco = {
     cantidad: document.getElementById("discoCantidad").value,
-    descripion: document.getElementById("discoDescripcion").value,
+    descripcion: document.getElementById("discoDescripcion").value,
     garantia: document.getElementById("discoGarantia").value,
     contado: unformatCurrency(document.getElementById("discoContado").value),
     plista: unformatCurrency(
@@ -542,7 +542,7 @@ const guardardatos = async () => {
 
   let gabinete = {
     cantidad: document.getElementById("gabineteCantidad").value,
-    descripion: document.getElementById("gabineteDescripcion").value,
+    descripcion: document.getElementById("gabineteDescripcion").value,
     garantia: document.getElementById("gabineteGarantia").value,
     contado: unformatCurrency(document.getElementById("gabineteContado").value),
     plista: unformatCurrency(
@@ -552,7 +552,7 @@ const guardardatos = async () => {
 
   let monitor = {
     cantidad: document.getElementById("monitorCantidad").value,
-    descripion: document.getElementById("monitorDescripcion").value,
+    descripcion: document.getElementById("monitorDescripcion").value,
     garantia: document.getElementById("monitorGarantia").value,
     contado: unformatCurrency(document.getElementById("monitorContado").value),
     plista: unformatCurrency(
