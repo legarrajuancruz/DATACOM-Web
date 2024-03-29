@@ -4,6 +4,7 @@ import {
   productService,
   userService,
   cartService,
+  presupuestoService,
 } from "../services/factory.js";
 
 const router = express.Router();
@@ -106,10 +107,11 @@ router.get(
   }
 );
 
-//HOME
+//PRESUPUESTO
 router.get("/presupuesto", async (req, res) => {
   try {
-    res.render("presupuestador");
+    const numeroOrden = await presupuestoService.getPresupuestosbyOrden();
+    res.render("presupuestador", { numeroOrden });
   } catch (error) {
     response.status(500).send({ error: error.message });
   }

@@ -9,19 +9,25 @@ export default class PresupuestoService {
   -      CREAR NUEVO PRESUPUESTO    -
   ==============================*/
   createPresupuesto = async (productoNuevo) => {
-    console.log("ORDEN EN EL SERVICIO");
+    try {
+      let ordenExistente = await PresupuestosModel.findOne()
+        .sort({ orden: -1 })
+        .limit(1);
 
-    if (productoNuevo.orden == 0) {
-      productoNuevo.orden == 0;
+      let nuevaOrden = 0;
+      if (ordenExistente) {
+        nuevaOrden = ordenExistente.orden + 1;
+      }
+
+      productoNuevo.orden = nuevaOrden;
+
       let presupuesto = await PresupuestosModel.create(productoNuevo);
 
       return presupuesto;
+    } catch (error) {
+      console.error("Error al crear el presupuesto:", error);
+      throw error;
     }
-    if (productoNuevo.orden) {
-      productoNuevo.orden++;
-    }
-    let presupuesto = await PresupuestosModel.create(productoNuevo);
-    return presupuesto;
   };
 
   /*========================
@@ -45,7 +51,7 @@ export default class PresupuestoService {
     let presupuesto = await PresupuestosModel.paginate(query, {
       limit: limit,
       page: page,
-      sort: { price: sort },
+      sort: { orden: sort },
     });
 
     let status = presupuesto ? "success" : "error";
@@ -91,9 +97,16 @@ export default class PresupuestoService {
   /*====================================
   -      LEER PRESUOUESTO POR ORDEN     -
   =====================================*/
-  getPresupuestosbyOrden = async (orden) => {
-    const numeroOrden = await PresupuestosModel.findById(orden);
-    return numeroOrden;
+  getPresupuestosbyOrden = async () => {
+    try {
+      const ultimaOrden = await PresupuestosModel.findOne()
+        .sort({ orden: -1 })
+        .limit(1);
+      return ultimaOrden ? ultimaOrden.orden : 0;
+    } catch (error) {
+      console.error("Error al obtener la última orden:", error);
+      throw error;
+    }
   };
 
   /*========================

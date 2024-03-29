@@ -609,14 +609,11 @@ const guardardatos = async () => {
     body: JSON.stringify(presupuesto),
   })
     .then((response) => {
-      if (!res.status === 201) {
+      if (response.status === 201) {
+        console.log("Presupuesto creado con éxito");
+      } else {
         throw new Error(`Error de red: ${response.statusText}`);
       }
-      return res.json();
-    })
-    .then((data) => {
-      console.log("Presupuesto enviado con exito", data);
-      alert("Presupuesto agregado a la base de datos");
     })
     .catch((error) => {
       console.error("Error:", error);
