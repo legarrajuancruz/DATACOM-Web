@@ -9,10 +9,18 @@ export default class PresupuestoService {
   -      CREAR NUEVO PRESUPUESTO    -
   ==============================*/
   createPresupuesto = async (productoNuevo) => {
-    let presupuesto = await PresupuestosModel.create(productoNuevo);
+    console.log("ORDEN EN EL SERVICIO");
 
-    console.log("PRESUPUESTO ORDEN");
-    console.log(productoNuevo.orden);
+    if (productoNuevo.orden == 0) {
+      productoNuevo.orden == 0;
+      let presupuesto = await PresupuestosModel.create(productoNuevo);
+
+      return presupuesto;
+    }
+    if (productoNuevo.orden) {
+      productoNuevo.orden++;
+    }
+    let presupuesto = await PresupuestosModel.create(productoNuevo);
     return presupuesto;
   };
 
@@ -78,6 +86,14 @@ export default class PresupuestoService {
   getPresupuestosbyId = async (id) => {
     const presupuesto = await PresupuestosModel.findById(id);
     return presupuesto;
+  };
+
+  /*====================================
+  -      LEER PRESUOUESTO POR ORDEN     -
+  =====================================*/
+  getPresupuestosbyOrden = async (orden) => {
+    const numeroOrden = await PresupuestosModel.findById(orden);
+    return numeroOrden;
   };
 
   /*========================
