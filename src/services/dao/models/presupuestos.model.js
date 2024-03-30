@@ -30,7 +30,7 @@ const presupuestosSchema = new mongoose.Schema({
   },
   blue: {
     type: Number,
-    required: false,
+    required: true,
   },
   procesador: ComponenteSchema,
   motherboard: ComponenteSchema,

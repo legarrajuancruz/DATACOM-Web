@@ -488,7 +488,9 @@ const guardardatos = async () => {
   let oficial = unformatCurrency(
     document.getElementById("dolarOficial").textContent
   );
-  let blue = unformatCurrency(obtenerDolarBlue());
+  let valorDolarBlue = await obtenerDolarBlue();
+  let blue = valorDolarBlue;
+  console.log(blue);
 
   let orden = unformatCurrency(
     document.getElementById("numeroDeOrden").textContent
@@ -565,6 +567,7 @@ const guardardatos = async () => {
     fecha: fecha,
     nombre: nombre,
     oficial: oficial,
+    blue: blue,
     procesador: procesador,
     motherboard: motherboard,
     memoria: memoria,
