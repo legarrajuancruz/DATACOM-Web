@@ -102,7 +102,7 @@ export default class PresupuestoService {
       const ultimaOrden = await PresupuestosModel.findOne()
         .sort({ orden: -1 })
         .limit(1);
-      return ultimaOrden ? ultimaOrden.orden : 0;
+      return ultimaOrden ? (ultimaOrden.orden += 1) : 0;
     } catch (error) {
       console.error("Error al obtener la última orden:", error);
       throw error;

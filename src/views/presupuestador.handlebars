@@ -2,6 +2,7 @@
   style="display:flex; flex-direction:row;
   justify-content: center;
   align-items: center"
+  id="parteParaImprimir"
 >
   <div>
     <table id="componentes-table" style="font-size: 14px;">
@@ -78,7 +79,7 @@
             colspan="2"
             style="font-size: 12px; "
             class="text-center bg-secondary text-light border align-middle"
-          >CONTACTO</td>
+          >EMAIL</td>
           <td class="text-center text-light border"><input
               class="w-100"
               type="text"
@@ -586,7 +587,16 @@
       </tfoot>
     </table>
     <br />
-    <button id="crearPresupuesto">Crear Presupuesto</button>
+    <button
+      style="margin-right: 15px;"
+      class="btn btn-primary btn-sm"
+      id="crearPresupuesto"
+    >Guardar</button>
+
+    <button
+      class="btn btn-primary btn-sm"
+      id="imprimirPresupuesto"
+    >Imprimir</button>
   </div>
-  <script src="/js/presupuesto.js"></script>
+
 </div>
