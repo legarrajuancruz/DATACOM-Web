@@ -9,6 +9,7 @@ import path from "path";
 
 import jwt from "jsonwebtoken";
 import { faker } from "@faker-js/faker";
+import PDFDocument from "pdfkit";
 
 //MULTER
 const storage = multer.diskStorage({
@@ -125,4 +126,27 @@ export const authToken = (req, res, next) => {
   });
 };
 
+// PDFKit
+export const generatePDF = (data) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const doc = new PDFDocument();
+      // Lógica para construir el contenido del PDF con los datos proporcionados
+      doc.fontSize(20).text("Este es un PDF generado dinámicamente.", 100, 100);
+      // Nombre del archivo PDF
+      const fileName = "archivo.pdf";
+      // Ruta donde se guardará el archivo PDF
+      const filePath = `${__dirname}/${fileName}`;
+      // Stream del PDF hacia el archivo
+      const stream = fs.createWriteStream(filePath);
+      doc.pipe(stream);
+      doc.end();
+      // Manejar eventos de finalización y error del stream
+      stream.on("finish", () => resolve(filePath));
+      stream.on("error", (error) => reject(error));
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
 export default __dirname;
