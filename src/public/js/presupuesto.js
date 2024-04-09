@@ -622,5 +622,38 @@ const guardardatos = async () => {
       console.error("Error:", error);
     });
 };
+document
+  .getElementById("imprimirPresupuesto")
+  .addEventListener("click", async () => {
+    try {
+      const contenidoAImprimir =
+        document.getElementById("parteParaImprimir").innerHTML;
+
+      // Enviar el HTML al servidor para generar el PDF
+      const response = await fetch("/PDFkit/generar-pdf", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/html",
+        },
+        body: contenidoAImprimir,
+      });
+
+      // Verificar si la solicitud fue exitosa
+      if (!response.ok) {
+        throw new Error("Error al generar el PDF");
+      }
+
+      // Convertir la respuesta en un objeto Blob
+      const pdfBlob = await response.blob();
+
+      // Crear una URL local para el Blob
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+
+      // Abrir el PDF en una nueva pestaña del navegador
+      window.open(pdfUrl, "_blank");
+    } catch (error) {
+      console.error("Error al generar el PDF:", error);
+    }
+  });
 
 document.getElementById("crearPresupuesto").onclick = guardardatos;

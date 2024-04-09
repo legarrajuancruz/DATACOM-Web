@@ -1,602 +1,604 @@
-<div
-  style="display:flex; flex-direction:row;
+<div id="parteParaImprimir">
+  <div
+    style="display:flex; flex-direction:row;
   justify-content: center;
   align-items: center"
-  id="parteParaImprimir"
->
-  <div>
-    <table id="componentes-table" style="font-size: 14px;">
-      <thead>
-        <tr>
-          <td
-            colspan="4"
-            class="text-center bg-secondary text-light"
-            style="font-size: 10px;"
-          >VENTA & SERVICIO TECNICO / PC – NOTEBOOK – NETBOOK – IMPRESORAS –
-            CAMARAS DE SEGURIDAD – SISTEMAS – MONITORES</td>
+  >
+    <div>
+      <table id="componentes-table" style="font-size: 14px;">
+        <thead>
+          <tr>
+            <td
+              colspan="4"
+              class="text-center bg-secondary text-light"
+              style="font-size: 10px;"
+            >VENTA & SERVICIO TECNICO / PC – NOTEBOOK – NETBOOK – IMPRESORAS –
+              CAMARAS DE SEGURIDAD – SISTEMAS – MONITORES</td>
 
-          <td
-            colspan="2"
-            class="text-center bg-dark text-light align-middle"
-            style="font-size: 12px;"
-          >PRESUPUESTO</td>
-        </tr>
+            <td
+              colspan="2"
+              class="text-center bg-dark text-light align-middle"
+              style="font-size: 12px;"
+            >PRESUPUESTO</td>
+          </tr>
 
-        <tr>
-          <td>
-            <img src="/img/LOGO.jpg" alt="" style="height: 100px;" />
-          </td>
-          <td
-            colspan="5"
-            class="text-center text-light align-middle"
-            style="font-size: 10px;"
-          ><img src="/img/banner2.png" alt="" style="height: 100px;" />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6" style="height: 15px;"></td>
-        </tr>
+          <tr>
+            <td>
+              <img src="/img/LOGO.jpg" alt="" style="height: 100px;" />
+            </td>
+            <td
+              colspan="5"
+              class="text-center text-light align-middle"
+              style="font-size: 10px;"
+            ><img src="/img/banner2.png" alt="" style="height: 100px;" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6" style="height: 15px;"></td>
+          </tr>
 
-        <tr>
+          <tr>
+            <tr style="height: 30px;">
+              <td
+                colspan="2"
+                class="text-center bg-dark text-light border align-middle"
+                style="font-size: 10px;"
+              >INFORMACION CLIENTE</td>
+              <td class="text-center text-light align-middle"></td>
+              <td></td>
+              <td
+                colspan="2"
+                class="text-center bg-secondary text-light align-middle"
+                style="font-size: 12px"
+              >NUMERO DE ORDEN</td>
+            </tr>
+          </tr>
+
+          <tr style="height: 20px">
+            <td
+              colspan="2"
+              style="font-size: 12px;"
+              class="text-center bg-secondary text-light align-middle"
+            >NOMBRE</td>
+            <td class="text-center text-light align-middle"><input
+                id="nombre"
+                class="w-100"
+                type="text"
+              /></td>
+            <td></td>
+            <td
+              id="numeroDeOrden"
+              colspan="2"
+              class="text-center bg-light text-dark border align-middle"
+            >{{numeroOrden}}
+            </td>
+          </tr>
+
+          <tr style="height: 20px">
+            <td
+              colspan="2"
+              style="font-size: 12px; "
+              class="text-center bg-secondary text-light border align-middle"
+            >EMAIL</td>
+            <td class="text-center text-light border"><input
+                class="w-100"
+                type="text"
+              /></td>
+            <td></td>
+          </tr>
+
+          <tr style="height: 20px">
+            <td
+              colspan="2"
+              style="font-size: 12px;"
+              class="text-center bg-secondary text-light border align-middle"
+            >TELEFONO</td>
+            <td class="text-center text-light border align-middle"><input
+                class="w-100"
+                type="text"
+              />
+            </td>
+            <td></td>
+            <td
+              colspan="2"
+              class="text-center bg-secondary text-light border align-middle"
+              style="font-size: 12px;"
+            >FECHA</td>
+          </tr>
+
+          <tr style="height: 30px">
+            <td
+              colspan="3"
+              style="font-size: 12px; background-color:rgb(137, 181, 192);"
+              class="text-center text-dark align-middle border"
+            >DATACOM SERVICIOS INFORMATICOS</td>
+            <td></td>
+            <td
+              id="fecha"
+              colspan="2"
+              class="text-center bg-light border align-middle"
+            >
+
+            </td>
+
+            <tr>
+              <td colspan="6" style="height: 15px;"></td>
+            </tr>
+          </tr>
+
+          <tr style="height: 20px">
+            <td style="background-color: white"><img
+                src="/img/bancosantander.png"
+                alt=""
+                style="width: 100px; height: auto; border:2px solid white; "
+              /></td>
+            <td
+              colspan="2"
+              style="font-size: 10px; background-color:white;"
+              class="text-center text-dark align-middle border"
+            >CUENTA BANCO GALICIA - LEGARRA JUAN CRUZ</td>
+            <td></td>
+            <td
+              colspan="2"
+              class="text-center bg-dark text-light border align-middle"
+              style="font-size: 12px;"
+            >DOLAR DISTRIBUIDOR
+            </td>
+          </tr>
+
+          <tr style="height: 20px">
+            <td style="background-color: white "><img
+                src="/img/mercadopago.png"
+                alt=""
+                style="width: 100px; height: auto; border:3px solid white"
+              />
+            </td>
+            <td
+              colspan="2"
+              style="font-size: 10px; background-color:white  ;"
+              class="text-center text-dark align-middle border"
+            >CUENTA CORRIENTES EN PESOS 0006037-2 105-0 CBU
+              00701057-20000006037200</td>
+            <td></td>
+            <td
+              colspan="2"
+              class="text-center bg-light border align-middle"
+              id="dolarOficial"
+            >
+            </td>
+
+            <tr>
+              <td colspan="6" style="height: 15px;"></td>
+            </tr>
+          </tr>
+
+          <tr>
+            <th
+              style="padding: 10px; font-size: 10px"
+              class="text-center bg-secondary text-light border align-middle"
+            >ARTICULO</th>
+            <th
+              style="padding: 10px; font-size: 10px; width: 40px;"
+              class="text-center bg-secondary text-light border align-middle"
+            >CAN</th>
+            <th
+              style="padding: 10px; width: 400px; font-size: 10px"
+              class="text-center bg-secondary text-light border align-middle"
+            >DESCRPCION ARTICULO</th>
+            <th
+              style="padding: 10px; font-size: 10px; width: 90px"
+              class="text-center bg-secondary text-light border align-middle"
+            >GARANTIA</th>
+            <th
+              style="padding: 10px; font-size: 10px; width: 90px"
+              class="text-center bg-secondary text-light border align-middle"
+            >CONTADO</th>
+            <th
+              style="padding: 10px; font-size: 10px; width: 90px"
+              class="text-center bg-secondary text-light border align-middle"
+            >PRECIO LISTA</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >PROCESADOR</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="procesadorCantidad"
+                value="1"
+              /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="procesadorDescripcion"
+              /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="procesadorGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td class="d-flex"><input
+                class="text-center w-100"
+                type="text"
+                id="procesadorContado"
+              /></td>
+            <td
+              style="font-size: 14px; background-color:rgb(255, 255, 255);"
+              class="text-center text-dark align-middle border"
+              id="procesadorPlista"
+            >$ 0
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >PLACA MADRE</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="placamadreCantidad"
+                value="1"
+              /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="placamadreDescripcion"
+              /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="placamadreGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="placamadreContado"
+              />
+            </td>
+            <td
+              style="font-size: 14px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="placamadrePlista"
+            >$ 0
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >MEMORIA RAM</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="memoriaCantidad"
+                value="1"
+              /></td>
+            <td><input class="w-100" type="text" id="memoriaDescripcion" /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="memoriaGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="memoriaContado"
+              /></td>
+            <td
+              style="font-size: 14px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="memoriaPlista"
+            >$ 0
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >DISCO RIGIDO</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="discoCantidad"
+                value="1"
+              /></td>
+            <td><input class="w-100" type="text" id="discoDescripcion" /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="discoGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="discoContado"
+              /></td>
+            <td
+              style="font-size: 14px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="discoPlista"
+            >$ 0
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >GABINETE</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="gabineteCantidad"
+                value="1"
+              /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="gabineteDescripcion"
+              /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="gabineteGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="gabineteContado"
+              /></td>
+            <td
+              style="font-size: 14px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="gabinetePlista"
+            >$ 0
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
+              class="text-center"
+            >MONITOR</td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="monitorCantidad"
+                value="1"
+              /></td>
+            <td><input class="w-100" type="text" id="monitorDescripcion" /></td>
+            <td><select
+                name="Garantia"
+                style="font-size: 16px;"
+                class="text-center w-100"
+                type="text"
+                id="monitorGarantia"
+              >
+                <option value="1" selected>1 Año</option>
+                <option value="2">2 Años</option>
+                <option value="3">3 Años</option>
+              </select></td>
+            <td><input
+                class="text-center w-100"
+                type="text"
+                id="monitorContado"
+              /></td>
+            <td
+              style="font-size: 14px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="monitorPlista"
+            >$ 0
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td class="pt-2">
+              <button
+                class="btn btn-primary btn-sm mr-2"
+                id="agregar-columna"
+              >+</button>
+              <button
+                class="btn btn-primary btn-sm"
+                id="quitar-columna"
+              >-</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="6" style="height: 15px;"></td>
+          </tr>
+
+          <tr style="height: 35px">
+            <td
+              colspan="4"
+              class="text-center bg-secondary text-light border align-middle"
+            >TOTAL</td>
+            <td
+              id="totalContado"
+              class="text-center bg-secondary text-light border align-middle"
+            ></td>
+            <td
+              id="totalPlista"
+              class="text-center bg-secondary text-light border align-middle"
+            ></td>
+          </tr>
+          <tr>
+            <td colspan="6" style="height: 35px;"></td>
+          </tr>
+
+          <tr style="height: 30px">
+            <td colspan="3"><img
+                src="/img/mediospagofinal.png"
+                alt=""
+                style="width: 450px; height: auto "
+              /></td>
+
+            <td
+              colspan="2"
+              class="text-center bg-success text-light border align-middle"
+              style="font-size: 12px;"
+            >DOLAR BILLETE
+            </td>
+
+            <td
+              colspan="1"
+              style="font-size: 16px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="totalDolarBillete"
+            ></td>
+          </tr>
+
+          <tr>
+            <td colspan="6" style="height: 1px;"></td>
+          </tr>
+
+          <tr style="height: 30px">
+            <td colspan="3"></td>
+
+            <td
+              colspan="2"
+              class="text-center text-dark border align-middle"
+              style="font-size: 12px; background-color:rgb(216, 216, 216)"
+            >SEÑA DEL EQUIPO
+            </td>
+
+            <td
+              colspan="1"
+              style="font-size: 16px; background-color:white;"
+              class="text-center text-dark align-middle border"
+              id="totalAdelanto"
+            >$ 0</td>
+          </tr>
+
+          <tr>
+            <td colspan="6" style="height: 35px;"></td>
+          </tr>
+
+          <tr style="height: 25px;">
+            <td
+              colspan="6"
+              class="text-center bg-secondary text-light"
+              style="font-size: 12px;"
+            >PC COMPLETA INCLUYE ARMADO / TESTEO . SISTEMA OPERATIVO CON PAQUETE
+              DE PROGRAMAS DE OFICINA Y ANTIVIRUS</td>
+          </tr>
+
+          <tr>
+            <td colspan="6" style="height: 15px;"></td>
+          </tr>
+
           <tr style="height: 30px;">
             <td
               colspan="2"
               class="text-center bg-dark text-light border align-middle"
               style="font-size: 10px;"
-            >INFORMACION CLIENTE</td>
-            <td class="text-center text-light align-middle"></td>
+            >ENTREGA DE MERCADERIA</td>
+          </tr>
+
+          <tr style="height: 30px; ">
+            <td
+              colspan="3"
+              class="text-center bg-light text-dark border pt-3"
+              style="font-size: 12px"
+            ><p style="width:550px;  " class="align-middle">
+                PARA REALIZAR EL RETIRO DEL EQUIPO EL MISMO DEBE ESTAR ABONADO
+                EN SU TOTALIDAD. BAJO NINGUN SUPUESTO SERAN ENTREGADOS SIN ESTAR
+                ABONADOS. EN CASO DE ABONAR EN EL DOMICILIO PARTICULAR, EL MISMO
+                SE ENTREGARA UNA VEZ REALIZADO EL PAGO.
+              </p>
+            </td>
+            <td></td>
+
+            <td
+              colspan="2"
+              style="font-size: 10px; background-color:white;"
+              class="text-center text-dark align-middle border"
+            ></td>
+          </tr>
+
+          <tr>
+            <td
+              colspan="3"
+              class="text-center bg-dark text-light border align-middle"
+              style="font-size: 10px;"
+            >LOS EQUIPOS CON ENTREGA E INSTALACION EN DOMICILIO TENDRAN UN COSTO
+              ADICIONAL</td>
             <td></td>
             <td
               colspan="2"
-              class="text-center bg-secondary text-light align-middle"
-              style="font-size: 12px"
-            >NUMERO DE ORDEN</td>
+              class="text-center bg-dark text-light border align-middle"
+              style="font-size: 10px;"
+            >FIRMA REPRESENTANTE DATACOM</td>
           </tr>
-        </tr>
-
-        <tr style="height: 20px">
-          <td
-            colspan="2"
-            style="font-size: 12px;"
-            class="text-center bg-secondary text-light align-middle"
-          >NOMBRE</td>
-          <td class="text-center text-light align-middle"><input
-              id="nombre"
-              class="w-100"
-              type="text"
-            /></td>
-          <td></td>
-          <td
-            id="numeroDeOrden"
-            colspan="2"
-            class="text-center bg-light text-dark border align-middle"
-          >{{numeroOrden}}
-          </td>
-        </tr>
-
-        <tr style="height: 20px">
-          <td
-            colspan="2"
-            style="font-size: 12px; "
-            class="text-center bg-secondary text-light border align-middle"
-          >EMAIL</td>
-          <td class="text-center text-light border"><input
-              class="w-100"
-              type="text"
-            /></td>
-          <td></td>
-        </tr>
-
-        <tr style="height: 20px">
-          <td
-            colspan="2"
-            style="font-size: 12px;"
-            class="text-center bg-secondary text-light border align-middle"
-          >TELEFONO</td>
-          <td class="text-center text-light border align-middle"><input
-              class="w-100"
-              type="text"
-            />
-          </td>
-          <td></td>
-          <td
-            colspan="2"
-            class="text-center bg-secondary text-light border align-middle"
-            style="font-size: 12px;"
-          >FECHA</td>
-        </tr>
-
-        <tr style="height: 30px">
-          <td
-            colspan="3"
-            style="font-size: 12px; background-color:rgb(137, 181, 192);"
-            class="text-center text-dark align-middle border"
-          >DATACOM SERVICIOS INFORMATICOS</td>
-          <td></td>
-          <td
-            id="fecha"
-            colspan="2"
-            class="text-center bg-light border align-middle"
-          >
-
-          </td>
 
           <tr>
-            <td colspan="6" style="height: 15px;"></td>
+            <td colspan="6" style="height: 25px;"></td>
           </tr>
-        </tr>
 
-        <tr style="height: 20px">
-          <td style="background-color: white"><img
-              src="/img/bancosantander.png"
-              alt=""
-              style="width: 100px; height: auto; border:2px solid white; "
-            /></td>
-          <td
-            colspan="2"
-            style="font-size: 10px; background-color:white;"
-            class="text-center text-dark align-middle border"
-          >CUENTA BANCO GALICIA - LEGARRA JUAN CRUZ</td>
-          <td></td>
-          <td
-            colspan="2"
-            class="text-center bg-dark text-light border align-middle"
-            style="font-size: 12px;"
-          >DOLAR DISTRIBUIDOR
-          </td>
-        </tr>
-
-        <tr style="height: 20px">
-          <td style="background-color: white "><img
-              src="/img/mercadopago.png"
-              alt=""
-              style="width: 100px; height: auto; border:3px solid white"
-            />
-          </td>
-          <td
-            colspan="2"
-            style="font-size: 10px; background-color:white  ;"
-            class="text-center text-dark align-middle border"
-          >CUENTA CORRIENTES EN PESOS 0006037-2 105-0 CBU
-            00701057-20000006037200</td>
-          <td></td>
-          <td
-            colspan="2"
-            class="text-center bg-light border align-middle"
-            id="dolarOficial"
-          >
-          </td>
+          <tr style="height: 25px;">
+            <td
+              colspan="6"
+              class="text-center text-light align-middle w-100"
+              style="font-size: 10px; background-color:white"
+            ><img src="/img/marcas.png" alt="" style="height: 100px;" /></td>
+          </tr>
 
           <tr>
-            <td colspan="6" style="height: 15px;"></td>
+            <td
+              colspan="6"
+              class="text-center bg-dark text-light border align-middle"
+              style="font-size: 10px;"
+            >DATACOM SERVICIOS INFORMATICOS - SARMIENTO 365 - CEL 2494521550 /
+              INFO@DATACOMTANDIL.COM.AR</td>
           </tr>
-        </tr>
-
-        <tr>
-          <th
-            style="padding: 10px; font-size: 10px"
-            class="text-center bg-secondary text-light border align-middle"
-          >ARTICULO</th>
-          <th
-            style="padding: 10px; font-size: 10px; width: 40px;"
-            class="text-center bg-secondary text-light border align-middle"
-          >CAN</th>
-          <th
-            style="padding: 10px; width: 400px; font-size: 10px"
-            class="text-center bg-secondary text-light border align-middle"
-          >DESCRPCION ARTICULO</th>
-          <th
-            style="padding: 10px; font-size: 10px; width: 90px"
-            class="text-center bg-secondary text-light border align-middle"
-          >GARANTIA</th>
-          <th
-            style="padding: 10px; font-size: 10px; width: 90px"
-            class="text-center bg-secondary text-light border align-middle"
-          >CONTADO</th>
-          <th
-            style="padding: 10px; font-size: 10px; width: 90px"
-            class="text-center bg-secondary text-light border align-middle"
-          >PRECIO LISTA</th>
-        </tr>
-
-      </thead>
-
-      <tbody>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >PROCESADOR</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="procesadorCantidad"
-              value="1"
-            /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="procesadorDescripcion"
-            /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="procesadorGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td class="d-flex"><input
-              class="text-center w-100"
-              type="text"
-              id="procesadorContado"
-            /></td>
-          <td
-            style="font-size: 14px; background-color:rgb(255, 255, 255);"
-            class="text-center text-dark align-middle border"
-            id="procesadorPlista"
-          >$ 0
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >PLACA MADRE</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="placamadreCantidad"
-              value="1"
-            /></td>
-          <td><input
-              class="w-100"
-              type="text"
-              id="placamadreDescripcion"
-            /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="placamadreGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="placamadreContado"
-            />
-          </td>
-          <td
-            style="font-size: 14px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="placamadrePlista"
-          >$ 0
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >MEMORIA RAM</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="memoriaCantidad"
-              value="1"
-            /></td>
-          <td><input class="w-100" type="text" id="memoriaDescripcion" /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="memoriaGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="memoriaContado"
-            /></td>
-          <td
-            style="font-size: 14px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="memoriaPlista"
-          >$ 0
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >DISCO RIGIDO</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="discoCantidad"
-              value="1"
-            /></td>
-          <td><input class="w-100" type="text" id="discoDescripcion" /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="discoGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="discoContado"
-            /></td>
-          <td
-            style="font-size: 14px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="discoPlista"
-          >$ 0
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >GABINETE</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="gabineteCantidad"
-              value="1"
-            /></td>
-          <td><input class="w-100" type="text" id="gabineteDescripcion" /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="gabineteGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="gabineteContado"
-            /></td>
-          <td
-            style="font-size: 14px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="gabinetePlista"
-          >$ 0
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
-            class="text-center"
-          >MONITOR</td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="monitorCantidad"
-              value="1"
-            /></td>
-          <td><input class="w-100" type="text" id="monitorDescripcion" /></td>
-          <td><select
-              name="Garantia"
-              style="font-size: 16px;"
-              class="text-center w-100"
-              type="text"
-              id="monitorGarantia"
-            >
-              <option value="1" selected>1 Año</option>
-              <option value="2">2 Años</option>
-              <option value="3">3 Años</option>
-            </select></td>
-          <td><input
-              class="text-center w-100"
-              type="text"
-              id="monitorContado"
-            /></td>
-          <td
-            style="font-size: 14px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="monitorPlista"
-          >$ 0
-          </td>
-        </tr>
-      </tbody>
-
-      <tfoot>
-        <tr>
-          <td class="pt-2">
-            <button
-              class="btn btn-primary btn-sm mr-2"
-              id="agregar-columna"
-            >+</button>
-            <button
-              class="btn btn-primary btn-sm"
-              id="quitar-columna"
-            >-</button>
-          </td>
-        </tr>
-
-        <tr>
-          <td colspan="6" style="height: 15px;"></td>
-        </tr>
-
-        <tr style="height: 35px">
-          <td
-            colspan="4"
-            class="text-center bg-secondary text-light border align-middle"
-          >TOTAL</td>
-          <td
-            id="totalContado"
-            class="text-center bg-secondary text-light border align-middle"
-          ></td>
-          <td
-            id="totalPlista"
-            class="text-center bg-secondary text-light border align-middle"
-          ></td>
-        </tr>
-        <tr>
-          <td colspan="6" style="height: 35px;"></td>
-        </tr>
-
-        <tr style="height: 30px">
-          <td colspan="3"><img
-              src="/img/mediospagofinal.png"
-              alt=""
-              style="width: 450px; height: auto "
-            /></td>
-
-          <td
-            colspan="2"
-            class="text-center bg-success text-light border align-middle"
-            style="font-size: 12px;"
-          >DOLAR BILLETE
-          </td>
-
-          <td
-            colspan="1"
-            style="font-size: 16px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="totalDolarBillete"
-          ></td>
-        </tr>
-
-        <tr>
-          <td colspan="6" style="height: 1px;"></td>
-        </tr>
-
-        <tr style="height: 30px">
-          <td colspan="3"></td>
-
-          <td
-            colspan="2"
-            class="text-center text-dark border align-middle"
-            style="font-size: 12px; background-color:rgb(216, 216, 216)"
-          >SEÑA DEL EQUIPO
-          </td>
-
-          <td
-            colspan="1"
-            style="font-size: 16px; background-color:white;"
-            class="text-center text-dark align-middle border"
-            id="totalAdelanto"
-          >$ 0</td>
-        </tr>
-
-        <tr>
-          <td colspan="6" style="height: 35px;"></td>
-        </tr>
-
-        <tr style="height: 25px;">
-          <td
-            colspan="6"
-            class="text-center bg-secondary text-light"
-            style="font-size: 12px;"
-          >PC COMPLETA INCLUYE ARMADO / TESTEO . SISTEMA OPERATIVO CON PAQUETE
-            DE PROGRAMAS DE OFICINA Y ANTIVIRUS</td>
-        </tr>
-
-        <tr>
-          <td colspan="6" style="height: 15px;"></td>
-        </tr>
-
-        <tr style="height: 30px;">
-          <td
-            colspan="2"
-            class="text-center bg-dark text-light border align-middle"
-            style="font-size: 10px;"
-          >ENTREGA DE MERCADERIA</td>
-        </tr>
-
-        <tr style="height: 30px; ">
-          <td
-            colspan="3"
-            class="text-center bg-light text-dark border pt-3"
-            style="font-size: 12px"
-          ><p style="width:550px;  " class="align-middle">
-              PARA REALIZAR EL RETIRO DEL EQUIPO EL MISMO DEBE ESTAR ABONADO EN
-              SU TOTALIDAD. BAJO NINGUN SUPUESTO SERAN ENTREGADOS SIN ESTAR
-              ABONADOS. EN CASO DE ABONAR EN EL DOMICILIO PARTICULAR, EL MISMO
-              SE ENTREGARA UNA VEZ REALIZADO EL PAGO.
-            </p>
-          </td>
-          <td></td>
-
-          <td
-            colspan="2"
-            style="font-size: 10px; background-color:white;"
-            class="text-center text-dark align-middle border"
-          ></td>
-        </tr>
-
-        <tr>
-          <td
-            colspan="3"
-            class="text-center bg-dark text-light border align-middle"
-            style="font-size: 10px;"
-          >LOS EQUIPOS CON ENTREGA E INSTALACION EN DOMICILIO TENDRAN UN COSTO
-            ADICIONAL</td>
-          <td></td>
-          <td
-            colspan="2"
-            class="text-center bg-dark text-light border align-middle"
-            style="font-size: 10px;"
-          >FIRMA REPRESENTANTE DATACOM</td>
-        </tr>
-
-        <tr>
-          <td colspan="6" style="height: 25px;"></td>
-        </tr>
-
-        <tr style="height: 25px;">
-          <td
-            colspan="6"
-            class="text-center text-light align-middle w-100"
-            style="font-size: 10px; background-color:white"
-          ><img src="/img/marcas.png" alt="" style="height: 100px;" /></td>
-        </tr>
-
-        <tr>
-          <td
-            colspan="6"
-            class="text-center bg-dark text-light border align-middle"
-            style="font-size: 10px;"
-          >DATACOM SERVICIOS INFORMATICOS - SARMIENTO 365 - CEL 2494521550 /
-            INFO@DATACOMTANDIL.COM.AR</td>
-        </tr>
-      </tfoot>
-    </table>
-    <br />
-    <button
-      style="margin-right: 15px;"
-      class="btn btn-primary btn-sm"
-      id="crearPresupuesto"
-    >Guardar</button>
-
-    <button
-      class="btn btn-primary btn-sm"
-      id="imprimirPresupuesto"
-    >Imprimir</button>
+        </tfoot>
+      </table>
+      <br />
+      <button
+        style="margin-right: 15px;"
+        class="btn btn-primary btn-sm"
+        id="crearPresupuesto"
+      >Guardar</button>
+      <button class="btn btn-primary btn-sm" id="imprimirPresupuesto">Imprimir
+        Presupuesto</button>
+    </div>
+    <script src="/js/presupuesto.js"></script>
   </div>
-
 </div>

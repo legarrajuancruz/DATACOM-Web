@@ -7,6 +7,7 @@ import config from "./config/config.js";
 
 import MongoStore from "connect-mongo";
 import singleton from "./config/singleton.js";
+import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import cors from "cors";
@@ -29,7 +30,7 @@ import usersViewRouter from "./routes/users.views.router.js";
 import viewRouter from "./routes/view.router.js";
 import githubLoginViewRouter from "./routes/github-login.views.router.js";
 import jwtRouter from "./routes/jwt.router.js";
-import PDFKit from "./routes/PDFKit.router.js";
+import PDFkit from "./routes/PDFKit.router.js";
 
 import MessagesManager from "./services/dao/mongoManager/messageManagerMongo.js";
 import ProductManager from "./services/dao/mongoManager/productManagerMongo.js";
@@ -127,6 +128,11 @@ initializedPassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
+/*=====================
+|      BODY PARSER    |
+=====================*/
+app.use(bodyParser.text({ type: "text/html" }));
+
 /*=================
 |      ROUTES     |
 =================*/
@@ -144,7 +150,7 @@ app.use("/api/email", emailRouter);
 app.use("/mockingproducts", ProductMockup);
 app.use("/apidocs", swaggerUIExpress.serve, swaggerUIExpress.setup(specs));
 app.use("/loggerTest", loggerRouter);
-app.use("/PDFKit", PDFKit);
+app.use("/PDFkit", PDFkit);
 
 /*================================
 |   SOCKET SERVER CONECCTION      |

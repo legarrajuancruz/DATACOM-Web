@@ -9,7 +9,7 @@ import path from "path";
 
 import jwt from "jsonwebtoken";
 import { faker } from "@faker-js/faker";
-import PDFDocument from "pdfkit";
+import puppeteer from "puppeteer";
 
 //MULTER
 const storage = multer.diskStorage({
@@ -126,27 +126,33 @@ export const authToken = (req, res, next) => {
   });
 };
 
-// PDFKit
-export const generatePDF = (data) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const doc = new PDFDocument();
-      // Lógica para construir el contenido del PDF con los datos proporcionados
-      doc.fontSize(20).text("Este es un PDF generado dinámicamente.", 100, 100);
-      // Nombre del archivo PDF
-      const fileName = "archivo.pdf";
-      // Ruta donde se guardará el archivo PDF
-      const filePath = `${__dirname}/${fileName}`;
-      // Stream del PDF hacia el archivo
-      const stream = fs.createWriteStream(filePath);
-      doc.pipe(stream);
-      doc.end();
-      // Manejar eventos de finalización y error del stream
-      stream.on("finish", () => resolve(filePath));
-      stream.on("error", (error) => reject(error));
-    } catch (error) {
-      reject(error);
-    }
-  });
+export const generatePDF = async (htmlContent) => {
+  try {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    // Establece el contenido HTML en la página
+    await page.setContent(htmlContent);
+
+    // Configurar la opción de escalado
+    const options = {
+      scale: 0.75, // Factor de escala, donde 1 es el tamaño original
+    };
+
+    // Genera el PDF con opciones de impresión y escalado
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true, // Incluir estilos CSS
+      ...options, // Incluir opciones de escalado
+    });
+
+    await browser.close();
+    console.log("PDF generado con éxito");
+
+    return pdfBuffer;
+  } catch (error) {
+    console.error("Error al generar el PDF:", error);
+    throw error;
+  }
 };
 export default __dirname;
