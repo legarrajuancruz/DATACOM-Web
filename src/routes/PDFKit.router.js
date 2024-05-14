@@ -5,7 +5,21 @@ const PDFkit = Router();
 
 PDFkit.post("/generar-pdf", async (req, res) => {
   try {
-    const htmlContent = req.body;
+    let htmlContent = req.body;
+
+    // Modificar las rutas de las imágenes a URL absoluta
+    htmlContent = htmlContent.replace(
+      /<img[^>]*src="([^"]*)"[^>]*>/g,
+      (match, src) => {
+        // Reemplazar rutas relativas con rutas absolutas
+        if (!src.startsWith("http")) {
+          const absoluteSrc = `http://${req.headers.host}/${src}`;
+          return match.replace(src, absoluteSrc);
+        }
+        return match;
+      }
+    );
+
     const pdfBuffer = await generatePDF(htmlContent);
 
     res.setHeader("Content-Type", "application/pdf");

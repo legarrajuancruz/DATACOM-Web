@@ -136,10 +136,7 @@ export const generatePDF = async (htmlContent) => {
     const htmlWithStyles = `
       <html>
         <head>
-          <link rel="stylesheet" href="/style.css" />
-          <link rel="stylesheet" href="/bootstrap.css" />
-          <!-- Agrega aquí cualquier otro archivo CSS externo que utilices en main.handlebars -->
-          <style>
+                   <style>
       body { background: rgb(9, 133, 136); background: linear-gradient(90deg,
       rgba(9, 133, 136, 1) 0%, rgba(10, 217, 197, 1) 54%, rgba(70, 242, 202, 1)
       100%); } .navbar { background-color: #010827; padding-top: 15px;
