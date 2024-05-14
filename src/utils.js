@@ -1,7 +1,7 @@
 import { fileURLToPath } from "url";
+import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import { dirname } from "path";
 
 import multer from "multer";
 import bcrypt from "bcrypt";
@@ -126,25 +126,59 @@ export const authToken = (req, res, next) => {
   });
 };
 
+//PUPPETER
 export const generatePDF = async (htmlContent) => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Establece el contenido HTML en la página
-    await page.setContent(htmlContent);
+    // Agregar los enlaces a los archivos CSS externos
+    const htmlWithStyles = `
+      <html>
+        <head>
+          <link rel="stylesheet" href="/style.css" />
+          <link rel="stylesheet" href="/bootstrap.css" />
+          <!-- Agrega aquí cualquier otro archivo CSS externo que utilices en main.handlebars -->
+          <style>
+      body { background: rgb(9, 133, 136); background: linear-gradient(90deg,
+      rgba(9, 133, 136, 1) 0%, rgba(10, 217, 197, 1) 54%, rgba(70, 242, 202, 1)
+      100%); } .navbar { background-color: #010827; padding-top: 15px;
+      padding-bottom: 15px; } .navbar-brand { color: #fff; font-size: 24px;
+      transition: all 0.3s ease; } .navbar-brand:hover { color: #00d9c5;
+      transform: scale(1.1); } .nav-link { color: #fff; font-size: 14px;
+      margin-right: 20px; transition: all 0.3s ease; position: relative;
+      overflow: hidden; font-weight:normal; } .nav-link::before { content: "";
+      position: absolute; width: 100%; height: 2px; background-color: #00d9c5;
+      bottom: 0; right: 0; transform-origin: right; transform: scaleX(0);
+      transition: transform 0.3s ease; } .nav-link:hover::before {
+      transform-origin: left; transform: scaleX(1); } .nav-link:hover { color:
+      #00d9c5; font-size: 16px; /* Agrandamos el texto */ margin-bottom: -2px;
+      /* Ajustamos el margen para evitar que se agrande el contenedor */ }
+      .navbar-logo { max-height: 40px; }
+    </style>
+        </head>
+        <body>
+          ${htmlContent}
+        </body>
+      </html>
+    `;
 
-    // Configurar la opción de escalado
+    await page.setContent(htmlWithStyles);
+
     const options = {
-      scale: 0.75, // Factor de escala, donde 1 es el tamaño original
+      format: "A4",
+      printBackground: true,
+      scale: 0.8,
+      margin: {
+        top: "20px",
+        right: "20px",
+        bottom: "20px",
+        left: "20px",
+      },
     };
 
-    // Genera el PDF con opciones de impresión y escalado
-    const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true, // Incluir estilos CSS
-      ...options, // Incluir opciones de escalado
-    });
+    // Generar el PDF con las opciones de impresión y escalado
+    const pdfBuffer = await page.pdf(options);
 
     await browser.close();
     console.log("PDF generado con éxito");

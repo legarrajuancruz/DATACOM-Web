@@ -622,20 +622,45 @@ const guardardatos = async () => {
       console.error("Error:", error);
     });
 };
+
 document
   .getElementById("imprimirPresupuesto")
   .addEventListener("click", async () => {
     try {
+      // Obtener el contenido HTML a imprimir
       const contenidoAImprimir =
         document.getElementById("parteParaImprimir").innerHTML;
 
-      // Enviar el HTML al servidor para generar el PDF
+      // Obtener los estilos CSS heredados
+      const cssLinks = Array.from(
+        document.querySelectorAll('link[rel="stylesheet"]')
+      ).map((link) => link.href);
+      const inlineStyles = Array.from(document.querySelectorAll("[style]"))
+        .map((el) => el.getAttribute("style"))
+        .join("\n");
+
+      // Concatenar los estilos CSS con el contenido HTML
+      const htmlContentWithStyles = `
+          <html>
+              <head>
+                  ${cssLinks
+                    .map((link) => `<link rel="stylesheet" href="${link}">`)
+                    .join("\n")}
+                  <style>${inlineStyles}</style>
+              </head>
+              <body>
+                  ${contenidoAImprimir}
+              </body>
+          </html>
+      `;
+
+      // Enviar el HTML con estilos al servidor para generar el PDF
       const response = await fetch("/PDFkit/generar-pdf", {
         method: "POST",
         headers: {
           "Content-Type": "text/html",
         },
-        body: contenidoAImprimir,
+        body: htmlContentWithStyles,
       });
 
       // Verificar si la solicitud fue exitosa
@@ -655,5 +680,4 @@ document
       console.error("Error al generar el PDF:", error);
     }
   });
-
 document.getElementById("crearPresupuesto").onclick = guardardatos;
