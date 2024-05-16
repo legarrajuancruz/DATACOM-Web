@@ -1,6 +1,6 @@
 <div id="parteParaImprimir">
   <div
-    style="display:flex; flex-direction:row;
+    style="margin-top: 40px; display:flex; flex-direction:row;
   justify-content: center;
   align-items: center"
   >
@@ -64,6 +64,7 @@
                 id="nombre"
                 class="w-100"
                 type="text"
+                oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td></td>
             <td
@@ -83,6 +84,7 @@
             <td class="text-center text-light border"><input
                 class="w-100"
                 type="text"
+                oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td></td>
           </tr>
@@ -95,7 +97,8 @@
             >TELEFONO</td>
             <td class="text-center text-light border align-middle"><input
                 class="w-100"
-                type="text"
+                type="number"
+                oninput="this.value = this.value.toUpperCase()"
               />
             </td>
             <td></td>
@@ -217,6 +220,7 @@
                 class="w-100"
                 type="text"
                 id="procesadorDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td><select
                 name="Garantia"
@@ -256,6 +260,7 @@
                 class="w-100"
                 type="text"
                 id="placamadreDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td><select
                 name="Garantia"
@@ -292,7 +297,12 @@
                 id="memoriaCantidad"
                 value="1"
               /></td>
-            <td><input class="w-100" type="text" id="memoriaDescripcion" /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="memoriaDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
+              /></td>
             <td><select
                 name="Garantia"
                 style="font-size: 16px;"
@@ -327,7 +337,12 @@
                 id="discoCantidad"
                 value="1"
               /></td>
-            <td><input class="w-100" type="text" id="discoDescripcion" /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="discoDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
+              /></td>
             <td><select
                 name="Garantia"
                 style="font-size: 16px;"
@@ -366,6 +381,7 @@
                 class="w-100"
                 type="text"
                 id="gabineteDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td><select
                 name="Garantia"
@@ -401,7 +417,12 @@
                 id="monitorCantidad"
                 value="1"
               /></td>
-            <td><input class="w-100" type="text" id="monitorDescripcion" /></td>
+            <td><input
+                class="w-100"
+                type="text"
+                id="monitorDescripcion"
+                oninput="this.value = this.value.toUpperCase()"
+              /></td>
             <td><select
                 name="Garantia"
                 style="font-size: 16px;"
@@ -590,14 +611,15 @@
           </tr>
         </tfoot>
       </table>
-      <br />
-      <button
-        style="margin-right: 15px;"
-        class="btn btn-primary btn-sm"
-        id="crearPresupuesto"
-      >Guardar</button>
-      <button class="btn btn-primary btn-sm" id="imprimirPresupuesto">Imprimir
-        Presupuesto</button>
+      <div style="margin-top: 50px;">
+        <button
+          style="margin-right: 15px;"
+          class="btn btn-primary btn-sm"
+          id="crearPresupuesto"
+        >Guardar</button>
+        <button class="btn btn-primary btn-sm" id="imprimirPresupuesto">Imprimir
+          Presupuesto</button>
+      </div>
     </div>
     <script src="/js/presupuesto.js"></script>
   </div>

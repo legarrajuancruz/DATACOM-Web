@@ -134,26 +134,7 @@ export const generatePDF = async (htmlContent) => {
 
     // Agregar los enlaces a los archivos CSS externos
     const htmlWithStyles = `
-      <html>
-        <head>
-                   <style>
-      body { background: rgb(9, 133, 136); background: linear-gradient(90deg,
-      rgba(9, 133, 136, 1) 0%, rgba(10, 217, 197, 1) 54%, rgba(70, 242, 202, 1)
-      100%); } .navbar { background-color: #010827; padding-top: 15px;
-      padding-bottom: 15px; } .navbar-brand { color: #fff; font-size: 24px;
-      transition: all 0.3s ease; } .navbar-brand:hover { color: #00d9c5;
-      transform: scale(1.1); } .nav-link { color: #fff; font-size: 14px;
-      margin-right: 20px; transition: all 0.3s ease; position: relative;
-      overflow: hidden; font-weight:normal; } .nav-link::before { content: "";
-      position: absolute; width: 100%; height: 2px; background-color: #00d9c5;
-      bottom: 0; right: 0; transform-origin: right; transform: scaleX(0);
-      transition: transform 0.3s ease; } .nav-link:hover::before {
-      transform-origin: left; transform: scaleX(1); } .nav-link:hover { color:
-      #00d9c5; font-size: 16px; /* Agrandamos el texto */ margin-bottom: -2px;
-      /* Ajustamos el margen para evitar que se agrande el contenedor */ }
-      .navbar-logo { max-height: 40px; }
-    </style>
-        </head>
+      <html>       
         <body>
           ${htmlContent}
         </body>
