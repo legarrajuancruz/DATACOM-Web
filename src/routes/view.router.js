@@ -117,4 +117,13 @@ router.get("/presupuesto", async (req, res) => {
   }
 });
 
+router.get("/modificarPresupuesto", async (req, res) => {
+  try {
+    const numeroOrden = await presupuestoService.getPresupuestosbyOrden();
+    res.render("modificarPresupuestador", { numeroOrden });
+  } catch (error) {
+    response.status(500).send({ error: error.message });
+  }
+});
+
 export default router;
