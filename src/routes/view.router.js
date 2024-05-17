@@ -119,8 +119,9 @@ router.get("/presupuesto", async (req, res) => {
 
 router.get("/modificarPresupuesto", async (req, res) => {
   try {
-    const numeroOrden = await presupuestoService.getPresupuestosbyOrden();
-    res.render("modificarPresupuestador", { numeroOrden });
+    const presupuesto = await presupuestoService.getPresupuestos();
+    console.log(presupuesto);
+    res.render("modificarPresupuesto", { presupuesto });
   } catch (error) {
     response.status(500).send({ error: error.message });
   }

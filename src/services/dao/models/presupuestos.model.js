@@ -24,6 +24,14 @@ const presupuestosSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  telefono: {
+    type: String,
+    required: true,
+  },
   oficial: {
     type: Number,
     required: true,

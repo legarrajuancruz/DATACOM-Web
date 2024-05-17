@@ -497,6 +497,8 @@ const guardardatos = async () => {
   );
   let fecha = document.getElementById("fecha").textContent;
   let nombre = document.getElementById("nombre").value;
+  let email = document.getElementById("email").value;
+  let telefono = document.getElementById("telefono").value;
 
   let procesador = {
     cantidad: document.getElementById("procesadorCantidad").value,
@@ -566,6 +568,8 @@ const guardardatos = async () => {
     orden: orden,
     fecha: fecha,
     nombre: nombre,
+    email: email,
+    telefono: telefono,
     oficial: oficial,
     blue: blue,
     procesador: procesador,

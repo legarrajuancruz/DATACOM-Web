@@ -57,14 +57,14 @@ export default class PresupuestoService {
     let status = presupuesto ? "success" : "error";
 
     let prevLink = presupuesto.hasPrevPage
-      ? "http://localhost:8080/presupuesto?limit=" +
+      ? "http://localhost:8080/modificarPresupuesto?limit=" +
         limit +
         "&page=" +
         presupuesto.prevPage
       : null;
 
     let nextLink = presupuesto.hasNextPage
-      ? "http://localhost:8080/presupuesto?limit=" +
+      ? "http://localhost:8080/modificarPresupuesto?limit=" +
         limit +
         "&page=" +
         presupuesto.nextPage
@@ -83,7 +83,7 @@ export default class PresupuestoService {
       nextLink: nextLink,
     };
 
-    return presupuestos;
+    return presupuesto;
   };
 
   /*===============================

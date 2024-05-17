@@ -3,29 +3,29 @@
 </style>
 
 <div class="container mt-5">
-  <h2>Administrador de usuarios</h2>
-  <h4>{{user.first_name}}</h4>
-  <h5>{{user.role}}</h5>
+  <h2>Administrador de Ordenes</h2>
+  <h4>{{presupuesto.orden}}</h4>
+  <h5>{{presupuesto.nombre}}</h5>
   <table class="table table-bordered mt-3">
     <thead>
       <tr>
-        <th scope="col">User ID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
+        <th scope="col">Orden</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">ID</th>
         <th scope="col">New Role</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      {{#each allUsers}}
+      {{#each presupuesto}}
         <tr>
+          <td>{{this.orden}}</td>
+          <td>{{this.fecha}}</td>
+          <td>{{this.nombre}}</td>
+          <td>{{this.fecha}}</td>
           <td>{{this._id}}</td>
-          <td>{{this.first_name}}</td>
-          <td>{{this.last_name}}</td>
-          <td>{{this.email}}</td>
-          <td>{{this.role}}</td>
           <td>
             <form
               id="form_{{this._id}}"
