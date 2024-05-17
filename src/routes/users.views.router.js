@@ -1,8 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import { userService } from "../services/factory.js";
-// import UserService from "../services/dao/mongoManager/userManagerMongo.js";
-// const US = new UserService();
+
 const userRouter = Router();
 
 //VISTA LOGIN

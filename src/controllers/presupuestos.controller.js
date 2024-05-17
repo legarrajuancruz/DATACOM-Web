@@ -76,18 +76,18 @@ const getPresupuestoById = async (req, res) => {
 
     if (!_id || !mongoose.Types.ObjectId.isValid(_id)) {
       CustomError.createError({
-        name: "Product Get error",
+        name: "Presupuesto Get error",
         cause: getProductByIdErrorInfo(_id),
-        message: "Error al obtener el producto",
+        message: "Error al obtener el presupuesto",
         code: EErrors.NI_EL_PROGRAMADOR_SABE_QUE_PASO,
       });
     }
 
-    let producto = await PresupuestoService.getProductbyId({ _id });
+    let presupuesto = await presupuestoService.getPresupuestosbyId({ _id });
 
     res.status(202).send({
-      result: "Producto obtenido con exito",
-      producto: producto,
+      result: "Presupuesto obtenido con exito",
+      presupuesto: presupuesto,
     });
   } catch (error) {
     console.error(error);

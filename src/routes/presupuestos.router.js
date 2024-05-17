@@ -7,6 +7,9 @@ const presupuestosRouter = Router();
 //LEER
 presupuestosRouter.get("/", PresupuestosController.getPresupuesto);
 
+//VISTA ADMIN DE PRESUPUESTO SELECCIONADO
+presupuestosRouter.get("/:id/view", PresupuestosController.getPresupuestoById);
+
 //LEER ID
 presupuestosRouter.get("/:id", PresupuestosController.getPresupuestoById);
 

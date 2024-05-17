@@ -52,9 +52,9 @@ function guardarNuevoEstado(id) {
   });
 }
 
-/*================================
-    -      VISTA PREVIA USUARIO     -
-    ===============================*/
+/*======================================
+    -      VISTA PREVIA PRESUPUESTO     -
+    ===================================*/
 function verPresupuesto(id) {
   location.href = `/api/presupuestos/${id}/view`;
 }
