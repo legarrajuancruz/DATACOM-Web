@@ -188,19 +188,21 @@ const modPresupuesto = async (req, res) => {
   }
 };
 /*===================================
-    - VISTA DE USUARIOS DE ADMIN     -
+    - VISTA ADMIN DE PRESUPUESTOS    -
     ================================*/
 const ControlViewPresupuestoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const presupuesto = await presupuestoService.getPresupuestoByID(id);
+    console.log(id);
+    const presupuesto = await presupuestoService.getPresupuestosbyId(id);
+    console.log(presupuesto);
     res.render("viewPresupuesto", { presupuesto });
   } catch (error) {
     console.error(
       "Error al obtener información del Presupuesto con mongoose" + error
     );
     res.status(500).send({
-      error: "No se pudo obtener información del usuario",
+      error: "No se pudo obtener información del presupuesto",
       message: error,
     });
   }
