@@ -27,11 +27,11 @@ function eliminarPresupuesto(id) {
     ================================*/
 function guardarNuevoEstado(id) {
   const form = document.getElementById(`form_${id}`);
-  const select = document.getElementById(`roleSelect_${id}`);
+  const select = document.getElementById(`estadoSelect_${id}`);
   const selectedValue = select.value;
 
   const requestBody = {
-    newRole: select.value,
+    estado: select.value,
   };
 
   fetch(`/api/presupuesto/${id}`, {
