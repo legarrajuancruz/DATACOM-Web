@@ -45,7 +45,7 @@ const presupuestosSchema = new mongoose.Schema({
   memoria: ComponenteSchema,
   disco: ComponenteSchema,
   gabinete: ComponenteSchema,
-  monitor: ComponenteSchema,
+  fuente: ComponenteSchema,
   accesorios7: ComponenteSchema,
   accesorios8: ComponenteSchema,
   accesorios9: ComponenteSchema,

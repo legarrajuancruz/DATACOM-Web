@@ -4,30 +4,17 @@
       <h2 class="mb-4">Detalles del Usuario</h2>
       <div class="card">
         <div class="card-body">
-          <p class="card-text"><strong>Orden ID:</strong>
-            {{presupuesto._id}}</p>
-          <p class="card-text"><strong>Orden:</strong>
+          <p class="card-text"><strong>Numero de Orden:</strong>
             {{presupuesto.orden}}</p>
+          <p class="card-text"><strong>Fecha</strong>
+            {{presupuesto.fecha}}</p>
+          <p class="card-text"><strong>ID</strong>
+            {{presupuesto._id}}</p>
           <p class="card-text"><strong>Nombre:</strong>
             {{presupuesto.nombre}}</p>
           <p class="card-text"><strong>Email:</strong> {{presupuesto.email}}</p>
           <p class="card-text"><strong>Telefono:</strong>
             {{presupuesto.telefono}}</p>
-          <p class="card-text"><strong>Procesador:</strong>
-            {{presupuesto.procesador.descripcion}}</p>
-          <p class="card-text"><strong>Password:</strong>
-            {{presupuesto.password}}</p>
-          {{#each presupuesto.procesador}}
-            <tr>
-              <th scope="col">User ID</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Role</th>
-              <th scope="col">New Role</th>
-              <th scope="col">Actions</th>
-            </tr>
-          {{/each}}
 
           <a
             href="javascript:history.back()"
@@ -459,17 +446,17 @@
             <td
               style="background:rgba(166, 166, 166, 0.721); font-size: 12px"
               class="text-center"
-            >MONITOR</td>
+            >FUENTE</td>
             <td><input
                 class="text-center w-100"
                 type="text"
-                id="monitorCantidad"
+                id="fuenteCantidad"
                 value="1"
               /></td>
             <td><input
                 class="w-100"
                 type="text"
-                id="monitorDescripcion"
+                id="fuenteDescripcion"
                 oninput="this.value = this.value.toUpperCase()"
               /></td>
             <td><select
@@ -477,7 +464,7 @@
                 style="font-size: 16px;"
                 class="text-center w-100"
                 type="text"
-                id="monitorGarantia"
+                id="fuenteGarantia"
               >
                 <option value="1" selected>1 Año</option>
                 <option value="2">2 Años</option>
@@ -486,12 +473,12 @@
             <td><input
                 class="text-center w-100"
                 type="text"
-                id="monitorContado"
+                id="fuenteContado"
               /></td>
             <td
               style="font-size: 14px; background-color:white;"
               class="text-center text-dark align-middle border"
-              id="monitorPlista"
+              id="fuentePlista"
             >$ 0
             </td>
           </tr>

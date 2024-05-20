@@ -554,13 +554,13 @@ const guardardatos = async () => {
     ),
   };
 
-  let monitor = {
-    cantidad: document.getElementById("monitorCantidad").value,
-    descripcion: document.getElementById("monitorDescripcion").value,
-    garantia: document.getElementById("monitorGarantia").value,
-    contado: unformatCurrency(document.getElementById("monitorContado").value),
+  let fuente = {
+    cantidad: document.getElementById("fuenteCantidad").value,
+    descripcion: document.getElementById("fuenteDescripcion").value,
+    garantia: document.getElementById("fuenteGarantia").value,
+    contado: unformatCurrency(document.getElementById("fuenteContado").value),
     plista: unformatCurrency(
-      document.getElementById("monitorPlista").textContent
+      document.getElementById("fuentePlista").textContent
     ),
   };
 
@@ -577,7 +577,7 @@ const guardardatos = async () => {
     memoria: memoria,
     disco: disco,
     gabinete: gabinete,
-    monitor: monitor,
+    fuente: fuente,
   };
 
   for (let i = 7; i < 14; i++) {
@@ -635,6 +635,28 @@ document
       const contenidoAImprimir =
         document.getElementById("parteParaImprimir").innerHTML;
 
+      const inputs = parteParaImprimir.querySelectorAll(
+        "input, textarea, select"
+      );
+
+      // Iterar sobre los inputs y establecer sus valores actuales
+      inputs.forEach((input) => {
+        if (input.tagName === "SELECT") {
+          const options = input.options;
+          for (let i = 0; i < options.length; i++) {
+            if (options[i].selected) {
+              options[i].setAttribute("selected", "selected");
+            } else {
+              options[i].removeAttribute("selected");
+            }
+          }
+        } else if (input.tagName === "TEXTAREA") {
+          input.innerHTML = input.value;
+        } else {
+          input.setAttribute("value", input.value);
+        }
+      });
+
       // Obtener los estilos CSS heredados
       const cssLinks = Array.from(
         document.querySelectorAll('link[rel="stylesheet"]')
@@ -651,9 +673,10 @@ document
                     .map((link) => `<link rel="stylesheet" href="${link}">`)
                     .join("\n")}
                   <style>${inlineStyles}</style>
+                  
               </head>
               <body>
-                  ${contenidoAImprimir}
+              ${parteParaImprimir.innerHTML}
               </body>
           </html>
       `;

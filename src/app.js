@@ -50,7 +50,6 @@ app.use(express.static(__dirname + "/uploads"));
 /*=================
 |    HANDLEBARS   |
 =================*/
-app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 app.engine(
   "handlebars",
@@ -58,6 +57,7 @@ app.engine(
     handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
+app.set("view engine", "handlebars");
 
 /*================
 |      SERVER    |
