@@ -62,7 +62,7 @@ app.set("view engine", "handlebars");
 /*================
 |      SERVER    |
 ================*/
-const PORT = config.port;
+const PORT = process.env.PORT || config.port;
 const MONGO_url = config.mongoUrl;
 
 app.use(express.json());
