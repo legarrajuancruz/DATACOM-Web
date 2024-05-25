@@ -1,5 +1,3 @@
-# Proyecto final Coderhouse
-
 ## Descripción
 
 Proyecto de desarrollo plataforma ecommerse
