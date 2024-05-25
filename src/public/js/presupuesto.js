@@ -319,35 +319,26 @@ let anio = fechaActual.getFullYear();
 let fechaFormateada = `${dia}/${mes}/${anio}`;
 fechaTd.textContent = fechaFormateada;
 
-/************************\
-|   TOTAL PRECIO LISTA   |
-\***********************/
+/*******************\
+|    PRECIO LISTA   |
+\*******************/
 // Función para calcular y mostrar los precios de lista en toda la columna "Precio de Lista"
 function calcularPreciosLista() {
   // Obtener todas las filas de la tabla
   let rows = document.querySelectorAll("#componentes-table tbody tr");
 
-  // Iterar sobre las filas
   rows.forEach(function (row) {
-    // Obtener el precio contado de la fila actual
     let contadoInput = row.querySelector("td:nth-child(5) input");
 
     if (contadoInput) {
-      // Obtener el valor del precio contado
-      let contadoValue = parseFloat(unformatCurrency(contadoInput.value)) || 0;
-
-      // Calcular el precio de lista multiplicando por 1.4
-      let precioLista = contadoValue * 1.4;
-
-      // Obtener el elemento td correspondiente al precio de lista en la misma fila
-      let precioListaCell = row.querySelector("td:nth-child(6)");
-      if (precioListaCell) {
-        // Actualizar el contenido del elemento td de precio de lista con el nuevo valor
-        precioListaCell.textContent = formatCurrency(precioLista.toFixed(0)); // Ajuste: Redondear sin decimales
+      let precioContado = parseFloat(unformatCurrency(contadoInput.value)) || 0;
+      let precioLista = precioContado * 1.4;
+      let listaCell = row.querySelector("td:nth-child(6)");
+      if (listaCell) {
+        listaCell.textContent = formatCurrency(precioLista.toFixed(0));
       }
     }
   });
-
   // Después de recalcular los precios de lista, también recalculamos el total de precios de lista
   calcularTotalPlista();
 }
@@ -479,6 +470,7 @@ function agregarEventoInput() {
     input.value = formatCurrency(unformatCurrency(input.value));
   });
 }
+
 agregarEventoContado();
 
 /*********************\
@@ -707,4 +699,5 @@ document
       console.error("Error al generar el PDF:", error);
     }
   });
+
 document.getElementById("crearPresupuesto").onclick = guardardatos;
