@@ -49,7 +49,7 @@ const app = express();
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/uploads"));
 
-/* Configurar CSP con Helmet */
+// Configurar Helmet para CSP y Referrer Policy
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -64,6 +64,7 @@ app.use(
         frameSrc: ["'none'"],
       },
     },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   })
 );
 
