@@ -57,7 +57,8 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: [
           "'self'",
-          "https://example.com", // Añade otras fuentes específicas aquí
+          "https://cdn.jsdelivr.net/npm/sweetalert2@11",
+          "/socket.io/socket.io.js",
           "https://cdn.jsdelivr.net", // Permite scripts de jsdelivr
           "https://cdnjs.cloudflare.com", // Permite scripts de cdnjs
           "'unsafe-inline'", // Permite scripts inline (menos seguro)
