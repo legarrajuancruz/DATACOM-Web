@@ -64,7 +64,6 @@ app.use(
         frameSrc: ["'none'"],
       },
     },
-    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   })
 );
 
