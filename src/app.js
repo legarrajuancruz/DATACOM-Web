@@ -50,23 +50,23 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/uploads"));
 
 // Configurar Helmet para CSP y Referrer Policy
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: ["'self'", "https://example.com"], // Ajusta según sea necesario
-//         styleSrc: ["'self'", "'unsafe-inline'", "https://example.com"], // Ajusta según sea necesario
-//         imgSrc: ["'self'", "data:", "https://example.com"], // Ajusta según sea necesario
-//         fontSrc: ["'self'", "https://datacom-web.vercel.app/css/fonts/"], // Permite fuentes de esta URL
-//         connectSrc: ["'self'"],
-//         objectSrc: ["'none'"],
-//         frameSrc: ["'none'"],
-//       },
-//     },
-//     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
-//   })
-// );
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://example.com"], // Ajusta según sea necesario
+        styleSrc: ["'self'", "'unsafe-inline'", "https://example.com"], // Ajusta según sea necesario
+        imgSrc: ["'self'", "data:", "https://example.com"], // Ajusta según sea necesario
+        fontSrc: ["'self'", "https://datacom-web.vercel.app/css/fonts/"], // Permite fuentes de esta URL
+        connectSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        frameSrc: ["'none'"],
+      },
+    },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+  })
+);
 
 /*=================
 |    HANDLEBARS   |
