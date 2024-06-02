@@ -2,21 +2,21 @@ import { Router } from "express";
 import ProductController from "../controllers/products.controller.js";
 import { uploader } from "../utils.js";
 
-const productRouter = Router();
+const ProductRouter = Router();
 
 //LEER
-productRouter.get("/", ProductController.getProduct);
+ProductRouter.get("/", ProductController.getProduct);
 
 //LEER ID
-productRouter.get("/:id", ProductController.getProductById);
+ProductRouter.get("/:id", ProductController.getProductById);
 
 //CREAR
-productRouter.post("/", uploader.single("img"), ProductController.addProduct);
+ProductRouter.post("/", uploader.single("img"), ProductController.addProduct);
 
 //ELIMINAR
-productRouter.delete("/:id", ProductController.deleteProduct);
+ProductRouter.delete("/:id", ProductController.deleteProduct);
 
 //MODIFICAR
-productRouter.put("/:id", uploader.single("img"), ProductController.modProduct);
+ProductRouter.put("/:id", uploader.single("img"), ProductController.modProduct);
 
-export default productRouter;
+export default ProductRouter;

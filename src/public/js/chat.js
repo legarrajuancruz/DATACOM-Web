@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://datacom-web.vercel.app/");
 let user = "";
 const chatbox = document.getElementById("chatBox");
 
