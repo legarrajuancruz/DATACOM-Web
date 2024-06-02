@@ -50,40 +50,38 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/uploads"));
 
 // Configurar Helmet para CSP y Referrer Policy
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "https://cdn.jsdelivr.net/npm/sweetalert2@11",
-          "/socket.io/socket.io.js",
-          "https://cdn.jsdelivr.net", // Permite scripts de jsdelivr
-          "https://cdnjs.cloudflare.com", // Permite scripts de cdnjs
-          "'unsafe-inline'", // Permite scripts inline (menos seguro)
-          "'unsafe-eval'", // Permite la evaluación de scripts (menos seguro)
-        ],
-        styleSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          "https://example.com",
-          "https://cdn.jsdelivr.net",
-        ],
-        imgSrc: ["'self'", "data:", "https://example.com"],
-        fontSrc: [
-          "'self'",
-          "https://datacom-web.vercel.app/css/fonts/",
-          "https://example.com",
-        ],
-        connectSrc: ["'self'", "https://example.com"], // Añade otras fuentes específicas aquí
-        objectSrc: ["'none'"],
-        frameSrc: ["'none'"],
-      },
-    },
-    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
-  })
-);
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: [
+//           "'self'",
+//           "https://cdn.jsdelivr.net/npm/sweetalert2@11",
+//           "/socket.io/socket.io.js",
+//           "https://cdn.jsdelivr.net", // Permite scripts de jsdelivr
+//           "https://cdnjs.cloudflare.com", // Permite scripts de cdnjs,
+//         ],
+//         styleSrc: [
+//           "'self'",
+//           "'unsafe-inline'",
+//           "https://example.com",
+//           "https://cdn.jsdelivr.net",
+//         ],
+//         imgSrc: ["'self'", "data:", "https://example.com"],
+//         fontSrc: [
+//           "'self'",
+//           "https://datacom-web.vercel.app/css/fonts/",
+//           "https://example.com",
+//         ],
+//         connectSrc: ["'self'", "https://example.com"], // Añade otras fuentes específicas aquí
+//         objectSrc: ["'none'"],
+//         frameSrc: ["'none'"],
+//       },
+//     },
+//     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+//   })
+// );
 
 /*=================
 |    HANDLEBARS   |
