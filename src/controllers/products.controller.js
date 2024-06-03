@@ -130,11 +130,10 @@ const deleteProduct = async (req, res) => {
 
     if (user.role == "premium") {
       const responde = await productService.borrarProducto(find._id);
-      console.log(response);
       const response = await userService.sendNotificationProductErased(
         user.email
       );
-      console.log(response);
+
       if (response === "true") {
         console.log("EMAIL ENVIADO");
       } else {
