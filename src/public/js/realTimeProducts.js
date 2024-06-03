@@ -27,7 +27,7 @@ const createProduct = async () => {
 
         if (response.status === 201) {
           alert("Nuevo producto creado con éxito");
-          location.href = href = "/realtimeproducts";
+          location.href = href = "/realTimeProducts";
         } else {
           alert("Hubo un problema al crear el producto");
         }
