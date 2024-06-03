@@ -95,10 +95,10 @@ const deleteProductButton = async (id) => {
 
     if (response.status === 202) {
       alert("Producto eliminado con exito");
-      location.href = "/realtimeproducts";
+      location.href = "/realTimeProducts";
     } else if (response.status === 203) {
       alert("Producto eliminado por ADMIN con éxito");
-      location.href = "/realtimeproducts";
+      location.href = "/realTimeProducts";
     } else {
       throw new Error("Hubo un problema al eliminar el producto");
     }
